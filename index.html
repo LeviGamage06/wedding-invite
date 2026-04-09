@@ -9,7 +9,7 @@
 <style>
 
 /* ─────────────────────────────────────────
-   WAKICHANAKA & QALLTAÑA
+   VARIABLES & RESET
 ───────────────────────────────────────── */
 :root {
   --ink:        #09080F;
@@ -32,7 +32,7 @@ body {
   overflow-x: hidden;
   cursor: none;
 }
-/* Laq'a uñacht'ayaña */
+/* Grain texture */
 body::before {
   content:'';
   position:fixed; inset:0;
@@ -48,7 +48,7 @@ body::before {
 ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:10px; }
 
 /* ─────────────────────────────────────────
-   MUNAÑAKARU CURSOR
+   CUSTOM CURSOR
 ───────────────────────────────────────── */
 #cur {
   position:fixed; width:6px; height:6px;
@@ -69,7 +69,7 @@ body::before {
 .cursor-big #cur-ring { width:52px; height:52px; border-color:var(--gold); }
 
 /* ─────────────────────────────────────────
-   SCROLL NAYRAQATARU
+   SCROLL PROGRESS
 ───────────────────────────────────────── */
 #prog-bar {
   position:fixed; top:0; left:0;
@@ -79,7 +79,7 @@ body::before {
 }
 
 /* ─────────────────────────────────────────
-   PANQARA CANVAS
+   PETAL CANVAS
 ───────────────────────────────────────── */
 #petalCanvas {
   position:fixed; inset:0;
@@ -89,7 +89,7 @@ body::before {
 #petalCanvas.on { opacity:1; }
 
 /* ─────────────────────────────────────────
-   MANTAYAÑA
+   ENTRANCE
 ───────────────────────────────────────── */
 #entrance {
   position:fixed; inset:0; background:var(--ink);
@@ -183,7 +183,7 @@ body::before {
 @keyframes breathe { 0%,100%{opacity:.4} 50%{opacity:1; text-shadow: 0 0 10px rgba(201,169,110,0.3);} }
 
 /* ─────────────────────────────────────────
-   ARU BOTÓN
+   AUDIO BUTTON
 ───────────────────────────────────────── */
 #audioBtn {
   position:fixed; bottom:28px; left:28px;
@@ -207,13 +207,13 @@ body::before {
 @keyframes aWave { from{height:3px} to{height:14px} }
 
 /* ─────────────────────────────────────────
-   PANKA P'IQI
+   PAGE WRAPPER
 ───────────────────────────────────────── */
 #page { position:relative; z-index:2; opacity:0; visibility:hidden; transition:opacity 1.8s ease; }
 #page.vis { opacity:1; visibility:visible; }
 
 /* ─────────────────────────────────────────
-   NAYRA PANKA
+   HERO SECTION
 ───────────────────────────────────────── */
 #hero {
   position:relative; height:100vh; min-height:620px;
@@ -290,7 +290,7 @@ body::before {
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(2rem,5vw,3.8rem); font-weight:300;
   color:var(--text); line-height:1; min-width:2ch; text-align:center;
-  font-variant-numeric: tabular-nums; /* Prevents shifting */
+  font-variant-numeric: tabular-nums;
 }
 .cd-lbl { font-size:.48rem; letter-spacing:.4em; text-transform:uppercase; color:var(--muted); margin-right: -0.4em; }
 .cd-sep { font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:rgba(201,169,110,.2); align-self:flex-start; padding-top:4px; line-height:1; }
@@ -314,7 +314,7 @@ body::before {
 .scroll-word { font-size:.5rem; letter-spacing:.45em; text-transform:uppercase; color:var(--muted); margin-right: -0.45em; }
 
 /* ─────────────────────────────────────────
-   UÑACHAYAÑA LURAWA
+   REVEAL SYSTEM
 ───────────────────────────────────────── */
 .reveal {
   opacity:0; transform:translateY(36px);
@@ -326,7 +326,7 @@ body::before {
 .d3{transition-delay:.36s;} .d4{transition-delay:.48s;} .d5{transition-delay:.60s;}
 
 /* ─────────────────────────────────────────
-   T'AQA WAKICHANAKA
+   SECTION COMMONS
 ───────────────────────────────────────── */
 .sec { padding:clamp(80px,12vh,140px) clamp(24px,7vw,100px); position:relative; }
 
@@ -342,7 +342,7 @@ body::before {
 .sec-rule-dot { width:4px; height:4px; border-radius:50%; background:var(--gold); opacity:.6; }
 
 /* ─────────────────────────────────────────
-   JAWSAÑA
+   INVITATION
 ───────────────────────────────────────── */
 #invitation {
   background:var(--surface);
@@ -359,7 +359,7 @@ body::before {
 .botanical { display:flex; align-items:center; justify-content:center; margin-top:52px; opacity:.32; }
 
 /* ─────────────────────────────────────────
-   WAKICHI
+   PROGRAMME
 ───────────────────────────────────────── */
 #programme { background:var(--ink); }
 .prog-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; max-width:1000px; margin:0 auto; }
@@ -387,7 +387,7 @@ body::before {
 .pi-desc { font-size:.78rem; color:var(--muted); line-height:1.7; font-weight:300; }
 
 /* ─────────────────────────────────────────
-   CHIQANAKA
+   VENUE
 ───────────────────────────────────────── */
 #venue { background:var(--surface); }
 .venue-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:60px; max-width:980px; margin:0 auto; align-items:start; }
@@ -425,7 +425,7 @@ body::before {
 .vc-text { font-family:'Cormorant Garamond',serif; font-size:1.02rem; font-style:italic; color:var(--muted); line-height:1.9; }
 
 /* ─────────────────────────────────────────
-   JAYSAÑA (RSVP)
+   RSVP
 ───────────────────────────────────────── */
 #rsvp {
   background:var(--ink);
@@ -462,7 +462,7 @@ body::before {
 .rsvp-contact strong { color:var(--gold-light); font-weight:400; }
 
 /* ─────────────────────────────────────────
-   TUKUYA PANKA
+   FOOTER
 ───────────────────────────────────────── */
 footer {
   background:var(--surface); padding:72px 40px;
@@ -483,7 +483,7 @@ footer {
 .foot-names { display:block; font-family:'Cormorant Garamond',serif; font-size:.72rem; letter-spacing:.55em; text-transform:uppercase; color:var(--muted); font-weight:300; margin-right: -0.55em; }
 
 /* ─────────────────────────────────────────
-   KAMACHI PANKA
+   ADMIN PAGE
 ───────────────────────────────────────── */
 #admin-page { display:none; min-height:100vh; padding:5rem 1.5rem; max-width:560px; margin:0 auto; }
 .adm-title { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; color:var(--gold-light); margin-bottom:32px; text-align:center; }
@@ -494,7 +494,7 @@ footer {
 #adm-result { display:none; margin-top:20px; background:var(--surface); color:var(--text); padding:22px; border:1px solid var(--border); font-size:.82rem; line-height:1.75; }
 
 /* ─────────────────────────────────────────
-   JUK'AMP SUMA UÑJAÑA (HOVER EFFECTS & RESPONSIVE)
+   HOVER EFFECTS & RESPONSIVE
 ───────────────────────────────────────── */
 @media (hover: hover) and (pointer: fine) {
   .e-btn:hover { transform:scale(1.05); }
@@ -526,19 +526,19 @@ footer {
 </head>
 <body>
 
-<!-- MUNAÑAKARU CURSOR -->
+<!-- CUSTOM CURSOR -->
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
-<!-- SCROLL NAYRAQATARU -->
+<!-- SCROLL PROGRESS -->
 <div id="prog-bar"></div>
 
-<!-- ARU -->
+<!-- AUDIO -->
 <audio id="bgMusic" loop preload="auto">
   <source src="meraya.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ARU BOTÓN -->
+<!-- AUDIO BUTTON -->
 <div id="audioBtn" aria-label="Toggle background music">
   <div class="a-bars">
     <div class="a-bar"></div>
@@ -547,10 +547,10 @@ footer {
   </div>
 </div>
 
-<!-- PANQARA CANVAS -->
+<!-- PETAL CANVAS -->
 <canvas id="petalCanvas"></canvas>
 
-<!-- ═══════════════ MANTAYAÑA ═══════════════ -->
+<!-- ═══════════════ ENTRANCE ═══════════════ -->
 <div id="entrance">
   <div class="e-orb e-orb-1"></div>
   <div class="e-orb e-orb-2"></div>
@@ -568,7 +568,7 @@ footer {
   <p class="e-tap">TOUCH TO ENTER</p>
 </div>
 
-<!-- ═══════════════ NAYRA PANKA ═══════════════ -->
+<!-- ═══════════════ MAIN PAGE ═══════════════ -->
 <div id="page">
 
   <section id="hero">
@@ -604,7 +604,7 @@ footer {
     </div>
   </section>
 
-  <!-- JAWSAÑA -->
+  <!-- INVITATION -->
   <section id="invitation" class="sec">
     <div class="inv-inner">
       <span class="inv-dear reveal" id="greetingText">Dear Guest,</span>
@@ -628,7 +628,7 @@ footer {
     </div>
   </section>
 
-  <!-- WAKICHI -->
+  <!-- PROGRAMME -->
   <section id="programme" class="sec">
     <div class="sec-head">
       <span class="sec-eyebrow reveal">The Celebration</span>
@@ -666,7 +666,7 @@ footer {
     </div>
   </section>
 
-  <!-- CHIQANAKA -->
+  <!-- VENUE -->
   <section id="venue" class="sec">
     <div class="sec-head">
       <span class="sec-eyebrow reveal">Find Us</span>
@@ -675,15 +675,15 @@ footer {
     </div>
     <div class="venue-grid">
       <div class="reveal d2">
-        <h3 class="venue-name">Hilton Colombo<br>Residencies</h3>
-        <p  class="venue-sub">Grand Ballroom &nbsp;&middot;&nbsp; 2nd Floor &nbsp;&middot;&nbsp; Colombo 03</p>
+        <h3 class="venue-name">Hilton Colombo</h3>
+        <p  class="venue-sub">2 Sir Chittampalam A Gardiner Mawatha &nbsp;&middot;&nbsp; Colombo 00200</p>
         <ul class="dir-list">
-          <li><span class="dir-n">1</span><span>From Galle Road, turn onto <em>Sir James Pieris Mawatha</em>.</span></li>
-          <li><span class="dir-n">2</span><span>Continue straight for 300 m. The Hilton tower will be visible on your right.</span></li>
-          <li><span class="dir-n">3</span><span>Parking via the <em>main portico entrance</em> or the underground car park.</span></li>
-          <li><span class="dir-n">4</span><span>Signage will guide you to the <em>Grand Ballroom</em> on the 2nd Floor.</span></li>
+          <li><span class="dir-n">1</span><span>Located at <em>2 Sir Chittampalam A Gardiner Mawatha</em> in the heart of the city.</span></li>
+          <li><span class="dir-n">2</span><span>The hotel is easily accessible from the main Fort area.</span></li>
+          <li><span class="dir-n">3</span><span>Parking is available via the <em>main portico entrance</em> or the car park.</span></li>
+          <li><span class="dir-n">4</span><span>Signage in the lobby will guide you to our celebration.</span></li>
         </ul>
-        <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" rel="noopener" class="map-btn">
+        <a href="https://maps.app.goo.gl/L8TczoQVNF9fgZgG8" target="_blank" rel="noopener" class="map-btn">
           <span class="btn-text">Open in Google Maps</span>
           <span class="btn-arrow">→</span>
         </a>
@@ -695,7 +695,7 @@ footer {
     </div>
   </section>
 
-  <!-- JAYSAÑA (RSVP) -->
+  <!-- RSVP -->
   <section id="rsvp" class="sec">
     <div class="rsvp-inner">
       <div class="sec-head">
@@ -716,7 +716,7 @@ footer {
     </div>
   </section>
 
-  <!-- TUKUYA PANKA -->
+  <!-- FOOTER -->
   <footer>
     <span class="foot-script reveal">Love Always Wins</span>
     <span class="foot-names reveal d1">Rajitha &amp; Nelum &nbsp;&middot;&nbsp; 22 May 2026</span>
@@ -724,7 +724,7 @@ footer {
 
 </div>
 
-<!-- KAMACHI PANKA -->
+<!-- ADMIN PAGE -->
 <div id="admin-page">
   <h2 class="adm-title">Invitation Link Generator</h2>
   <input type="text" id="guestName" class="adm-input" placeholder="Guest Name">
@@ -753,7 +753,7 @@ var WA_PHONE = '94770000000';
 var waMsg = 'Hi! This is ' + (GUEST || 'a guest') + '. I am confirming my attendance at Rajitha & Nelum\'s wedding on 22 May 2026.';
 document.getElementById('waLink').href = 'https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(waMsg);
 
-/* ── MUNAÑAKARU CURSOR ── */
+/* ── CUSTOM CURSOR ── */
 var curDot  = document.getElementById('cur');
 var curRing = document.getElementById('cur-ring');
 var mX = 0, mY = 0, rX = 0, rY = 0;
@@ -783,14 +783,14 @@ if(cursorVisible) {
   });
 }
 
-/* ── SCROLL NAYRAQATARU ── */
+/* ── SCROLL PROGRESS ── */
 var progBar = document.getElementById('prog-bar');
 document.addEventListener('scroll', function(){
   var scrollable = document.body.scrollHeight - window.innerHeight;
   progBar.style.width = (scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0) + '%';
 }, { passive: true });
 
-/* ── PANQARA CANVAS ── */
+/* ── PETAL CANVAS ── */
 var canvas = document.getElementById('petalCanvas');
 var ctx    = canvas.getContext('2d');
 
@@ -846,7 +846,7 @@ for (var i = 0; i < 60; i++) { petals.push(new Petal(true)); }
   requestAnimationFrame(animPetals);
 })();
 
-/* ── MANTAYAÑA / ARU ── */
+/* ── ENTRANCE / AUDIO ── */
 var entrance = document.getElementById('entrance');
 var page     = document.getElementById('page');
 var bgMusic  = document.getElementById('bgMusic');
@@ -888,7 +888,7 @@ document.getElementById('enterBtn').addEventListener('click', function(){
   }, 1200);
 });
 
-/* ── ARU TOGGLE ── */
+/* ── AUDIO TOGGLE ── */
 audioBtn.addEventListener('click', function(){
   if (bgMusic.paused) {
     bgMusic.play();
@@ -918,7 +918,7 @@ function updateClock(){
 updateClock();
 setInterval(updateClock, 1000);
 
-/* ── UÑACHAYAÑA LURAWA ── */
+/* ── SCROLL REVEAL ── */
 var revObs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if (e.isIntersecting){
@@ -929,7 +929,7 @@ var revObs = new IntersectionObserver(function(entries){
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
 
-/* ── KAMACHI PANKA ── */
+/* ── ADMIN PAGE ── */
 function generateLink(){
   var name = document.getElementById('guestName').value.trim();
   var url  = document.getElementById('siteUrl').value.trim().replace(/\/+$/,'');
