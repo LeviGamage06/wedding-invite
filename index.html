@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Rajitha &amp; Nelum | 22 May 2026</title>
+<title>Rajitha & Nelum | 22 May 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&family=Great+Vibes&family=Cinzel:wght@300;400&display=swap" rel="stylesheet">
@@ -106,6 +106,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9993;b
 .hItem{opacity:0;transform:translateY(36px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);will-change:opacity,transform;}
 .hItem.in{opacity:1;transform:translateY(0);}
 .hEye{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.8em;text-transform:uppercase;color:var(--r);margin-bottom:28px;padding-left:.8em;text-shadow:0 0 20px rgba(184,121,106,.5);}
+.hGuestName{font-family:'Great Vibes',cursive;font-size:clamp(2rem,6vw,3.5rem);color:var(--gb);margin-bottom:15px;line-height:1.2;text-shadow:0 0 20px rgba(237,208,122,.4);display:none;}
 .hNamesWrap{display:flex;align-items:center;justify-content:center;gap:clamp(6px,2.8vw,32px);margin-bottom:4px;flex-wrap:wrap;}
 .hName{font-family:'Great Vibes',cursive;font-size:clamp(4rem,13vw,10.5rem);line-height:1.2;padding:.04em .06em;color:transparent;background:linear-gradient(135deg,#FFF8E7 0%,#EDD07A 30%,#C8A45C 55%,#B8796A 80%,#C9896A 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 6px 32px rgba(200,164,92,.38)) drop-shadow(0 2px 8px rgba(0,0,0,.6));position:relative;isolation:isolate;}
 .hName::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,252,230,.72) 50%,transparent 70%);-webkit-background-clip:text;background-clip:text;background-size:200% 100%;background-position:200% 0;animation:nameSweep 4.5s ease-in-out infinite;animation-delay:var(--sd,0s);}
@@ -150,51 +151,13 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9993;b
 .ornHeart{color:var(--r);font-size:.9rem;text-shadow:0 0 14px rgba(184,121,106,.6);animation:hBeat 1.6s ease-in-out infinite;}
 .secNum{position:absolute;font-family:'Great Vibes',cursive;font-size:18vw;color:rgba(200,164,92,.022);line-height:1;pointer-events:none;user-select:none;right:-1%;bottom:-4%;z-index:0;overflow:hidden;}
 
-/* ═══════════════════════════════════════════
-   HEARTBEAT DIVIDER — MOBILE FIX
-   Key fixes:
-   1. preserveAspectRatio="xMidYMid meet" (not "none") so heart doesn't distort
-   2. vector-effect="non-scaling-stroke" on all strokes so line weight stays consistent
-   3. Heart centered at x=450 (exact middle of 900-wide viewBox)
-   4. Heart larger (18px tall) and more prominent
-   5. stroke-dasharray=2000 to cover full path length
-   6. Responsive container height using clamp
-═══════════════════════════════════════════ */
-.hbDiv{
-  display:flex;align-items:center;justify-content:center;
-  width:100%;
-  height:clamp(52px,8vw,72px);
-  overflow:hidden;pointer-events:none;position:relative;z-index:3;
-  padding:0;
-}
-.hbDiv svg{
-  width:100%;height:100%;
-  overflow:visible;display:block;
-}
-/* Base flat line — non-scaling stroke so it stays 1px on all screens */
-.hbBase{
-  stroke:rgba(200,164,92,.22);
-  stroke-width:1.5;
-  fill:none;
-  vector-effect:non-scaling-stroke;
-}
-/* Animated pulse line */
-.hbPulse{
-  stroke:rgba(200,164,92,.7);
-  stroke-width:2;
-  fill:none;
-  stroke-dasharray:2000;
-  stroke-dashoffset:2000;
-  transition:stroke-dashoffset 2.4s cubic-bezier(.4,0,.2,1);
-  vector-effect:non-scaling-stroke;
-}
+/* HEARTBEAT DIVIDER */
+.hbDiv{display:flex;align-items:center;justify-content:center;width:100%;height:clamp(52px,8vw,72px);overflow:hidden;pointer-events:none;position:relative;z-index:3;padding:0;}
+.hbDiv svg{width:100%;height:100%;overflow:visible;display:block;}
+.hbBase{stroke:rgba(200,164,92,.22);stroke-width:1.5;fill:none;vector-effect:non-scaling-stroke;}
+.hbPulse{stroke:rgba(200,164,92,.7);stroke-width:2;fill:none;stroke-dasharray:2000;stroke-dashoffset:2000;transition:stroke-dashoffset 2.4s cubic-bezier(.4,0,.2,1);vector-effect:non-scaling-stroke;}
 .hbPulse.run{stroke-dashoffset:0;}
-/* Heart — larger, centered, with glow */
-.hbHrt{
-  fill:var(--r);
-  filter:drop-shadow(0 0 5px rgba(184,121,106,.9)) drop-shadow(0 0 12px rgba(184,121,106,.5));
-  animation:hBeat 1.4s ease-in-out infinite;
-}
+.hbHrt{fill:var(--r);filter:drop-shadow(0 0 5px rgba(184,121,106,.9)) drop-shadow(0 0 12px rgba(184,121,106,.5));animation:hBeat 1.4s ease-in-out infinite;}
 
 /* INVITATION */
 #invitation{background:var(--surf);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden;}
@@ -277,6 +240,268 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9993;b
 .rsvpContact{font-size:clamp(.82rem,2vw,.95rem);color:var(--mu);font-weight:300;line-height:2.2;}
 .rsvpContact strong{color:var(--gb);font-weight:400;}
 
+/* ═══════════════════════════════════════════════════
+   RSVP INTERACTIVE YES / NO CARD
+═══════════════════════════════════════════════════ */
+.rsvpCard{
+  width:100%;
+  background:linear-gradient(148deg,rgba(20,14,36,.95),rgba(6,4,15,.98));
+  border:1px solid rgba(200,164,92,.22);
+  border-radius:24px;
+  padding:clamp(30px,5vw,54px) clamp(22px,4.5vw,48px);
+  position:relative;
+  overflow:hidden;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 24px 70px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);
+  text-align:center;
+}
+.rsvpCard::before{
+  content:'';position:absolute;top:0;left:8%;right:8%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(237,208,122,.6),transparent);
+}
+.rsvpCard::after{
+  content:'';position:absolute;bottom:0;left:8%;right:8%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(184,121,106,.3),transparent);
+}
+.rsvpGuestHL{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(2.2rem,7vw,3.4rem);
+  color:var(--gb);
+  display:block;
+  line-height:1.2;
+  margin-bottom:6px;
+  filter:drop-shadow(0 2px 18px rgba(200,164,92,.32));
+}
+.rsvpCardSub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(.9rem,2.5vw,1.12rem);
+  font-style:italic;
+  color:var(--mu2);
+  margin-bottom:30px;
+  line-height:1.85;
+}
+.rsvpBtnRow{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+}
+.rsvpYesBtn,.rsvpNoBtn{
+  flex:1;min-width:140px;max-width:220px;
+  padding:16px 18px;
+  border-radius:60px;
+  font-family:'Cinzel',serif;
+  font-size:.48rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:transform .45s var(--ease),box-shadow .45s,background-position .6s,border-color .3s;
+  outline:none;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  min-height:52px;
+  border:none;
+}
+.rsvpYesBtn{
+  background:linear-gradient(120deg,#A8854A 0%,#EDD07A 35%,#FBEEA3 50%,#EDD07A 70%,#A8854A 100%);
+  background-size:250% 100%;
+  background-position:100% 0;
+  color:var(--ink);
+  font-weight:600;
+  box-shadow:0 12px 36px rgba(200,164,92,.2),inset 0 1px 0 rgba(255,255,255,.35);
+}
+.rsvpNoBtn{
+  background:transparent;
+  border:1px solid rgba(200,164,92,.28);
+  color:var(--mu2);
+}
+.rsvpYesBtn:active{transform:scale(.97)!important;opacity:.88;}
+.rsvpNoBtn:active{transform:scale(.97)!important;}
+
+/* Sub-form (dietary / confirm) */
+.rsvpSubForm{
+  margin-top:26px;
+  text-align:left;
+  animation:rsvpFadeUp .5s var(--ease) forwards;
+}
+@keyframes rsvpFadeUp{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.rsvpFieldLbl{
+  display:block;
+  font-family:'Cinzel',serif;
+  font-size:.38rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--mu);
+  margin-bottom:10px;
+  padding-left:.3em;
+}
+.rsvpFieldNote{
+  color:var(--mu);
+  font-family:'Cormorant Garamond',serif;
+  letter-spacing:0;
+  text-transform:none;
+  font-style:italic;
+  font-size:.88rem;
+}
+.rsvpTextarea{
+  width:100%;
+  padding:14px 16px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(200,164,92,.18);
+  border-radius:12px;
+  color:var(--tx);
+  font-family:'Jost',sans-serif;
+  font-size:.88rem;
+  resize:none;
+  outline:none;
+  transition:border-color .3s,box-shadow .3s;
+  -webkit-user-select:text;
+  user-select:text;
+  -webkit-touch-callout:default;
+}
+.rsvpTextarea::placeholder{color:var(--mu);}
+.rsvpTextarea:focus{
+  border-color:rgba(200,164,92,.48);
+  box-shadow:0 0 0 3px rgba(200,164,92,.07);
+}
+.rsvpConfirmBtn{
+  width:100%;
+  margin-top:14px;
+  padding:15px;
+  background:linear-gradient(120deg,#A8854A 0%,#EDD07A 35%,#FBEEA3 50%,#EDD07A 70%,#A8854A 100%);
+  background-size:250% 100%;
+  background-position:100% 0;
+  color:var(--ink);
+  border:none;
+  border-radius:60px;
+  font-family:'Cinzel',serif;
+  font-size:.48rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  font-weight:600;
+  cursor:pointer;
+  transition:transform .4s var(--ease),box-shadow .4s,background-position .6s;
+  outline:none;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  min-height:48px;
+  box-shadow:0 10px 32px rgba(200,164,92,.2);
+}
+.rsvpConfirmBtn:active{transform:scale(.97)!important;}
+.rsvpNoConfirmBtn{
+  width:100%;
+  margin-top:14px;
+  padding:15px;
+  background:rgba(255,255,255,.04);
+  color:var(--mu2);
+  border:1px solid rgba(200,164,92,.18);
+  border-radius:60px;
+  font-family:'Cinzel',serif;
+  font-size:.48rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:transform .4s var(--ease),border-color .3s;
+  outline:none;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  min-height:48px;
+}
+.rsvpNoConfirmBtn:active{transform:scale(.97)!important;}
+.rsvpBackBtn{
+  display:block;
+  text-align:center;
+  margin-top:12px;
+  font-family:'Cinzel',serif;
+  font-size:.37rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--mu);
+  cursor:pointer;
+  background:none;
+  border:none;
+  padding:8px;
+  width:100%;
+  transition:color .3s;
+  outline:none;
+  touch-action:manipulation;
+}
+
+/* Spinner */
+.rsvpSpinner{
+  display:inline-block;
+  width:24px;height:24px;
+  border:2px solid rgba(200,164,92,.25);
+  border-top-color:var(--gb);
+  border-radius:50%;
+  animation:rsvpSpin .7s linear infinite;
+  vertical-align:middle;
+}
+@keyframes rsvpSpin{to{transform:rotate(360deg)}}
+
+/* Thank you / already-responded states */
+.rsvpThanksWrap{
+  animation:rsvpFadeUp .7s var(--ease) forwards;
+  padding:8px 0;
+}
+.rsvpThanksEmoji{
+  font-size:2.8rem;
+  display:block;
+  margin-bottom:14px;
+  animation:hBeat 1.4s ease-in-out infinite;
+}
+.rsvpThanksTitle{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(2.2rem,7vw,3.4rem);
+  color:var(--gb);
+  display:block;
+  margin-bottom:14px;
+  filter:drop-shadow(0 2px 16px rgba(200,164,92,.3));
+}
+.rsvpThanksMsg{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(.9rem,2.5vw,1.1rem);
+  font-style:italic;
+  color:var(--mu2);
+  line-height:2;
+}
+.rsvpAlreadyTag{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:6px 18px;
+  border:1px solid rgba(200,164,92,.3);
+  border-radius:100px;
+  font-family:'Cinzel',serif;
+  font-size:.36rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--gb);
+}
+
+/* Hover — desktop only */
+@media(hover:hover) and (pointer:fine){
+  .rsvpYesBtn:hover{
+    transform:translateY(-5px);
+    background-position:0 0;
+    box-shadow:0 22px 50px rgba(200,164,92,.3);
+  }
+  .rsvpNoBtn:hover{
+    border-color:rgba(184,121,106,.55);
+    color:var(--tx);
+    transform:translateY(-3px);
+  }
+  .rsvpConfirmBtn:hover{
+    transform:translateY(-3px);
+    background-position:0 0;
+  }
+  .rsvpNoConfirmBtn:hover{
+    border-color:rgba(184,121,106,.45);
+    color:var(--tx);
+  }
+  .rsvpBackBtn:hover{color:var(--mu2);}
+}
+
 /* FOOTER */
 footer{background:var(--surf);padding:clamp(70px,12vh,100px) 32px clamp(60px,8vh,82px);border-top:1px solid rgba(200,164,92,.1);display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;position:relative;overflow:hidden;}
 footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90vmin;height:90vmin;background:radial-gradient(circle,rgba(139,34,82,.05),transparent 60%);pointer-events:none;}
@@ -303,7 +528,6 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
   .eBtn:active .eMono{filter:drop-shadow(0 0 28px rgba(237,208,122,.6));}
   #audioBtn:active{transform:scale(1.08);border-color:var(--g);}
 }
-/* HOVER DESKTOP */
 @media(hover:hover) and (pointer:fine){
   .eBtn:hover .eMono{filter:drop-shadow(0 0 28px rgba(237,208,122,.6));}
   #audioBtn:hover{transform:scale(1.1);border-color:var(--g);box-shadow:0 0 20px rgba(200,164,92,.15);}
@@ -315,14 +539,11 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
   .rsvpBtn:hover::before{background-position:-40% 0;}
 }
 
-/* ══ TABLET ≤880px ══ */
 @media(max-width:880px){
   .progLayout{grid-template-columns:1fr;gap:28px;}
   .venueLayout{grid-template-columns:1fr;gap:40px;}
   .venueLayout .vCard.rv{order:-1;}
 }
-
-/* ══ MOBILE ≤620px ══ */
 @media(max-width:620px){
   body{cursor:auto;}
   #cur,#curR,#sparkleCanvas{display:none;}
@@ -343,12 +564,12 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
   .secNum{font-size:24vw;right:0;bottom:0;}
   .pCard{border-radius:18px;}
   .invPQ{padding:16px;}
+  .rsvpYesBtn,.rsvpNoBtn{min-width:120px;}
 }
-
-/* ══ SMALL PHONES ≤420px ══ */
 @media(max-width:420px){
   #hero{padding:44px 14px 100px;min-height:580px;}
   .hEye{letter-spacing:.4em;padding-left:.4em;margin-bottom:18px;}
+  .hGuestName{font-size:clamp(1.5rem,5vw,2.5rem);margin-bottom:10px;}
   .hName{font-size:clamp(3.4rem,17vw,4.5rem);}
   .hAmp{font-size:clamp(1.6rem,6vw,2.2rem);}
   .hTagline{letter-spacing:.05em;font-size:.82rem;}
@@ -381,11 +602,8 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
   .footTagline{font-size:.8rem;}
   #audioBtn{bottom:14px;left:14px;}
   .waxSeal{width:50px;height:50px;margin-bottom:22px;}
-  /* Heartbeat divider on very small phones */
   .hbDiv{height:44px;}
 }
-
-/* ══ LANDSCAPE MOBILE ══ */
 @media(max-height:500px) and (orientation:landscape){
   #hero{height:auto;min-height:100dvh;padding:80px 20px 100px;}
   .hName{font-size:clamp(2.5rem,7vw,5rem);}
@@ -406,7 +624,6 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
 <canvas id="petalCanvas"></canvas>
 <div id="heartsBg" style="position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;"></div>
 
-<!-- ENTRANCE -->
 <div id="entrance" role="dialog" aria-modal="true" aria-label="Welcome screen">
   <div class="eOrb eOrb1"></div><div class="eOrb eOrb2"></div>
   <div class="eOrb eOrb3"></div><div class="eOrb eOrb4"></div>
@@ -449,14 +666,12 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
     <circle cx="190" cy="190" r="7" stroke="rgba(200,164,92,.35)" stroke-width=".6" fill="none" class="drawOn d5"/>
   </svg>
   <button class="eBtn" id="enterBtn" tabindex="0" aria-label="Enter the invitation">
-    <div class="eMono"><span class="eML">R</span><span class="eMA">&amp;</span><span class="eML">N</span></div>
+    <div class="eMono"><span class="eML">R</span><span class="eMA">&</span><span class="eML">N</span></div>
   </button>
   <p class="eTap" aria-hidden="true">Touch to Enter</p>
 </div>
 
-<!-- PAGE -->
 <div id="page">
-  <!-- HERO -->
   <section id="hero">
     <div class="hBg" id="heroBg" aria-hidden="true">
       <div class="hA hA1"></div><div class="hA hA2"></div><div class="hA hA3"></div><div class="hA hA4"></div>
@@ -467,14 +682,15 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
     <div class="corn br" id="cBR" aria-hidden="true"><svg width="120" height="120" viewBox="0 0 120 120" fill="none"><path d="M2,2 C60,2 118,60 118,118" stroke="rgba(200,164,92,.55)" stroke-width="1" stroke-dasharray="4 7"/><circle cx="118" cy="118" r="2.8" fill="rgba(237,208,122,.7)"/><circle cx="2" cy="2" r="2.2" fill="rgba(200,164,92,.45)"/></svg></div>
     <div class="hInner">
       <p class="hEye hItem" id="hi0">You Are Cordially Invited</p>
+      <h3 class="hGuestName hItem" id="heroGuestName"></h3>
       <div class="hNamesWrap hItem" id="hi1">
         <span class="hName" style="--sd:0.4s">Rajitha</span>
-        <span class="hAmp">&amp;</span>
+        <span class="hAmp">&</span>
         <span class="hName" style="--sd:1.1s">Nelum</span>
       </div>
       <p class="hTagline hItem" id="hiTL">Two hearts. One beautiful journey.</p>
       <div class="hDivider hItem" id="hi2"><span class="hDivHeart" aria-hidden="true">♥</span></div>
-      <p class="hDateStr hItem" id="hi3">Saturday &nbsp;·&nbsp; 22 May 2026 &nbsp;·&nbsp; Colombo</p>
+      <p class="hDateStr hItem" id="hi3">Saturday  ·  22 May 2026  ·  Colombo</p>
       <div class="cdCard hItem" id="hi4" role="timer" aria-live="polite" aria-label="Countdown to the wedding">
         <div class="cdUnit"><div class="cdSlot"><span class="cdNum" id="cdD">--</span></div><span class="cdLbl">Days</span></div>
         <div class="cdUnit"><div class="cdSlot"><span class="cdNum" id="cdH">--</span></div><span class="cdLbl">Hours</span></div>
@@ -486,26 +702,14 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
     <div class="scrollCue hItem" id="hi6" aria-hidden="true"><div class="scrollLine"></div><span class="scrollWord">Scroll</span></div>
   </section>
 
-  <!--
-    HEARTBEAT DIVIDERS — MOBILE FIX EXPLAINED:
-    • preserveAspectRatio="xMidYMid meet" → SVG scales uniformly, heart stays centred
-    • vector-effect="non-scaling-stroke" → stroke widths don't thin out on narrow screens
-    • Heart path centred at x=450 (exact midpoint of 900-wide viewBox)
-    • Heart size: 20px tall × 18px wide — visible on all screen sizes
-    • stroke-dasharray:2000 covers the full animated path length
-  -->
-
-  <!-- HBD 1 -->
   <div class="hbDiv" id="hbd1" aria-hidden="true">
     <svg viewBox="0 0 900 64" preserveAspectRatio="xMidYMid meet">
       <path class="hbBase" d="M0,32 H900"/>
       <path class="hbPulse" id="hbp1" d="M0,32 H305 L323,32 L337,6 L351,58 L365,6 L379,58 L393,32 H507 L521,32 L535,14 L549,50 L563,32 H900"/>
-      <!-- Heart centred at x=450, y=32 -->
       <path class="hbHrt" d="M432,23 C432,18 436,15 441,15 C446,15 450,18 450,23 C450,18 454,15 459,15 C464,15 468,18 468,23 C468,29 450,43 450,43 C450,43 432,29 432,23Z"/>
     </svg>
   </div>
 
-  <!-- INVITATION -->
   <section id="invitation" class="sec" aria-label="Invitation letter">
     <div class="invInner">
       <div class="invFrame rv">
@@ -528,7 +732,6 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
     <span class="secNum" aria-hidden="true">I</span>
   </section>
 
-  <!-- HBD 2 -->
   <div class="hbDiv" id="hbd2" aria-hidden="true">
     <svg viewBox="0 0 900 64" preserveAspectRatio="xMidYMid meet">
       <path class="hbBase" d="M0,32 H900"/>
@@ -537,7 +740,6 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
     </svg>
   </div>
 
-  <!-- PROGRAMME -->
   <section id="programme" class="sec" aria-label="Wedding programme">
     <div class="secHead">
       <span class="secEye rv">The Celebration</span>
@@ -546,7 +748,7 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
     </div>
     <div class="progLayout">
       <div class="rv d2">
-        <div class="dayBadge"><span class="dayBadgeDot" aria-hidden="true"></span><span>Day One &nbsp;·&nbsp; Sat 22 May</span></div>
+        <div class="dayBadge"><span class="dayBadgeDot" aria-hidden="true"></span><span>Day One  ·  Sat 22 May</span></div>
         <div class="pCard">
           <div class="timelineWrap" id="tl1">
             <div class="pItem"><div class="piL"><div class="piDot" aria-hidden="true"></div></div><div class="piR"><span class="piTime">09:30 AM</span><div class="piName">Poruwa Ceremony</div><div class="piDesc">A beautiful beginning with traditional Sri Lankan customs, blessings, and the sacred joining of two families under one sky.</div></div></div>
@@ -556,7 +758,7 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
         </div>
       </div>
       <div class="rv d3">
-        <div class="dayBadge"><span class="dayBadgeDot" aria-hidden="true"></span><span>Day Two &nbsp;·&nbsp; Tue 26 May</span></div>
+        <div class="dayBadge"><span class="dayBadgeDot" aria-hidden="true"></span><span>Day Two  ·  Tue 26 May</span></div>
         <div class="pCard">
           <div class="timelineWrap" id="tl2">
             <div class="pItem"><div class="piL"><div class="piDot" aria-hidden="true"></div></div><div class="piR"><span class="piTime">06:30 PM</span><div class="piName">Grand Reception</div><div class="piDesc">An elegant evening celebrating the bride's welcome into the groom's home, with dinner, music, and the joy of family and friends.</div></div></div>
@@ -567,7 +769,6 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
     <span class="secNum" aria-hidden="true">II</span>
   </section>
 
-  <!-- HBD 3 -->
   <div class="hbDiv" id="hbd3" aria-hidden="true">
     <svg viewBox="0 0 900 64" preserveAspectRatio="xMidYMid meet">
       <path class="hbBase" d="M0,32 H900"/>
@@ -576,7 +777,6 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
     </svg>
   </div>
 
-  <!-- VENUE -->
   <section id="venue" class="sec" aria-label="Venue information">
     <div class="secHead">
       <span class="secEye rv">Find Us</span>
@@ -587,7 +787,7 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
       <div class="rv d2">
         <span class="venueKicker">Five-Star Landmark</span>
         <h3 class="venueName">Hilton Colombo</h3>
-        <p class="venueAddr">2 Sir Chittampalam A Gardiner Mawatha &nbsp;·&nbsp; Colombo 00200</p>
+        <p class="venueAddr">2 Sir Chittampalam A Gardiner Mawatha  ·  Colombo 00200</p>
         <ul class="dirList">
           <li><span class="dirN" aria-hidden="true">1</span><span>Located at <em>2 Sir Chittampalam A Gardiner Mawatha</em>, in the heart of the city.</span></li>
           <li><span class="dirN" aria-hidden="true">2</span><span>Easily accessible from <em>Fort</em> and Galle Face Green.</span></li>
@@ -606,7 +806,6 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
     <span class="secNum" aria-hidden="true">III</span>
   </section>
 
-  <!-- HBD 4 -->
   <div class="hbDiv" id="hbd4" aria-hidden="true">
     <svg viewBox="0 0 900 64" preserveAspectRatio="xMidYMid meet">
       <path class="hbBase" d="M0,32 H900"/>
@@ -615,7 +814,7 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
     </svg>
   </div>
 
-  <!-- RSVP -->
+  <!-- ═══════════════ RSVP SECTION ═══════════════ -->
   <section id="rsvp" class="sec" aria-label="RSVP">
     <div class="rsvpInner">
       <div class="secHead">
@@ -624,15 +823,22 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
         <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
       </div>
       <span class="rsvpDeadline rv d3">Please confirm by <strong>15 May 2026</strong></span>
-      <a href="#" id="waLink" class="rsvpBtn rv d4" target="_blank" rel="noopener" aria-label="Confirm attendance via WhatsApp">
-        <span>Confirm Attendance via WhatsApp</span>
-      </a>
-      <p class="rsvpContact rv d5">For inquiries &nbsp;·&nbsp; <strong>+94 77 000 0000</strong></p>
+
+      <!-- YES / NO card — shown only for personalised links (?to=Name) -->
+      <div id="rsvpCardWrap" style="display:none;width:100%;max-width:500px;margin-bottom:36px;" class="rv d4"></div>
+
+      <!-- WhatsApp fallback — hidden when rsvpCardWrap is shown -->
+      <div id="waSection">
+        <a href="#" id="waLink" class="rsvpBtn rv d4" target="_blank" rel="noopener" aria-label="Confirm attendance via WhatsApp">
+          <span>Confirm Attendance via WhatsApp</span>
+        </a>
+      </div>
+
+      <p class="rsvpContact rv d5">For inquiries  ·  <strong>+94 77 000 0000</strong></p>
     </div>
     <span class="secNum" aria-hidden="true">IV</span>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <span class="footScript rv">Forever Begins Today</span>
     <span class="footHeart rv d1" aria-hidden="true">
@@ -641,12 +847,11 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
         <path d="M12,8 Q15,5.5 17,8" stroke="rgba(255,200,180,.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
       </svg>
     </span>
-    <span class="footNames rv d2">Rajitha &amp; Nelum &nbsp;·&nbsp; 22 May 2026</span>
+    <span class="footNames rv d2">Rajitha & Nelum  ·  22 May 2026</span>
     <span class="footTagline rv d3">With all our love, we can't wait to celebrate with you.</span>
   </footer>
 </div>
 
-<!-- ADMIN -->
 <div id="adminPage">
   <h2 class="admTitle">Invitation Link Generator</h2>
   <input type="text" id="guestName" class="admInput" placeholder="Guest Name" autocomplete="off" autocorrect="off" spellcheck="false">
@@ -656,6 +861,12 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
 </div>
 
 <script>
+/* ═══════════════════════════════════════════════════════════════════
+   ★  CONFIGURATION — paste your Apps Script Web App URL below  ★
+═══════════════════════════════════════════════════════════════════ */
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJRgbCYWo8ja8-FuMHswWgZcK9RJt6HruswSU5cU_--xTmnUpRczn273XF_XjR7EuSQA/exec';
+/* ══════════════════════════════════════════════════════════════════ */
+
 (function(){
   document.addEventListener('contextmenu',function(e){if(!e.target.closest('#adminPage'))e.preventDefault();});
   ['copy','cut'].forEach(function(ev){document.addEventListener(ev,function(e){if(!e.target.closest('#adminPage'))e.preventDefault();});});
@@ -672,6 +883,7 @@ footer::before{content:'';position:absolute;top:50%;left:50%;transform:translate
 const P=new URLSearchParams(location.search);
 const ADMIN=P.get('admin')==='1';
 const GUEST=P.get('to')?decodeURIComponent(P.get('to')).replace(/<[^>]*>/g,'').trim():'';
+const LS_KEY='rsvp_v1_'+(GUEST?GUEST.toLowerCase():'');
 
 if(ADMIN){
   document.getElementById('entrance').style.display='none';
@@ -680,6 +892,8 @@ if(ADMIN){
   document.getElementById('audioBtn').style.display='none';
 }else if(GUEST){
   document.getElementById('greetingText').textContent='Dear '+GUEST+',';
+  const heroGuest=document.getElementById('heroGuestName');
+  if(heroGuest){heroGuest.textContent='Dear '+GUEST+',';heroGuest.style.display='block';}
 }
 
 const WA='94770000000';
@@ -800,8 +1014,10 @@ if(entrance&&page){
       setTimeout(()=>{
         entrance.style.display='none';page.classList.add('vis');pc.classList.add('on');audioBtn.classList.add('vis');
         setTimeout(()=>['cTL','cTR','cBL','cBR'].forEach(id=>{const c=document.getElementById(id);if(c)c.classList.add('in');}),450);
-        [{id:'hi0',d:100},{id:'hi1',d:380},{id:'hiTL',d:660},{id:'hi2',d:880},{id:'hi3',d:1060},{id:'hi4',d:1280},{id:'hi5',d:1550},{id:'hi6',d:1860}]
+        [{id:'hi0',d:100},{id:'heroGuestName',d:250},{id:'hi1',d:380},{id:'hiTL',d:660},{id:'hi2',d:880},{id:'hi3',d:1060},{id:'hi4',d:1280},{id:'hi5',d:1550},{id:'hi6',d:1860}]
           .forEach(({id,d})=>setTimeout(()=>{const el=document.getElementById(id);if(el)el.classList.add('in');},d));
+        // Initialise the RSVP card for personalised links
+        initRsvpCard();
       },1600);
     });
   }
@@ -840,6 +1056,140 @@ const tlIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInterse
 document.querySelectorAll('.timelineWrap').forEach(el=>tlIO.observe(el));
 const hbIO=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const p=e.target.querySelector('.hbPulse');if(p)p.classList.add('run');hbIO.unobserve(e.target);}});},{threshold:.35});
 document.querySelectorAll('.hbDiv').forEach(el=>hbIO.observe(el));
+
+/* ═══════════════════════════════════════════════════
+   RSVP INTERACTIVE CARD — YES / NO
+═══════════════════════════════════════════════════ */
+
+function escH(s){
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function initRsvpCard(){
+  if(!GUEST)return; // no personalised link — WhatsApp button stays
+
+  const wrap=document.getElementById('rsvpCardWrap');
+  const waSection=document.getElementById('waSection');
+  if(!wrap)return;
+
+  // Show card, hide WhatsApp button
+  wrap.style.display='block';
+  wrap.classList.add('in'); // trigger rv animation
+  if(waSection)waSection.style.display='none';
+
+  // Check if already responded (localStorage)
+  try{
+    const saved=localStorage.getItem(LS_KEY);
+    if(saved){
+      const d=JSON.parse(saved);
+      wrap.innerHTML=buildCard(buildDone(d.attending,true));
+      return;
+    }
+  }catch(e){}
+
+  wrap.innerHTML=buildCard(buildIdle());
+}
+
+function buildCard(inner){
+  return '<div class="rsvpCard">'+inner+'</div>';
+}
+
+function buildIdle(){
+  return `
+    <span class="rsvpGuestHL">${escH(GUEST)}</span>
+    <p class="rsvpCardSub">Will you be joining us on our most cherished day?</p>
+    <div class="rsvpBtnRow">
+      <button class="rsvpYesBtn" onclick="showYesForm()">♥ &nbsp;Joyfully Accept</button>
+      <button class="rsvpNoBtn"  onclick="showNoForm()">Regretfully Decline</button>
+    </div>`;
+}
+
+function buildDone(attending, already){
+  const isYes = attending==='Yes';
+  const tag   = already ? '<span class="rsvpAlreadyTag">Response already received</span>' : '';
+  return `
+    <div class="rsvpThanksWrap">
+      ${tag}
+      <span class="rsvpThanksEmoji">${isYes ? '💛' : '🕊️'}</span>
+      <span class="rsvpThanksTitle">${isYes ? "We'll See You There!" : "We'll Miss You"}</span>
+      <p class="rsvpThanksMsg">${isYes
+        ? 'Your attendance is confirmed. We are so excited to celebrate with you, <strong style="color:var(--gb);font-weight:400;">'+escH(GUEST)+'</strong>!'
+        : 'Thank you for letting us know, <strong style="color:var(--gb);font-weight:400;">'+escH(GUEST)+'</strong>. You will be in our hearts on the day.'
+      }</p>
+    </div>`;
+}
+
+/* Show dietary-notes form (Yes path) */
+window.showYesForm = function(){
+  const wrap=document.getElementById('rsvpCardWrap');
+  wrap.innerHTML=buildCard(`
+    <span class="rsvpGuestHL">${escH(GUEST)}</span>
+    <p class="rsvpCardSub">Wonderful! Any dietary requirements or special notes?</p>
+    <div class="rsvpSubForm">
+      <label class="rsvpFieldLbl" for="rsvpNotes">
+        Dietary Restrictions / Notes
+        <span class="rsvpFieldNote">&nbsp;(optional)</span>
+      </label>
+      <textarea id="rsvpNotes" class="rsvpTextarea" rows="3"
+        placeholder="e.g. vegetarian, nut allergy, high chair needed…"></textarea>
+      <button class="rsvpConfirmBtn" onclick="submitRsvp('Yes')">Confirm Attendance ♥</button>
+      <button class="rsvpBackBtn" onclick="initRsvpCard()">← Back</button>
+    </div>`);
+};
+
+/* Show regrets confirmation form (No path) */
+window.showNoForm = function(){
+  const wrap=document.getElementById('rsvpCardWrap');
+  wrap.innerHTML=buildCard(`
+    <span class="rsvpGuestHL">${escH(GUEST)}</span>
+    <p class="rsvpCardSub">We will truly miss you. Please confirm your regrets below.</p>
+    <div class="rsvpSubForm">
+      <label class="rsvpFieldLbl" for="rsvpNotes">
+        Message for the couple
+        <span class="rsvpFieldNote">&nbsp;(optional)</span>
+      </label>
+      <textarea id="rsvpNotes" class="rsvpTextarea" rows="2"
+        placeholder="Send your warm wishes…"></textarea>
+      <button class="rsvpNoConfirmBtn" onclick="submitRsvp('No')">Confirm My Regrets</button>
+      <button class="rsvpBackBtn" onclick="initRsvpCard()">← Back</button>
+    </div>`);
+};
+
+/* Submit to Google Sheet via Apps Script */
+window.submitRsvp = function(attending){
+  const notesEl=document.getElementById('rsvpNotes');
+  const notes=(notesEl?notesEl.value:'').trim();
+  const wrap=document.getElementById('rsvpCardWrap');
+
+  // Loading state
+  wrap.innerHTML=buildCard(
+    '<div style="text-align:center;padding:36px 0;">'+
+    '<div class="rsvpSpinner"></div>'+
+    '<p style="margin-top:18px;font-family:\'Cormorant Garamond\',serif;font-style:italic;color:var(--mu2);">Sending your response…</p>'+
+    '</div>');
+
+  // Fire-and-forget POST to Apps Script (no-cors = no preflight, always works)
+  if(SCRIPT_URL && SCRIPT_URL !== 'YOUR_SCRIPT_URL_HERE'){
+    fetch(SCRIPT_URL,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams({name:GUEST, attending:attending, notes:notes}).toString()
+    }).catch(()=>{});
+  }
+
+  // Save to localStorage immediately (prevents UI double-submission)
+  try{
+    localStorage.setItem(LS_KEY, JSON.stringify({attending, notes, time:Date.now()}));
+  }catch(e){}
+
+  // Show thank-you after short delay
+  setTimeout(()=>{
+    wrap.innerHTML=buildCard(buildDone(attending, false));
+  }, 900);
+};
 
 /* ADMIN */
 function generateLink(){
