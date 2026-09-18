@@ -2147,6 +2147,25 @@
     .noBtn::before {
       background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, .08) 50%, transparent 80%);
     }
+    
+    /* MEAL SELECTOR CSS */
+    .mealSelector {
+      width: 100%; 
+      padding: 14px; 
+      background: rgba(20, 14, 36, 0.8); 
+      border: 1px solid var(--bdr); 
+      color: var(--tx); 
+      border-radius: 8px; 
+      font-family: 'Jost', sans-serif; 
+      font-size: 0.9rem;
+      outline: none; 
+      appearance: auto;
+      margin-top: 6px;
+      transition: border-color 0.3s;
+    }
+    .mealSelector:focus {
+      border-color: var(--g);
+    }
 
     /* FOOTER */
     footer {
@@ -3027,6 +3046,19 @@
             <strong>2026 නොවැම්බර් 15</strong> දිනට පෙර තහවුරු කරන්න</span></span>
 
         <div id="rsvpContainer" class="rv d4" style="width: 100%; max-width: 480px; margin: 0 auto 44px;">
+          
+          <!-- New Meal Selection -->
+          <div id="mealSelection" style="margin-bottom: 24px; text-align: left; max-width: 340px; margin-left: auto; margin-right: auto;">
+            <label for="mealPref" style="font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gb); margin-bottom: 8px; display: block; text-align: center;">
+              Meal Preference 
+              <span class="sin-text" style="font-size: 0.9rem; margin-top: 4px; display: block; letter-spacing: normal;">ආහාර මනාපය</span>
+            </label>
+            <select id="mealPref" class="mealSelector">
+              <option value="Non-Vegetarian">Non-Vegetarian (සාමාන්‍ය)</option>
+              <option value="Vegetarian">Vegetarian (නිර්මාංශ)</option>
+            </select>
+          </div>
+
           <div id="rsvpButtons" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
             <button class="rsvpBtn actBtn" onclick="submitRSVP('Yes')"><span>Yes, I will attend<span
                   class="sin-text">ඔව්, මම සහභාගී වෙමි</span></span></button>
@@ -3065,7 +3097,8 @@
     <h2 class="admTitle">Invitation Link Generator</h2>
     <input type="text" id="guestName" class="admInput" placeholder="Guest Name" autocomplete="off" autocorrect="off"
       spellcheck="false">
-    <input type="text" id="siteUrl" class="admInput" placeholder="Site URL (https://yourwedding.com)" autocomplete="off"
+    <!-- Updated with Website URL as default value -->
+    <input type="text" id="siteUrl" class="admInput" value="https://levigamage06.github.io/wedding-invite" placeholder="Site URL (https://yourwedding.com)" autocomplete="off"
       autocorrect="off" spellcheck="false" inputmode="url">
     <select id="guestType" class="admInput">
       <option value="both">Morning + Night</option>
@@ -3123,17 +3156,18 @@
       });
     }
 
-    // Google App Script URL
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwCpzZD9BUx41Y9V3omJVMSbFJ_EB_iq8YjqbGwZTRdwrbHCBxnR9kfdG3L-9SGDTSh/exec";
+    // Google App Script URL - Updated
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwA_FofQVV1fyT--uWSERT2K2UTApIZbSlMjkgEBGFkYEuBWhPkOxgBNeh_Tgwlo71Cqg/exec";
 
     document.addEventListener("DOMContentLoaded", () => {
-      // මෙම guest මීට පෙර respond කර ඇත්දැයි බැලීම
       if (GUEST && localStorage.getItem('rsvp_' + GUEST)) {
         const status = localStorage.getItem('rsvp_' + GUEST);
         const btnDiv = document.getElementById('rsvpButtons');
         const msgDiv = document.getElementById('rsvpMessage');
+        const mealDiv = document.getElementById('mealSelection');
 
         if (btnDiv) btnDiv.style.display = 'none';
+        if (mealDiv) mealDiv.style.display = 'none';
         if (msgDiv) {
           msgDiv.style.display = 'block';
           msgDiv.innerHTML = `Thank you, ${GUEST}. You have already RSVP'd as "${status}".`;
@@ -3149,8 +3183,14 @@
 
       const btnDiv = document.getElementById('rsvpButtons');
       const msgDiv = document.getElementById('rsvpMessage');
+      const mealDiv = document.getElementById('mealSelection');
+      
+      const mealSelect = document.getElementById('mealPref');
+      const mealPref = mealSelect ? mealSelect.value : '';
 
-      btnDiv.style.display = 'none';
+      if(btnDiv) btnDiv.style.display = 'none';
+      if(mealDiv) mealDiv.style.display = 'none';
+      
       msgDiv.style.display = 'block';
       msgDiv.innerHTML = "Submitting your response...";
 
@@ -3158,8 +3198,8 @@
       formData.append('name', GUEST);
       formData.append('status', status);
       formData.append('type', GUEST_TYPE);
+      formData.append('meal', mealPref);
 
-      // mode: 'no-cors' භාවිතා කිරීමෙන් බ්‍රවුසරයෙන් එන error එක නවත්වනවා
       fetch(SCRIPT_URL, {
         method: 'POST',
         body: formData,
@@ -3171,7 +3211,8 @@
         })
         .catch(error => {
           msgDiv.innerHTML = "<span style='color: #B8796A;'>Network error. Please try again.</span>";
-          btnDiv.style.display = 'flex';
+          if(btnDiv) btnDiv.style.display = 'flex';
+          if(mealDiv) mealDiv.style.display = 'block';
         });
     }
 
