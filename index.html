@@ -1726,6 +1726,14 @@
       gap: 36px;
     }
 
+    /* Night Only Layout Adjustment */
+    .progLayout.night-only-layout {
+      grid-template-columns: 1fr !important;
+      max-width: 600px !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .dayBadge {
       display: inline-flex;
       align-items: center;
@@ -3108,14 +3116,13 @@
         
         const progLayout = document.querySelector('.progLayout');
         if (progLayout) {
-          progLayout.style.gridTemplateColumns = '1fr';
-          progLayout.style.maxWidth = '600px'; 
+          progLayout.classList.add('night-only-layout');
         }
       });
     }
 
     // Google App Script URL
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyi3ikcPGgOVetONPUGMGUB6ulDI9ZvEFsAIFfXK-2tPA-rzYlwKkwWbaixRuQ6KfF4DA/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwCpzZD9BUx41Y9V3omJVMSbFJ_EB_iq8YjqbGwZTRdwrbHCBxnR9kfdG3L-9SGDTSh/exec";
 
     document.addEventListener("DOMContentLoaded", () => {
       // මෙම guest මීට පෙර respond කර ඇත්දැයි බැලීම
@@ -3148,6 +3155,7 @@
       const formData = new FormData();
       formData.append('name', GUEST);
       formData.append('status', status);
+      formData.append('type', GUEST_TYPE);
 
       // mode: 'no-cors' භාවිතා කිරීමෙන් බ්‍රවුසරයෙන් එන error එක නවත්වනවා
       fetch(SCRIPT_URL, {
