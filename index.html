@@ -89,10 +89,21 @@
     }
 
     @keyframes grain {
-      0% { background-position: 0 0 }
-      33% { background-position: -60px 30px }
-      66% { background-position: 40px -50px }
-      100% { background-position: 0 0 }
+      0% {
+        background-position: 0 0
+      }
+
+      33% {
+        background-position: -60px 30px
+      }
+
+      66% {
+        background-position: 40px -50px
+      }
+
+      100% {
+        background-position: 0 0
+      }
     }
 
     body::after {
@@ -104,11 +115,24 @@
       background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0, 0, 0, .6) 100%);
     }
 
-    ::-webkit-scrollbar { width: 3px; }
-    ::-webkit-scrollbar-track { background: var(--ink); }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--rose), var(--r), var(--g), var(--gb)); border-radius: 10px; }
+    ::-webkit-scrollbar {
+      width: 3px;
+    }
 
-    #story, #programme, #venue, #invitation, #page {
+    ::-webkit-scrollbar-track {
+      background: var(--ink);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--rose), var(--r), var(--g), var(--gb));
+      border-radius: 10px;
+    }
+
+    #story,
+    #programme,
+    #venue,
+    #invitation,
+    #page {
       background: transparent !important;
     }
 
@@ -140,28 +164,133 @@
       font-family: 'Noto Serif Sinhala', serif;
     }
 
-    .hEye .sin-text { font-size: 1.1rem; color: var(--r); }
-    .hTagline .sin-text { font-size: 1rem; color: var(--mu2); }
-    .hDateStr .sin-text { font-size: 1rem; color: var(--gb); margin-top: 10px; margin-left: -0.24rem; }
-    .cdLbl .sin-text { font-size: 0.8rem; color: var(--mu); margin-top: 2px; margin-left: -0.12rem; }
-    .hQuote .sin-text { font-size: 1rem; color: var(--mu2); margin-top: 12px; }
-    .scrollWord .sin-text { font-size: 1.2rem; margin-top: 4px; margin-left: -0.19rem; }
-    .invBody .sin-text { font-size: 1rem; margin-top: 16px; display: block; }
-    .invPQ p .sin-text { font-size: 1.1rem; margin-top: 10px; display: block; }
-    .secEye .sin-text { font-size: 1.1rem; margin-left: -0.28rem; }
-    .secTitle .sin-text { font-size: 0.4em; font-weight: 500; margin-top: 10px; }
-    .dayBadge span .sin-text { font-size: 1.1rem; margin-left: -0.12rem; }
-    .piName .sin-text { font-size: 0.9em; color: var(--gb); margin-top: 4px; }
-    .piDesc .sin-text { font-size: 0.95em; color: var(--mu); margin-top: 4px; display: block; }
-    .venueKicker .sin-text { font-size: 1rem; margin-left: -0.24rem; }
-    .venueAddr .sin-text { font-size: 1em; margin-top: 6px; }
-    .dirList li .sin-text { font-size: 1em; color: var(--mu2); margin-top: 4px; display: block; }
-    .mapBtnT .sin-text { font-size: 1.1rem; margin-left: -0.19rem; }
-    .vcQuote .sin-text { font-size: 1rem; color: var(--mu2); margin-top: 12px; display: block; }
-    .rsvpBtn span .sin-text { font-size: 1.1rem; margin-top: 4px; }
-    .rsvpContact .sin-text { font-size: 1em; margin-top: 6px; }
-    .footScript .sin-text { font-size: 0.28em; margin-top: -10px; line-height: 1.2; }
-    .footTagline .sin-text { font-size: 1.1em; margin-top: 6px; display: block; }
+    .hEye .sin-text {
+      font-size: 1.1rem;
+      color: var(--r);
+    }
+
+    .hTagline .sin-text {
+      font-size: 1rem;
+      color: var(--mu2);
+    }
+
+    .hDateStr .sin-text {
+      font-size: 1rem;
+      color: var(--gb);
+      margin-top: 10px;
+      margin-left: -0.24rem;
+    }
+
+    .cdLbl .sin-text {
+      font-size: 0.8rem;
+      color: var(--mu);
+      margin-top: 2px;
+      margin-left: -0.12rem;
+    }
+
+    .hQuote .sin-text {
+      font-size: 1rem;
+      color: var(--mu2);
+      margin-top: 12px;
+    }
+
+    .scrollWord .sin-text {
+      font-size: 1.2rem;
+      margin-top: 4px;
+      margin-left: -0.19rem;
+    }
+
+    .invBody .sin-text {
+      font-size: 1rem;
+      margin-top: 16px;
+      display: block;
+    }
+
+    .invPQ p .sin-text {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      display: block;
+    }
+
+    .secEye .sin-text {
+      font-size: 1.1rem;
+      margin-left: -0.28rem;
+    }
+
+    .secTitle .sin-text {
+      font-size: 0.4em;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    .dayBadge span .sin-text {
+      font-size: 1.1rem;
+      margin-left: -0.12rem;
+    }
+
+    .piName .sin-text {
+      font-size: 0.9em;
+      color: var(--gb);
+      margin-top: 4px;
+    }
+
+    .piDesc .sin-text {
+      font-size: 0.95em;
+      color: var(--mu);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .venueKicker .sin-text {
+      font-size: 1rem;
+      margin-left: -0.24rem;
+    }
+
+    .venueAddr .sin-text {
+      font-size: 1em;
+      margin-top: 6px;
+    }
+
+    .dirList li .sin-text {
+      font-size: 1em;
+      color: var(--mu2);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .mapBtnT .sin-text {
+      font-size: 1.1rem;
+      margin-left: -0.19rem;
+    }
+
+    .vcQuote .sin-text {
+      font-size: 1rem;
+      color: var(--mu2);
+      margin-top: 12px;
+      display: block;
+    }
+
+    .rsvpBtn span .sin-text {
+      font-size: 1.1rem;
+      margin-top: 4px;
+    }
+
+    .rsvpContact .sin-text {
+      font-size: 1em;
+      margin-top: 6px;
+    }
+
+    .footScript .sin-text {
+      font-size: 0.28em;
+      margin-top: -10px;
+      line-height: 1.2;
+    }
+
+    .footTagline .sin-text {
+      font-size: 1.1em;
+      margin-top: 6px;
+      display: block;
+    }
 
     /* RSVP Date Text Update */
     .rsvpDeadline {
@@ -171,13 +300,13 @@
       color: var(--tx) !important;
       display: block;
     }
-    
+
     .rsvpDeadline strong {
       color: var(--gb) !important;
       font-weight: 500 !important;
       letter-spacing: 0.05em;
     }
-    
+
     .rsvpDeadline .sin-text {
       font-size: clamp(1rem, 2.5vw, 1.15rem) !important;
       margin-top: 10px !important;
@@ -210,10 +339,23 @@
       transition: width .55s var(--ease), height .55s var(--ease), border-color .3s, opacity .3s;
     }
 
-    .ch #curR { width: 56px; height: 56px; border-color: var(--gb); opacity: .6; }
-    .ch #cur { opacity: 0; }
+    .ch #curR {
+      width: 56px;
+      height: 56px;
+      border-color: var(--gb);
+      opacity: .6;
+    }
 
-    #sparkleCanvas { position: fixed; inset: 0; pointer-events: none; z-index: 9992; }
+    .ch #cur {
+      opacity: 0;
+    }
+
+    #sparkleCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9992;
+    }
 
     #prog {
       position: fixed;
@@ -226,8 +368,18 @@
       box-shadow: 0 0 16px rgba(200, 164, 92, .4);
     }
 
-    #petalCanvas { position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: 0; transition: opacity 5s ease 2s; }
-    #petalCanvas.on { opacity: 1; }
+    #petalCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 5s ease 2s;
+    }
+
+    #petalCanvas.on {
+      opacity: 1;
+    }
 
     .hrtBg {
       position: fixed;
@@ -252,14 +404,36 @@
       border-radius: 50% 50% 0 0;
     }
 
-    .hrtBg::before { left: 0; transform-origin: 100% 100%; transform: rotate(-45deg); }
-    .hrtBg::after { right: 0; transform-origin: 0 100%; transform: rotate(45deg); }
+    .hrtBg::before {
+      left: 0;
+      transform-origin: 100% 100%;
+      transform: rotate(-45deg);
+    }
+
+    .hrtBg::after {
+      right: 0;
+      transform-origin: 0 100%;
+      transform: rotate(45deg);
+    }
 
     @keyframes floatUp {
-      0% { transform: rotate(45deg) translateY(0) scale(1); opacity: 0; }
-      8% { opacity: .13; }
-      92% { opacity: .06; }
-      100% { transform: rotate(45deg) translateY(-110vh) scale(.7); opacity: 0; }
+      0% {
+        transform: rotate(45deg) translateY(0) scale(1);
+        opacity: 0;
+      }
+
+      8% {
+        opacity: .13;
+      }
+
+      92% {
+        opacity: .06;
+      }
+
+      100% {
+        transform: rotate(45deg) translateY(-110vh) scale(.7);
+        opacity: 0;
+      }
     }
 
     /* ENTRANCE & VIDEO BACKGROUND */
@@ -275,7 +449,11 @@
       transition: opacity 2.8s cubic-bezier(.7, 0, .3, 1), visibility 2.8s;
     }
 
-    #entrance.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+    #entrance.gone {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
 
     #introVideo {
       position: absolute;
@@ -307,14 +485,41 @@
       z-index: 3;
     }
 
-    .eRing { transform-box: view-box; }
-    .eRing1 { transform-origin: 190px 190px; animation: sCW 26s linear infinite; }
-    .eRing2 { transform-origin: 190px 190px; animation: sCCW 20s linear infinite; }
-    .eRing3 { transform-origin: 190px 190px; animation: sCW 38s linear infinite; }
-    .eRing4 { transform-origin: 190px 190px; animation: sCCW 30s linear infinite; }
+    .eRing {
+      transform-box: view-box;
+    }
 
-    @keyframes sCW { to { transform: rotate(360deg); } }
-    @keyframes sCCW { to { transform: rotate(-360deg); } }
+    .eRing1 {
+      transform-origin: 190px 190px;
+      animation: sCW 26s linear infinite;
+    }
+
+    .eRing2 {
+      transform-origin: 190px 190px;
+      animation: sCCW 20s linear infinite;
+    }
+
+    .eRing3 {
+      transform-origin: 190px 190px;
+      animation: sCW 38s linear infinite;
+    }
+
+    .eRing4 {
+      transform-origin: 190px 190px;
+      animation: sCCW 30s linear infinite;
+    }
+
+    @keyframes sCW {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes sCCW {
+      to {
+        transform: rotate(-360deg);
+      }
+    }
 
     .drawOn {
       stroke-dasharray: 1200;
@@ -322,12 +527,31 @@
       animation: drawIn 2.8s cubic-bezier(.4, 0, .2, 1) forwards;
     }
 
-    @keyframes drawIn { to { stroke-dashoffset: 0; } }
-    .drawOn.d1 { animation-delay: .1s; }
-    .drawOn.d2 { animation-delay: .45s; }
-    .drawOn.d3 { animation-delay: .9s; }
-    .drawOn.d4 { animation-delay: 1.3s; }
-    .drawOn.d5 { animation-delay: 1.7s; }
+    @keyframes drawIn {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .drawOn.d1 {
+      animation-delay: .1s;
+    }
+
+    .drawOn.d2 {
+      animation-delay: .45s;
+    }
+
+    .drawOn.d3 {
+      animation-delay: .9s;
+    }
+
+    .drawOn.d4 {
+      animation-delay: 1.3s;
+    }
+
+    .drawOn.d5 {
+      animation-delay: 1.7s;
+    }
 
     .eBtn {
       position: absolute;
@@ -362,7 +586,12 @@
       animation: monoIn 1.2s var(--ease) 1.8s forwards;
     }
 
-    @keyframes monoIn { to { opacity: 1; transform: scale(1); } }
+    @keyframes monoIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
     .eML {
       font-family: 'Cormorant Garamond', serif;
@@ -399,11 +628,25 @@
       animation: tapIn .9s ease 2.6s forwards, breathe 3.8s ease 3.5s infinite;
     }
 
-    @keyframes tapIn { to { opacity: 1; } }
+    @keyframes tapIn {
+      to {
+        opacity: 1;
+      }
+    }
 
     @keyframes breathe {
-      0%, 100% { opacity: .4; letter-spacing: .7em; }
-      50% { opacity: 1; letter-spacing: .85em; text-shadow: 0 2px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(200, 164, 92, .8); }
+
+      0%,
+      100% {
+        opacity: .4;
+        letter-spacing: .7em;
+      }
+
+      50% {
+        opacity: 1;
+        letter-spacing: .85em;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(200, 164, 92, .8);
+      }
     }
 
     .eRipple {
@@ -420,7 +663,12 @@
       animation: ripple .9s ease forwards;
     }
 
-    @keyframes ripple { to { transform: translate(-50%, -50%) scale(5); opacity: 0; } }
+    @keyframes ripple {
+      to {
+        transform: translate(-50%, -50%) scale(5);
+        opacity: 0;
+      }
+    }
 
     /* AUDIO */
     #audioBtn {
@@ -448,14 +696,45 @@
       touch-action: manipulation;
     }
 
-    #audioBtn.vis { opacity: 1; }
-    .aBars { display: flex; gap: 3px; align-items: flex-end; height: 15px; }
-    .aBar { width: 2.5px; background: var(--gb); border-radius: 2px; height: 3px; }
-    #audioBtn.playing .aBar { animation: aWave .75s ease-in-out infinite alternate; }
-    #audioBtn.playing .aBar:nth-child(2) { animation-delay: .2s; }
-    #audioBtn.playing .aBar:nth-child(3) { animation-delay: .4s; }
+    #audioBtn.vis {
+      opacity: 1;
+    }
 
-    @keyframes aWave { from { height: 3px } to { height: 15px } }
+    .aBars {
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+      height: 15px;
+    }
+
+    .aBar {
+      width: 2.5px;
+      background: var(--gb);
+      border-radius: 2px;
+      height: 3px;
+    }
+
+    #audioBtn.playing .aBar {
+      animation: aWave .75s ease-in-out infinite alternate;
+    }
+
+    #audioBtn.playing .aBar:nth-child(2) {
+      animation-delay: .2s;
+    }
+
+    #audioBtn.playing .aBar:nth-child(3) {
+      animation-delay: .4s;
+    }
+
+    @keyframes aWave {
+      from {
+        height: 3px
+      }
+
+      to {
+        height: 15px
+      }
+    }
 
     /* PAGE */
     #page {
@@ -466,7 +745,10 @@
       transition: opacity 2.4s ease;
     }
 
-    #page.vis { opacity: 1; visibility: visible; }
+    #page.vis {
+      opacity: 1;
+      visibility: visible;
+    }
 
     .rv {
       opacity: 0;
@@ -475,12 +757,30 @@
       will-change: opacity, transform;
     }
 
-    .rv.in { opacity: 1; transform: translateY(0); }
-    .rv.d1 { transition-delay: .12s; }
-    .rv.d2 { transition-delay: .26s; }
-    .rv.d3 { transition-delay: .42s; }
-    .rv.d4 { transition-delay: .58s; }
-    .rv.d5 { transition-delay: .75s; }
+    .rv.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rv.d1 {
+      transition-delay: .12s;
+    }
+
+    .rv.d2 {
+      transition-delay: .26s;
+    }
+
+    .rv.d3 {
+      transition-delay: .42s;
+    }
+
+    .rv.d4 {
+      transition-delay: .58s;
+    }
+
+    .rv.d5 {
+      transition-delay: .75s;
+    }
 
     /* HERO */
     #hero {
@@ -497,26 +797,107 @@
       text-align: center;
     }
 
-    .hBg { position: absolute; inset: -18%; will-change: transform; }
-    .hA { position: absolute; border-radius: 50%; filter: blur(160px); animation: hFloat 22s ease-in-out infinite; pointer-events: none; }
-    .hA1 { width: 80vw; height: 58vh; background: radial-gradient(ellipse, rgba(139, 34, 82, .1), transparent 68%); top: 0%; left: -10%; }
-    .hA2 { width: 65vw; height: 65vh; background: radial-gradient(ellipse, rgba(184, 121, 106, .07), transparent 68%); bottom: -8%; right: -12%; animation-delay: -8s; }
-    .hA3 { width: 45vw; height: 45vh; background: radial-gradient(ellipse, rgba(200, 164, 92, .06), transparent 68%); top: 20%; right: 6%; animation-delay: -15s; }
-    .hA4 { width: 38vw; height: 42vh; background: radial-gradient(ellipse, rgba(160, 50, 50, .05), transparent 68%); bottom: 10%; left: 5%; animation-delay: -4s; }
-
-    @keyframes hFloat {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(2%, 4%) scale(1.07); }
-      66% { transform: translate(-3%, 1%) scale(.95); }
+    .hBg {
+      position: absolute;
+      inset: -18%;
+      will-change: transform;
     }
 
-    .corn { position: absolute; pointer-events: none; }
-    .corn.tl { top: 20px; left: 20px; }
-    .corn.tr { top: 20px; right: 20px; transform: scaleX(-1); }
-    .corn.bl { bottom: 20px; left: 20px; transform: scaleY(-1); }
-    .corn.br { bottom: 20px; right: 20px; transform: scale(-1); }
-    .corn svg { opacity: 0; transition: opacity 2.5s ease; }
-    .corn.in svg { opacity: .35; }
+    .hA {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(160px);
+      animation: hFloat 22s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hA1 {
+      width: 80vw;
+      height: 58vh;
+      background: radial-gradient(ellipse, rgba(139, 34, 82, .1), transparent 68%);
+      top: 0%;
+      left: -10%;
+    }
+
+    .hA2 {
+      width: 65vw;
+      height: 65vh;
+      background: radial-gradient(ellipse, rgba(184, 121, 106, .07), transparent 68%);
+      bottom: -8%;
+      right: -12%;
+      animation-delay: -8s;
+    }
+
+    .hA3 {
+      width: 45vw;
+      height: 45vh;
+      background: radial-gradient(ellipse, rgba(200, 164, 92, .06), transparent 68%);
+      top: 20%;
+      right: 6%;
+      animation-delay: -15s;
+    }
+
+    .hA4 {
+      width: 38vw;
+      height: 42vh;
+      background: radial-gradient(ellipse, rgba(160, 50, 50, .05), transparent 68%);
+      bottom: 10%;
+      left: 5%;
+      animation-delay: -4s;
+    }
+
+    @keyframes hFloat {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      33% {
+        transform: translate(2%, 4%) scale(1.07);
+      }
+
+      66% {
+        transform: translate(-3%, 1%) scale(.95);
+      }
+    }
+
+    .corn {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .corn.tl {
+      top: 20px;
+      left: 20px;
+    }
+
+    .corn.tr {
+      top: 20px;
+      right: 20px;
+      transform: scaleX(-1);
+    }
+
+    .corn.bl {
+      bottom: 20px;
+      left: 20px;
+      transform: scaleY(-1);
+    }
+
+    .corn.br {
+      bottom: 20px;
+      right: 20px;
+      transform: scale(-1);
+    }
+
+    .corn svg {
+      opacity: 0;
+      transition: opacity 2.5s ease;
+    }
+
+    .corn.in svg {
+      opacity: .35;
+    }
 
     .hInner {
       position: relative;
@@ -535,7 +916,10 @@
       will-change: opacity, transform;
     }
 
-    .hItem.in { opacity: 1; transform: translateY(0); }
+    .hItem.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     .hEye {
       font-family: 'Cinzel', serif;
@@ -596,9 +980,19 @@
     }
 
     @keyframes nameSweep {
-      0%, 55% { background-position: 200% 0 }
-      78% { background-position: -40% 0 }
-      100% { background-position: -40% 0 }
+
+      0%,
+      55% {
+        background-position: 200% 0
+      }
+
+      78% {
+        background-position: -40% 0
+      }
+
+      100% {
+        background-position: -40% 0
+      }
     }
 
     .hAmp {
@@ -615,8 +1009,15 @@
     }
 
     @keyframes ampPulse {
-      0%, 100% { text-shadow: 0 0 40px rgba(184, 121, 106, .5), 0 2px 12px rgba(0, 0, 0, .5); }
-      50% { text-shadow: 0 0 80px rgba(184, 121, 106, .85), 0 0 35px rgba(200, 164, 92, .3), 0 2px 12px rgba(0, 0, 0, .5); }
+
+      0%,
+      100% {
+        text-shadow: 0 0 40px rgba(184, 121, 106, .5), 0 2px 12px rgba(0, 0, 0, .5);
+      }
+
+      50% {
+        text-shadow: 0 0 80px rgba(184, 121, 106, .85), 0 0 35px rgba(200, 164, 92, .3), 0 2px 12px rgba(0, 0, 0, .5);
+      }
     }
 
     .hTagline {
@@ -656,11 +1057,27 @@
     }
 
     @keyframes hBeat {
-      0%, 100% { transform: scale(1); }
-      14% { transform: scale(1.35); }
-      28% { transform: scale(1); }
-      42% { transform: scale(1.22); }
-      70% { transform: scale(1); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      14% {
+        transform: scale(1.35);
+      }
+
+      28% {
+        transform: scale(1);
+      }
+
+      42% {
+        transform: scale(1.22);
+      }
+
+      70% {
+        transform: scale(1);
+      }
     }
 
     .hDateStr {
@@ -753,9 +1170,22 @@
       will-change: transform, opacity;
     }
 
-    .cdNum.flip-out { transform: translateY(-105%); opacity: 0; }
-    .cdNum.flip-in { transform: translateY(105%); opacity: 0; transition: none; }
-    .cdNum.flip-in.settled { transform: translateY(0); opacity: 1; transition: transform .4s cubic-bezier(.23, 1, .32, 1), opacity .26s ease; }
+    .cdNum.flip-out {
+      transform: translateY(-105%);
+      opacity: 0;
+    }
+
+    .cdNum.flip-in {
+      transform: translateY(105%);
+      opacity: 0;
+      transition: none;
+    }
+
+    .cdNum.flip-in.settled {
+      transform: translateY(0);
+      opacity: 1;
+      transition: transform .4s cubic-bezier(.23, 1, .32, 1), opacity .26s ease;
+    }
 
     .cdLbl {
       font-family: 'Cinzel', serif;
@@ -826,10 +1256,27 @@
     }
 
     @keyframes sLine {
-      0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
-      48% { transform: scaleY(1); transform-origin: top; }
-      50% { transform: scaleY(1); transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+      0% {
+        transform: scaleY(0);
+        transform-origin: top;
+        opacity: 1;
+      }
+
+      48% {
+        transform: scaleY(1);
+        transform-origin: top;
+      }
+
+      50% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+      }
+
+      100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+        opacity: 0;
+      }
     }
 
     .scrollWord {
@@ -847,7 +1294,10 @@
       position: relative;
     }
 
-    .secHead { text-align: center; margin-bottom: clamp(48px, 8vh, 90px); }
+    .secHead {
+      text-align: center;
+      margin-bottom: clamp(48px, 8vh, 90px);
+    }
 
     .secEye {
       display: block;
@@ -870,7 +1320,10 @@
       text-shadow: 0 2px 20px rgba(0, 0, 0, .5);
     }
 
-    .secTitle em { font-style: italic; color: var(--gb); }
+    .secTitle em {
+      font-style: italic;
+      color: var(--gb);
+    }
 
     .secOrn {
       display: flex;
@@ -886,8 +1339,13 @@
       height: 1px;
     }
 
-    .secOrn::before { background: linear-gradient(90deg, transparent, var(--bdr)); }
-    .secOrn::after { background: linear-gradient(90deg, var(--bdr), transparent); }
+    .secOrn::before {
+      background: linear-gradient(90deg, transparent, var(--bdr));
+    }
+
+    .secOrn::after {
+      background: linear-gradient(90deg, var(--bdr), transparent);
+    }
 
     .ornHeart {
       color: var(--r);
@@ -924,7 +1382,12 @@
       padding: 0;
     }
 
-    .hbDiv svg { width: 100%; height: 100%; overflow: visible; display: block; }
+    .hbDiv svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      display: block;
+    }
 
     .hbBase {
       stroke: rgba(200, 164, 92, .22);
@@ -943,7 +1406,9 @@
       vector-effect: non-scaling-stroke;
     }
 
-    .hbPulse.run { stroke-dashoffset: 0; }
+    .hbPulse.run {
+      stroke-dashoffset: 0;
+    }
 
     .hbHrt {
       fill: var(--r);
@@ -953,7 +1418,7 @@
 
     /* --- SCROLL-TRIGGERED TIME TRAVEL CSS (FULL IMAGE BACKGROUND) --- */
     #story {
-      min-height: 150vh; 
+      min-height: 150vh;
     }
 
     .story-sticky-container {
@@ -979,22 +1444,23 @@
       -webkit-backdrop-filter: blur(12px);
       text-align: center;
       position: relative;
-      overflow: hidden; 
+      overflow: hidden;
     }
 
-    .layer-past, .layer-present {
+    .layer-past,
+    .layer-present {
       position: absolute;
       inset: 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 40px 20px 50px 20px; 
+      padding: 40px 20px 50px 20px;
       will-change: opacity, transform;
       z-index: 1;
     }
 
     .layer-present {
-      opacity: 0; 
+      opacity: 0;
     }
 
     .story-img-wrapper {
@@ -1023,7 +1489,7 @@
     }
 
     .layer-past .story-img-wrapper img {
-      filter: sepia(0.3) contrast(1.1); 
+      filter: sepia(0.3) contrast(1.1);
     }
 
     .story-text-content {
@@ -1047,7 +1513,7 @@
       color: var(--mu2);
       line-height: 1.8;
       font-weight: 300;
-      text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+      text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
     }
 
     .story-text-content p.sin-text {
@@ -1069,7 +1535,7 @@
       overflow: hidden;
       z-index: 5;
     }
-    
+
     .time-progress-fill {
       position: absolute;
       top: 0;
@@ -1102,7 +1568,12 @@
       pointer-events: none;
     }
 
-    .invInner { width: 100%; max-width: 700px; position: relative; z-index: 1; }
+    .invInner {
+      width: 100%;
+      max-width: 700px;
+      position: relative;
+      z-index: 1;
+    }
 
     .invFrame {
       position: relative;
@@ -1122,8 +1593,17 @@
       border-style: solid;
     }
 
-    .invFrame::before { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
-    .invFrame::after { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+    .invFrame::before {
+      top: 12px;
+      left: 12px;
+      border-width: 1px 0 0 1px;
+    }
+
+    .invFrame::after {
+      bottom: 12px;
+      right: 12px;
+      border-width: 0 1px 1px 0;
+    }
 
     .invCTR {
       position: absolute;
@@ -1161,8 +1641,15 @@
     }
 
     @keyframes sealGlow {
-      0%, 100% { box-shadow: 0 8px 34px rgba(110, 18, 28, .55), inset 0 2px 0 rgba(255, 200, 180, .22); }
-      50% { box-shadow: 0 8px 50px rgba(180, 40, 40, .75), 0 0 32px rgba(200, 50, 50, .2), inset 0 2px 0 rgba(255, 200, 180, .22); }
+
+      0%,
+      100% {
+        box-shadow: 0 8px 34px rgba(110, 18, 28, .55), inset 0 2px 0 rgba(255, 200, 180, .22);
+      }
+
+      50% {
+        box-shadow: 0 8px 50px rgba(180, 40, 40, .75), 0 0 32px rgba(200, 50, 50, .2), inset 0 2px 0 rgba(255, 200, 180, .22);
+      }
     }
 
     .waxSeal::before {
@@ -1184,8 +1671,15 @@
     }
 
     @keyframes sealW {
-      0%, 100% { border-radius: 46% 54% 52% 48%/48% 44% 56% 52%; }
-      50% { border-radius: 54% 46% 48% 52%/52% 56% 44% 48%; }
+
+      0%,
+      100% {
+        border-radius: 46% 54% 52% 48%/48% 44% 56% 52%;
+      }
+
+      50% {
+        border-radius: 54% 46% 48% 52%/52% 56% 44% 48%;
+      }
     }
 
     .invDear {
@@ -1207,7 +1701,10 @@
       text-shadow: 0 1px 8px rgba(0, 0, 0, .5);
     }
 
-    .invBody strong { color: var(--tx); font-weight: 400; }
+    .invBody strong {
+      color: var(--tx);
+      font-weight: 400;
+    }
 
     .invPQ {
       margin: 32px 0 6px;
@@ -1227,10 +1724,19 @@
       line-height: 1.9;
     }
 
-    .invSep { display: flex; align-items: center; justify-content: center; margin: 36px 0 0; opacity: .3; }
+    .invSep {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 36px 0 0;
+      opacity: .3;
+    }
 
     /* PROGRAMME */
-    #programme { position: relative; overflow: hidden; }
+    #programme {
+      position: relative;
+      overflow: hidden;
+    }
 
     #programme::before {
       content: '';
@@ -1322,7 +1828,9 @@
       transition: background-position .9s ease;
     }
 
-    .timelineWrap { position: relative; }
+    .timelineWrap {
+      position: relative;
+    }
 
     .timelineWrap::before {
       content: '';
@@ -1335,7 +1843,9 @@
       transition: height 2s cubic-bezier(.25, 1, .5, 1) .4s;
     }
 
-    .timelineWrap.drawn::before { height: calc(100% - 16px); }
+    .timelineWrap.drawn::before {
+      height: calc(100% - 16px);
+    }
 
     .pItem {
       display: flex;
@@ -1344,8 +1854,17 @@
       position: relative;
     }
 
-    .pItem:not(:last-child) { border-bottom: 1px solid rgba(255, 255, 255, .04); }
-    .piL { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; padding-top: 5px; }
+    .pItem:not(:last-child) {
+      border-bottom: 1px solid rgba(255, 255, 255, .04);
+    }
+
+    .piL {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      padding-top: 5px;
+    }
 
     .piDot {
       width: 8px;
@@ -1368,13 +1887,40 @@
       transition: opacity .3s;
     }
 
-    .piR { flex: 1; min-width: 0; }
-    .piTime { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--gb); margin-bottom: 5px; display: block; }
-    .piName { font-size: .9rem; font-weight: 400; letter-spacing: .02em; margin-bottom: 7px; color: var(--tx); }
-    .piDesc { font-size: .82rem; color: var(--mu); line-height: 1.85; font-weight: 300; }
+    .piR {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .piTime {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--gb);
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .piName {
+      font-size: .9rem;
+      font-weight: 400;
+      letter-spacing: .02em;
+      margin-bottom: 7px;
+      color: var(--tx);
+    }
+
+    .piDesc {
+      font-size: .82rem;
+      color: var(--mu);
+      line-height: 1.85;
+      font-weight: 300;
+    }
 
     /* VENUE */
-    #venue { position: relative; overflow: hidden; }
+    #venue {
+      position: relative;
+      overflow: hidden;
+    }
 
     #venue::before {
       content: '';
@@ -1422,7 +1968,12 @@
       line-height: 1.9;
     }
 
-    .dirList { list-style: none; margin-bottom: 44px; border-top: 1px solid rgba(255, 255, 255, .042); }
+    .dirList {
+      list-style: none;
+      margin-bottom: 44px;
+      border-top: 1px solid rgba(255, 255, 255, .042);
+    }
+
     .dirList li {
       display: flex;
       gap: 18px;
@@ -1445,7 +1996,10 @@
       line-height: 1.1;
     }
 
-    .dirList em { color: var(--gb); font-style: normal; }
+    .dirList em {
+      color: var(--gb);
+      font-style: normal;
+    }
 
     .mapBtn {
       display: inline-flex;
@@ -1482,8 +2036,14 @@
     }
 
     .mapBtnT,
-    .mapBtnA { position: relative; z-index: 1; }
-    .mapBtnT { padding-left: .4em; }
+    .mapBtnA {
+      position: relative;
+      z-index: 1;
+    }
+
+    .mapBtnT {
+      padding-left: .4em;
+    }
 
     .vCard {
       border: 1px solid var(--bdr2);
@@ -1525,8 +2085,19 @@
       display: block;
     }
 
-    .vcQuote { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--mu2); line-height: 2; }
-    .vcQuote strong { color: var(--gb); font-weight: 400; font-style: normal; }
+    .vcQuote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--mu2);
+      line-height: 2;
+    }
+
+    .vcQuote strong {
+      color: var(--gb);
+      font-weight: 400;
+      font-style: normal;
+    }
 
     /* RSVP Buttons + Layout CSS */
     .rsvpBtn {
@@ -1563,7 +2134,10 @@
       border: none;
     }
 
-    .rsvpBtn span { position: relative; z-index: 1; }
+    .rsvpBtn span {
+      position: relative;
+      z-index: 1;
+    }
 
     .rsvpBtn::before {
       content: '';
@@ -1575,17 +2149,34 @@
       transition: background-position .8s ease;
     }
 
-    .rsvpContact { font-size: clamp(.82rem, 2vw, .95rem); color: var(--mu); font-weight: 300; line-height: 2.2; }
-    .rsvpContact strong { color: var(--gb); font-weight: 400; }
+    .rsvpContact {
+      font-size: clamp(.82rem, 2vw, .95rem);
+      color: var(--mu);
+      font-weight: 300;
+      line-height: 2.2;
+    }
 
-    .actBtn { padding: 16px 24px; margin-bottom: 0; width: calc(50% - 8px); min-width: 160px; }
+    .rsvpContact strong {
+      color: var(--gb);
+      font-weight: 400;
+    }
+
+    .actBtn {
+      padding: 16px 24px;
+      margin-bottom: 0;
+      width: calc(50% - 8px);
+      min-width: 160px;
+    }
 
     .noBtn {
       background: linear-gradient(120deg, #1A1423 0%, #2D1A25 50%, #1A1423 100%);
       color: rgba(255, 255, 255, 0.6);
       box-shadow: 0 16px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
-    .noBtn::before { background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, .08) 50%, transparent 80%); }
+
+    .noBtn::before {
+      background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, .08) 50%, transparent 80%);
+    }
 
     /* PREFERENCE SELECTOR CSS */
     .prefSelector {
@@ -1603,7 +2194,9 @@
       transition: border-color 0.3s;
     }
 
-    .prefSelector:focus { border-color: var(--g); }
+    .prefSelector:focus {
+      border-color: var(--g);
+    }
 
     /* FOOTER */
     footer {
@@ -1646,8 +2239,15 @@
       isolation: isolate;
     }
 
-    .footHeart { animation: hBeat 1.3s ease-in-out infinite; display: block; }
-    .footHeart svg { filter: drop-shadow(0 0 14px rgba(184, 121, 106, .7)); }
+    .footHeart {
+      animation: hBeat 1.3s ease-in-out infinite;
+      display: block;
+    }
+
+    .footHeart svg {
+      filter: drop-shadow(0 0 14px rgba(184, 121, 106, .7));
+    }
+
     .footNames {
       font-family: 'Cinzel', serif;
       font-size: .5rem;
@@ -1657,11 +2257,33 @@
       font-weight: 300;
       padding-left: .45em;
     }
-    .footTagline { font-family: 'Cormorant Garamond', serif; font-size: .9rem; font-style: italic; color: rgba(160, 148, 178, .48); margin-top: 2px; }
+
+    .footTagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .9rem;
+      font-style: italic;
+      color: rgba(160, 148, 178, .48);
+      margin-top: 2px;
+    }
 
     /* ADMIN */
-    #adminPage { display: none; min-height: 100vh; padding: 5rem 1.5rem; max-width: 560px; margin: 0 auto; }
-    .admTitle { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; font-weight: 300; color: var(--gb); margin-bottom: 32px; text-align: center; }
+    #adminPage {
+      display: none;
+      min-height: 100vh;
+      padding: 5rem 1.5rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .admTitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.3rem;
+      font-weight: 300;
+      color: var(--gb);
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
     .admInput {
       display: block;
       width: 100%;
@@ -1676,7 +2298,12 @@
       transition: border-color .3s, box-shadow .3s;
       border-radius: 10px;
     }
-    .admInput:focus { border-color: var(--g); box-shadow: 0 0 0 3px rgba(200, 164, 92, .08); }
+
+    .admInput:focus {
+      border-color: var(--g);
+      box-shadow: 0 0 0 3px rgba(200, 164, 92, .08);
+    }
+
     .admBtn {
       display: block;
       width: 100%;
@@ -1695,7 +2322,11 @@
       touch-action: manipulation;
       min-height: 44px;
     }
-    .admBtn:hover { background: #fff; }
+
+    .admBtn:hover {
+      background: #fff;
+    }
+
     #admResult {
       display: none;
       margin-top: 20px;
@@ -1710,105 +2341,380 @@
 
     /* TOUCH */
     @media(hover:none) {
-      .rsvpBtn:active { transform: scale(.97); opacity: .9; }
-      .mapBtn:active { color: var(--ink); }
-      .mapBtn:active::before { transform: scaleX(1); }
-      .eBtn:active .eMono { filter: drop-shadow(0 0 28px rgba(237, 208, 122, .6)); }
-      #audioBtn:active { transform: scale(1.08); border-color: var(--g); }
+      .rsvpBtn:active {
+        transform: scale(.97);
+        opacity: .9;
+      }
+
+      .mapBtn:active {
+        color: var(--ink);
+      }
+
+      .mapBtn:active::before {
+        transform: scaleX(1);
+      }
+
+      .eBtn:active .eMono {
+        filter: drop-shadow(0 0 28px rgba(237, 208, 122, .6));
+      }
+
+      #audioBtn:active {
+        transform: scale(1.08);
+        border-color: var(--g);
+      }
     }
 
     /* HOVER DESKTOP */
     @media(hover:hover) and (pointer:fine) {
-      .eBtn:hover .eMono { filter: drop-shadow(0 0 28px rgba(237, 208, 122, .6)); }
-      #audioBtn:hover { transform: scale(1.1); border-color: var(--g); box-shadow: 0 0 20px rgba(200, 164, 92, .15); }
-      .pCard:hover { transform: translateY(-10px); border-color: rgba(200, 164, 92, .28); box-shadow: 0 50px 100px rgba(0, 0, 0, .55); }
-      .pCard:hover::before { opacity: 1; }
-      .pCard:hover::after { background-position: -40% 0; }
-      .pCard:hover .piDot::before { opacity: 1; }
-      .mapBtn:hover { color: var(--ink); }
-      .mapBtn:hover::before { transform: scaleX(1); }
-      .rsvpBtn:hover { transform: translateY(-6px); background-position: 0 0; }
-      .rsvpBtn:hover::before { background-position: -40% 0; }
+      .eBtn:hover .eMono {
+        filter: drop-shadow(0 0 28px rgba(237, 208, 122, .6));
+      }
+
+      #audioBtn:hover {
+        transform: scale(1.1);
+        border-color: var(--g);
+        box-shadow: 0 0 20px rgba(200, 164, 92, .15);
+      }
+
+      .pCard:hover {
+        transform: translateY(-10px);
+        border-color: rgba(200, 164, 92, .28);
+        box-shadow: 0 50px 100px rgba(0, 0, 0, .55);
+      }
+
+      .pCard:hover::before {
+        opacity: 1;
+      }
+
+      .pCard:hover::after {
+        background-position: -40% 0;
+      }
+
+      .pCard:hover .piDot::before {
+        opacity: 1;
+      }
+
+      .mapBtn:hover {
+        color: var(--ink);
+      }
+
+      .mapBtn:hover::before {
+        transform: scaleX(1);
+      }
+
+      .rsvpBtn:hover {
+        transform: translateY(-6px);
+        background-position: 0 0;
+      }
+
+      .rsvpBtn:hover::before {
+        background-position: -40% 0;
+      }
     }
 
     /* ══ TABLET ≤880px ══ */
     @media(max-width:880px) {
-      .progLayout { grid-template-columns: 1fr; gap: 28px; }
-      .venueLayout { grid-template-columns: 1fr; gap: 40px; }
-      .venueLayout .vCard.rv { order: -1; }
+      .progLayout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .venueLayout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .venueLayout .vCard.rv {
+        order: -1;
+      }
     }
 
     /* ══ MOBILE ≤620px ══ */
     @media(max-width:620px) {
-      body { cursor: auto; }
-      #cur, #curR, #sparkleCanvas { display: none; }
-      .corn { display: none; }
-      .eTap { top: calc(50% + min(105px, 31vw)); }
-      .sec { padding: 64px 18px; }
-      .secHead { margin-bottom: 40px; }
-      .invFrame { padding: 28px 18px; }
-      .waxSeal { width: 56px; height: 56px; }
-      .venueKicker { letter-spacing: .3em; }
-      .dirList li { gap: 14px; padding: 14px 0; }
-      .mapBtn { width: 100%; letter-spacing: .3em; font-size: .44rem; }
-      #audioBtn { bottom: 16px; left: 16px; width: 44px; height: 44px; }
-      footer { padding: 60px 20px 50px; }
-      .hNamesWrap { gap: 8px; }
-      .hDivider { margin: 14px 0; }
-      .secNum { font-size: 24vw; right: 0; bottom: 0; }
-      .pCard { border-radius: 18px; }
-      .invPQ { padding: 16px; }
-      .actBtn { width: 100%; }
-      #rsvpButtons { gap: 12px; }
+      body {
+        cursor: auto;
+      }
+
+      #cur,
+      #curR,
+      #sparkleCanvas {
+        display: none;
+      }
+
+      .corn {
+        display: none;
+      }
+
+      .eTap {
+        top: calc(50% + min(105px, 31vw));
+      }
+
+      .sec {
+        padding: 64px 18px;
+      }
+
+      .secHead {
+        margin-bottom: 40px;
+      }
+
+      .invFrame {
+        padding: 28px 18px;
+      }
+
+      .waxSeal {
+        width: 56px;
+        height: 56px;
+      }
+
+      .venueKicker {
+        letter-spacing: .3em;
+      }
+
+      .dirList li {
+        gap: 14px;
+        padding: 14px 0;
+      }
+
+      .mapBtn {
+        width: 100%;
+        letter-spacing: .3em;
+        font-size: .44rem;
+      }
+
+      #audioBtn {
+        bottom: 16px;
+        left: 16px;
+        width: 44px;
+        height: 44px;
+      }
+
+      footer {
+        padding: 60px 20px 50px;
+      }
+
+      .hNamesWrap {
+        gap: 8px;
+      }
+
+      .hDivider {
+        margin: 14px 0;
+      }
+
+      .secNum {
+        font-size: 24vw;
+        right: 0;
+        bottom: 0;
+      }
+
+      .pCard {
+        border-radius: 18px;
+      }
+
+      .invPQ {
+        padding: 16px;
+      }
+
+      .actBtn {
+        width: 100%;
+      }
+
+      #rsvpButtons {
+        gap: 12px;
+      }
     }
 
     /* ══ SMALL PHONES ≤420px ══ */
     @media(max-width:420px) {
-      #hero { padding: 44px 14px 100px; min-height: 580px; }
-      .hEye { letter-spacing: .4em; padding-left: .4em; margin-bottom: 18px; }
-      .hGuestName { font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: 10px; }
-      .hName { font-size: clamp(3.4rem, 17vw, 4.5rem); }
-      .hAmp { font-size: clamp(1.6rem, 6vw, 2.2rem); }
-      .hTagline { letter-spacing: .05em; font-size: .82rem; }
-      .hDateStr { letter-spacing: .22em; padding-left: .22em; font-size: .48rem; margin-bottom: 24px; }
-      .cdUnit { padding: 12px clamp(8px, 2.5vw, 14px); min-width: clamp(54px, 22vw, 80px); }
-      .cdNum { font-size: clamp(1.5rem, 7vw, 2rem); }
-      .cdSlot { height: clamp(36px, 8.5vw, 48px); }
-      .cdLbl { font-size: .27rem; letter-spacing: .26em; margin-top: 6px; padding-left: .26em; }
-      .hQuote { padding: 0 14px; font-size: .78rem; margin-top: 20px; }
-      .sec { padding: 52px 14px; }
-      .secTitle { font-size: clamp(2rem, 8vw, 2.8rem); }
-      .secEye { letter-spacing: .35em; padding-left: .35em; }
-      .invDear { font-size: clamp(2.4rem, 10vw, 3.4rem); }
-      .invBody { font-size: .88rem; line-height: 2; }
-      .invPQ { padding: 14px 12px; }
-      .invPQ p { font-size: .9rem; }
-      .dayBadge { padding: 8px 12px; }
-      .dayBadge span { font-size: .36rem; letter-spacing: .2em; }
-      .piTime { font-size: .88rem; }
-      .piName { font-size: .84rem; }
-      .piDesc { font-size: .78rem; }
-      .venueName { font-size: clamp(1.6rem, 7vw, 2.2rem); }
-      .venueAddr { font-size: .78rem; }
-      .dirList li { font-size: .8rem; }
-      .vCard { padding: 28px 16px; }
-      .vcQuote { font-size: .88rem; }
-      .rsvpDeadline { font-size: .92rem; margin-bottom: 28px; }
-      .rsvpContact { font-size: .78rem; }
-      .footScript { font-size: clamp(2.6rem, 10vw, 4rem); }
-      .footNames { letter-spacing: .3em; font-size: .45rem; }
-      .footTagline { font-size: .8rem; }
-      #audioBtn { bottom: 14px; left: 14px; }
-      .waxSeal { width: 50px; height: 50px; margin-bottom: 22px; }
-      .hbDiv { height: 44px; }
+      #hero {
+        padding: 44px 14px 100px;
+        min-height: 580px;
+      }
+
+      .hEye {
+        letter-spacing: .4em;
+        padding-left: .4em;
+        margin-bottom: 18px;
+      }
+
+      .hGuestName {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        margin-bottom: 10px;
+      }
+
+      .hName {
+        font-size: clamp(3.4rem, 17vw, 4.5rem);
+      }
+
+      .hAmp {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+      }
+
+      .hTagline {
+        letter-spacing: .05em;
+        font-size: .82rem;
+      }
+
+      .hDateStr {
+        letter-spacing: .22em;
+        padding-left: .22em;
+        font-size: .48rem;
+        margin-bottom: 24px;
+      }
+
+      .cdUnit {
+        padding: 12px clamp(8px, 2.5vw, 14px);
+        min-width: clamp(54px, 22vw, 80px);
+      }
+
+      .cdNum {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+      }
+
+      .cdSlot {
+        height: clamp(36px, 8.5vw, 48px);
+      }
+
+      .cdLbl {
+        font-size: .27rem;
+        letter-spacing: .26em;
+        margin-top: 6px;
+        padding-left: .26em;
+      }
+
+      .hQuote {
+        padding: 0 14px;
+        font-size: .78rem;
+        margin-top: 20px;
+      }
+
+      .sec {
+        padding: 52px 14px;
+      }
+
+      .secTitle {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+      }
+
+      .secEye {
+        letter-spacing: .35em;
+        padding-left: .35em;
+      }
+
+      .invDear {
+        font-size: clamp(2.4rem, 10vw, 3.4rem);
+      }
+
+      .invBody {
+        font-size: .88rem;
+        line-height: 2;
+      }
+
+      .invPQ {
+        padding: 14px 12px;
+      }
+
+      .invPQ p {
+        font-size: .9rem;
+      }
+
+      .dayBadge {
+        padding: 8px 12px;
+      }
+
+      .dayBadge span {
+        font-size: .36rem;
+        letter-spacing: .2em;
+      }
+
+      .piTime {
+        font-size: .88rem;
+      }
+
+      .piName {
+        font-size: .84rem;
+      }
+
+      .piDesc {
+        font-size: .78rem;
+      }
+
+      .venueName {
+        font-size: clamp(1.6rem, 7vw, 2.2rem);
+      }
+
+      .venueAddr {
+        font-size: .78rem;
+      }
+
+      .dirList li {
+        font-size: .8rem;
+      }
+
+      .vCard {
+        padding: 28px 16px;
+      }
+
+      .vcQuote {
+        font-size: .88rem;
+      }
+
+      .rsvpDeadline {
+        font-size: .92rem;
+        margin-bottom: 28px;
+      }
+
+      .rsvpContact {
+        font-size: .78rem;
+      }
+
+      .footScript {
+        font-size: clamp(2.6rem, 10vw, 4rem);
+      }
+
+      .footNames {
+        letter-spacing: .3em;
+        font-size: .45rem;
+      }
+
+      .footTagline {
+        font-size: .8rem;
+      }
+
+      #audioBtn {
+        bottom: 14px;
+        left: 14px;
+      }
+
+      .waxSeal {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 22px;
+      }
+
+      .hbDiv {
+        height: 44px;
+      }
     }
 
     /* ══ LANDSCAPE MOBILE ══ */
     @media(max-height:500px) and (orientation:landscape) {
-      #hero { height: auto; min-height: 100dvh; padding: 80px 20px 100px; }
-      .hName { font-size: clamp(2.5rem, 7vw, 5rem); }
-      .hQuote { display: none; }
-      .scrollCue { display: none; }
+      #hero {
+        height: auto;
+        min-height: 100dvh;
+        padding: 80px 20px 100px;
+      }
+
+      .hName {
+        font-size: clamp(2.5rem, 7vw, 5rem);
+      }
+
+      .hQuote {
+        display: none;
+      }
+
+      .scrollCue {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -1985,13 +2891,13 @@
         <h2 class="secTitle rv d1">Our <em>Story</em><span class="sin-text">අපේ <em>ආදර කතාව</em></span></h2>
         <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
       </div>
-      
+
       <!-- Stretches to allow scrolling, while content remains sticky -->
       <div id="storyScrollArea" style="min-height: 180vh; position: relative;">
         <div class="story-sticky-container">
-          
+
           <div class="time-card">
-            
+
             <!-- LAYER PAST -->
             <div class="layer-past" id="layerPast">
               <div class="story-img-wrapper">
@@ -1999,8 +2905,10 @@
               </div>
               <div class="story-text-content">
                 <h3 class="story-kicker">How It Started...</h3>
-                <p>A simple hello fifteen years ago turned into a lifetime of beautiful memories. We were just two kids with a dream, not knowing this would be our greatest adventure.</p>
-                <p class="sin-text">මීට වසර 15කට පෙර ආරම්භ වූ අපේ කතාව, ජීවිත කාලයකම සුන්දර මතකයක් වේවි කියා එදා අප සිතුවේ නැත. කාලය කෙතරම් වේගයෙන් ගෙවී ගියත්, එදා ඉපදුණු ඒ ආදරය අදටත් එලෙසමයි...</p>
+                <p>A simple hello fifteen years ago turned into a lifetime of beautiful memories. We were just two kids
+                  with a dream, not knowing this would be our greatest adventure.</p>
+                <p class="sin-text">මීට වසර 15කට පෙර ආරම්භ වූ අපේ කතාව, ජීවිත කාලයකම සුන්දර මතකයක් වේවි කියා එදා අප
+                  සිතුවේ නැත. කාලය කෙතරම් වේගයෙන් ගෙවී ගියත්, එදා ඉපදුණු ඒ ආදරය අදටත් එලෙසමයි...</p>
               </div>
             </div>
 
@@ -2011,11 +2919,13 @@
               </div>
               <div class="story-text-content">
                 <h3 class="story-kicker">How It's Going...</h3>
-                <p>Through every season of life, our bond only grew stronger. Today, hand in hand, we step into our forever.</p>
-                <p class="sin-text">ජීවිතයේ පැමිණි සෑම හැලහැප්පීමකදීම අපේ බැඳීම තවත් ශක්තිමත් විය. දහසක් බලාපොරොත්තු මැද, අද අප අපගේ සදාකාලික ගමනට අත්වැල් බැඳගනිමු.</p>
+                <p>Through every season of life, our bond only grew stronger. Today, hand in hand, we step into our
+                  forever.</p>
+                <p class="sin-text">ජීවිතයේ පැමිණි සෑම හැලහැප්පීමකදීම අපේ බැඳීම තවත් ශක්තිමත් විය. දහසක් බලාපොරොත්තු
+                  මැද, අද අප අපගේ සදාකාලික ගමනට අත්වැල් බැඳගනිමු.</p>
               </div>
             </div>
-            
+
             <!-- Progress Line Indicator inside the card -->
             <div class="time-progress-bar">
               <div class="time-progress-fill" id="timeProgressFill"></div>
@@ -2176,21 +3086,31 @@
           <div class="rv">
             <span class="venueKicker">Morning Ceremony<span class="sin-text">උදෑසන චාරිත්‍ර</span></span>
             <h3 class="venueName">Nelligala Temple</h3>
-            <p class="venueAddr">Nelligala International Buddhist Center · Muruthalawa<span class="sin-text">නෙල්ලිගල ජාත්‍යන්තර බෞද්ධ මධ්‍යස්ථානය · මුරුතලාව</span></p>
+            <p class="venueAddr">Nelligala International Buddhist Center · Muruthalawa<span class="sin-text">නෙල්ලිගල
+                ජාත්‍යන්තර බෞද්ධ මධ්‍යස්ථානය · මුරුතලාව</span></p>
             <ul class="dirList">
-              <li><span class="dirN" aria-hidden="true">1</span><span>Located beautifully atop the <em>Nelligala mountain</em>.<span class="sin-text">සුන්දර දසුන් පිරි <em>නෙල්ලිගල කඳු මුදුනේ</em> පිහිටා ඇත.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">2</span><span>A serene environment for our sacred beginning.<span class="sin-text">අපගේ ශුද්ධ වූ ආරම්භයට ආශිර්වාද ගෙනෙන ශාන්ත පරිසරය.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">3</span><span>Ample parking is available at the premises.<span class="sin-text">පන්සල් භූමියේ ප්‍රමාණවත් <em>වාහන නැවැත්වීමේ පහසුකම්</em> ඇත.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">4</span><span>Please wear modest <em>white attire</em>.<span class="sin-text">කරුණාකර පන්සලකට ඔබින <em>සුදු පැහැති චාම් ඇඳුමින්</em> සැරසී පැමිණෙන්න.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">1</span><span>Located beautifully atop the <em>Nelligala
+                    mountain</em>.<span class="sin-text">සුන්දර දසුන් පිරි <em>නෙල්ලිගල කඳු මුදුනේ</em> පිහිටා
+                    ඇත.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">2</span><span>A serene environment for our sacred
+                  beginning.<span class="sin-text">අපගේ ශුද්ධ වූ ආරම්භයට ආශිර්වාද ගෙනෙන ශාන්ත පරිසරය.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">3</span><span>Ample parking is available at the premises.<span
+                    class="sin-text">පන්සල් භූමියේ ප්‍රමාණවත් <em>වාහන නැවැත්වීමේ පහසුකම්</em> ඇත.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">4</span><span>Please wear modest <em>white attire</em>.<span
+                    class="sin-text">කරුණාකර පන්සලකට ඔබින <em>සුදු පැහැති චාම් ඇඳුමින්</em> සැරසී
+                    පැමිණෙන්න.</span></span></li>
             </ul>
-            <a href="https://www.google.com/maps/search/Nelligala+International+Buddhist+Center/" target="_blank" rel="noopener" class="mapBtn"
-              aria-label="Open Nelligala Temple in Google Maps">
-              <span class="mapBtnT">Open in Google Maps<span class="sin-text">Google Maps හි විවෘත කරන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
+            <a href="https://www.google.com/maps/search/Nelligala+International+Buddhist+Center/" target="_blank"
+              rel="noopener" class="mapBtn" aria-label="Open Nelligala Temple in Google Maps">
+              <span class="mapBtnT">Open in Google Maps<span class="sin-text">Google Maps හි විවෘත
+                  කරන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
             </a>
           </div>
           <div class="vCard rv d1">
             <span class="vcMono" aria-hidden="true">N</span>
-            <p class="vcQuote">"A sacred beginning blessed by the heavens, surrounded by the <strong>breathtaking beauty</strong> of Nelligala."<span class="sin-text">"නෙල්ලිගල කඳු මුදුනේ අසිරියෙන් සහ ස්වර්ගීය ආශිර්වාදයෙන් පිරි <strong>ශුද්ධ වූ ආරම්භය.</strong>"</span>
+            <p class="vcQuote">"A sacred beginning blessed by the heavens, surrounded by the <strong>breathtaking
+                beauty</strong> of Nelligala."<span class="sin-text">"නෙල්ලිගල කඳු මුදුනේ අසිරියෙන් සහ ස්වර්ගීය
+                ආශිර්වාදයෙන් පිරි <strong>ශුද්ධ වූ ආරම්භය.</strong>"</span>
             </p>
           </div>
         </div>
@@ -2219,24 +3139,29 @@
               <li><span class="dirN" aria-hidden="true">1</span><span>Located at <em>2 Sir Chittampalam A Gardiner
                     Mawatha</em>, in the heart of the city.<span class="sin-text">කොළඹ හදවතේ පිහිටි <em>ශ්‍රීමත්
                       චිත්තම්පලම් ඒ. ගාඩිනර් මාවතේ</em> පිහිටා ඇත.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">2</span><span>Easily accessible from <em>Fort</em> and Galle Face
-                  Green.<span class="sin-text"><em>කොටුව</em> සහ ගාලු මුවදොර සිට පහසුවෙන් ළඟා විය හැක.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">2</span><span>Easily accessible from <em>Fort</em> and Galle
+                  Face
+                  Green.<span class="sin-text"><em>කොටුව</em> සහ ගාලු මුවදොර සිට පහසුවෙන් ළඟා විය හැක.</span></span>
+              </li>
               <li><span class="dirN" aria-hidden="true">3</span><span>Parking available at the <em>main portico
                     entrance</em> or hotel car park.<span class="sin-text"><em>ප්‍රධාන පිවිසුම</em> අසල හෝ හෝටල් රථගාලේ
                     වාහන නැවැත්වීමේ පහසුකම් ඇත.</span></span></li>
               <li><span class="dirN" aria-hidden="true">4</span><span>Lobby signage will guide you directly to our
-                  celebration.<span class="sin-text">උත්සව ශාලාව වෙත යාමට නාමපුවරු මඟින් මඟ පෙන්වනු ඇත.</span></span></li>
+                  celebration.<span class="sin-text">උත්සව ශාලාව වෙත යාමට නාමපුවරු මඟින් මඟ පෙන්වනු ඇත.</span></span>
+              </li>
             </ul>
             <a href="https://maps.app.goo.gl/L8TczoQVNF9fgZgG8" target="_blank" rel="noopener" class="mapBtn"
               aria-label="Open Hilton Colombo in Google Maps">
-              <span class="mapBtnT">Open in Google Maps<span class="sin-text">Google Maps හි විවෘත කරන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
+              <span class="mapBtnT">Open in Google Maps<span class="sin-text">Google Maps හි විවෘත
+                  කරන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
             </a>
           </div>
           <div class="vCard rv d1">
             <span class="vcMono" aria-hidden="true">H</span>
             <p class="vcQuote">"Nestled in the heart of Colombo, our celebration awaits you at one of the city's most
               <strong>distinguished addresses</strong> — where love stories are made."<span class="sin-text">"කොළඹ හදවතේ
-                පිහිටි, ආදර කතා ලියවෙන නගරයේ <strong>සුවිශේෂීම ස්ථානයක</strong> අපගේ සැමරුම ඔබ වෙනුවෙන් බලා සිටී."</span>
+                පිහිටි, ආදර කතා ලියවෙන නගරයේ <strong>සුවිශේෂීම ස්ථානයක</strong> අපගේ සැමරුම ඔබ වෙනුවෙන් බලා
+                සිටී."</span>
             </p>
           </div>
         </div>
@@ -2258,7 +3183,8 @@
       <div class="rsvpInner">
         <div class="secHead">
           <span class="secEye rv">Your Presence<span class="sin-text">ඔබගේ පැමිණීම</span></span>
-          <h2 class="secTitle rv d1">Kindly <em>RSVP</em><span class="sin-text">කරුණාකර පැමිණීම <em>තහවුරු කරන්න</em></span></h2>
+          <h2 class="secTitle rv d1">Kindly <em>RSVP</em><span class="sin-text">කරුණාකර පැමිණීම <em>තහවුරු
+                කරන්න</em></span></h2>
           <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
         </div>
         <span class="rsvpDeadline rv d3">Please confirm by <strong>15 Nov 2026</strong><span class="sin-text">කරුණාකර
@@ -2273,7 +3199,8 @@
               style="font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gb); margin-bottom: 8px; display: block; text-align: center;">
               Which type of alcohol would you prefer?
               <span class="sin-text"
-                style="font-size: 0.9rem; margin-top: 4px; display: block; letter-spacing: normal;">ඔබ කැමති කුමන වර්ගයේ මත්පැන් සඳහාද?</span>
+                style="font-size: 0.9rem; margin-top: 4px; display: block; letter-spacing: normal;">ඔබ කැමති කුමන වර්ගයේ
+                මත්පැන් සඳහාද?</span>
             </label>
             <select id="alcoholPref" class="prefSelector">
               <option value="Hard Liquor">Hard Liquor (සැර මත්පැන්)</option>
@@ -2283,8 +3210,10 @@
           </div>
 
           <div id="rsvpButtons" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-            <button class="rsvpBtn actBtn" onclick="submitRSVP('Yes')"><span>Yes, I will attend<span class="sin-text">ඔව්, මම සහභාගී වෙමි</span></span></button>
-            <button class="rsvpBtn actBtn noBtn" onclick="submitRSVP('No')"><span>No, I can't make it<span class="sin-text">නැත, මට සහභාගී වීමට නොහැක</span></span></button>
+            <button class="rsvpBtn actBtn" onclick="submitRSVP('Yes')"><span>Yes, I will attend<span
+                  class="sin-text">ඔව්, මම සහභාගී වෙමි</span></span></button>
+            <button class="rsvpBtn actBtn noBtn" onclick="submitRSVP('No')"><span>No, I can't make it<span
+                  class="sin-text">නැත, මට සහභාගී වීමට නොහැක</span></span></button>
           </div>
           <div id="rsvpMessage"
             style="display: none; color: var(--gb); font-size: 1.1rem; margin-top: 10px; font-family: 'Cormorant Garamond', serif; font-style: italic;">
@@ -2387,7 +3316,7 @@
       });
     }
 
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx3duIj3orrg5DWwoOjnXixFQbK1M5PmtIDjkHcMRshIf0Q9UqPt8lPjMYzF4uo1HspwQ/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3N2zTfR3IYjn1OmFlWDn5mdcbaEJyP6PmY-YAjcUAIaLKyHEUC49trW_6N8ob3jteKw/exec";
 
     document.addEventListener("DOMContentLoaded", () => {
       if (GUEST && localStorage.getItem('rsvp_' + GUEST)) {
@@ -2428,7 +3357,7 @@
       formData.append('name', GUEST);
       formData.append('status', status);
       formData.append('type', GUEST_TYPE);
-      formData.append('alcohol', alcoholPref); 
+      formData.append('alcohol', alcoholPref);
 
       fetch(SCRIPT_URL, {
         method: 'POST',
@@ -2612,8 +3541,8 @@
       const layerPast = document.getElementById('layerPast');
       const layerPresent = document.getElementById('layerPresent');
       const fillBar = document.getElementById('timeProgressFill');
-      
-      if(scrollArea && layerPast && layerPresent) {
+
+      if (scrollArea && layerPast && layerPresent) {
         const rect = scrollArea.getBoundingClientRect();
         const startFade = window.innerHeight * 0.5;
         const endFade = - (rect.height - window.innerHeight * 0.5);
@@ -2622,22 +3551,22 @@
         if (rect.top < startFade) {
           progress = (startFade - rect.top) / (startFade - endFade);
         }
-        
+
         progress = Math.max(0, Math.min(1, progress));
-        
+
         let pastOp = progress < 0.45 ? 1 - (progress / 0.45) : 0;
         let presOp = progress > 0.55 ? (progress - 0.55) / 0.45 : 0;
 
         layerPast.style.opacity = pastOp;
         layerPresent.style.opacity = presOp;
-        
+
         const pastImg = document.getElementById('pastImg');
         const presImg = document.getElementById('presImg');
-        
-        if(pastImg) pastImg.style.transform = `scale(${1 + progress * 0.1})`;
-        if(presImg) presImg.style.transform = `scale(${0.9 + presOp * 0.1})`;
 
-        if(fillBar) {
+        if (pastImg) pastImg.style.transform = `scale(${1 + progress * 0.1})`;
+        if (presImg) presImg.style.transform = `scale(${0.9 + presOp * 0.1})`;
+
+        if (fillBar) {
           fillBar.style.width = (progress * 100) + '%';
         }
       }
