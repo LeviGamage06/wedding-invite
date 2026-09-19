@@ -89,21 +89,10 @@
     }
 
     @keyframes grain {
-      0% {
-        background-position: 0 0
-      }
-
-      33% {
-        background-position: -60px 30px
-      }
-
-      66% {
-        background-position: 40px -50px
-      }
-
-      100% {
-        background-position: 0 0
-      }
+      0% { background-position: 0 0 }
+      33% { background-position: -60px 30px }
+      66% { background-position: 40px -50px }
+      100% { background-position: 0 0 }
     }
 
     body::after {
@@ -115,34 +104,12 @@
       background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0, 0, 0, .6) 100%);
     }
 
-    ::-webkit-scrollbar {
-      width: 3px;
-    }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--ink); }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--rose), var(--r), var(--g), var(--gb)); border-radius: 10px; }
 
-    ::-webkit-scrollbar-track {
-      background: var(--ink);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, var(--rose), var(--r), var(--g), var(--gb));
-      border-radius: 10px;
-    }
-
-    /* We need to make these transparent so the main video shows through */
-    #programme {
+    #story, #programme, #venue, #invitation, #page {
       background: transparent !important;
-    }
-
-    #venue {
-      background: transparent !important;
-    }
-
-    #invitation {
-      background: transparent !important;
-    }
-
-    #page {
-      background: transparent;
     }
 
     .vCard,
@@ -173,139 +140,49 @@
       font-family: 'Noto Serif Sinhala', serif;
     }
 
-    /* Perfect Center Adjustments for Letter-Spaced Parents */
-    .hEye .sin-text {
-      font-size: 1.1rem;
-      color: var(--r);
-    }
+    .hEye .sin-text { font-size: 1.1rem; color: var(--r); }
+    .hTagline .sin-text { font-size: 1rem; color: var(--mu2); }
+    .hDateStr .sin-text { font-size: 1rem; color: var(--gb); margin-top: 10px; margin-left: -0.24rem; }
+    .cdLbl .sin-text { font-size: 0.8rem; color: var(--mu); margin-top: 2px; margin-left: -0.12rem; }
+    .hQuote .sin-text { font-size: 1rem; color: var(--mu2); margin-top: 12px; }
+    .scrollWord .sin-text { font-size: 1.2rem; margin-top: 4px; margin-left: -0.19rem; }
+    .invBody .sin-text { font-size: 1rem; margin-top: 16px; display: block; }
+    .invPQ p .sin-text { font-size: 1.1rem; margin-top: 10px; display: block; }
+    .secEye .sin-text { font-size: 1.1rem; margin-left: -0.28rem; }
+    .secTitle .sin-text { font-size: 0.4em; font-weight: 500; margin-top: 10px; }
+    .dayBadge span .sin-text { font-size: 1.1rem; margin-left: -0.12rem; }
+    .piName .sin-text { font-size: 0.9em; color: var(--gb); margin-top: 4px; }
+    .piDesc .sin-text { font-size: 0.95em; color: var(--mu); margin-top: 4px; display: block; }
+    .venueKicker .sin-text { font-size: 1rem; margin-left: -0.24rem; }
+    .venueAddr .sin-text { font-size: 1em; margin-top: 6px; }
+    .dirList li .sin-text { font-size: 1em; color: var(--mu2); margin-top: 4px; display: block; }
+    .mapBtnT .sin-text { font-size: 1.1rem; margin-left: -0.19rem; }
+    .vcQuote .sin-text { font-size: 1rem; color: var(--mu2); margin-top: 12px; display: block; }
+    .rsvpBtn span .sin-text { font-size: 1.1rem; margin-top: 4px; }
+    .rsvpContact .sin-text { font-size: 1em; margin-top: 6px; }
+    .footScript .sin-text { font-size: 0.28em; margin-top: -10px; line-height: 1.2; }
+    .footTagline .sin-text { font-size: 1.1em; margin-top: 6px; display: block; }
 
-    .hTagline .sin-text {
-      font-size: 1rem;
-      color: var(--mu2);
-    }
-
-    .hDateStr .sin-text {
-      font-size: 1rem;
-      color: var(--gb);
-      margin-top: 10px;
-      margin-left: -0.24rem;
-    }
-
-    .cdLbl .sin-text {
-      font-size: 0.8rem;
-      color: var(--mu);
-      margin-top: 2px;
-      margin-left: -0.12rem;
-    }
-
-    .hQuote .sin-text {
-      font-size: 1rem;
-      color: var(--mu2);
-      margin-top: 12px;
-    }
-
-    .scrollWord .sin-text {
-      font-size: 1.2rem;
-      margin-top: 4px;
-      margin-left: -0.19rem;
-    }
-
-    .invBody .sin-text {
-      font-size: 1rem;
-      margin-top: 16px;
+    /* RSVP Date Text Update */
+    .rsvpDeadline {
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem) !important;
+      margin-bottom: 35px !important;
+      text-shadow: 0 2px 15px rgba(0, 0, 0, 1), 0 0 20px rgba(0, 0, 0, 0.8) !important;
+      color: var(--tx) !important;
       display: block;
     }
-
-    .invPQ p .sin-text {
-      font-size: 1.1rem;
-      margin-top: 10px;
-      display: block;
+    
+    .rsvpDeadline strong {
+      color: var(--gb) !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.05em;
     }
-
-    .secEye .sin-text {
-      font-size: 1.1rem;
-      margin-left: -0.28rem;
-    }
-
-    .secTitle .sin-text {
-      font-size: 0.4em;
-      font-weight: 500;
-      margin-top: 10px;
-    }
-
-    .dayBadge span .sin-text {
-      font-size: 1.1rem;
-      margin-left: -0.12rem;
-    }
-
-    .piName .sin-text {
-      font-size: 0.9em;
-      color: var(--gb);
-      margin-top: 4px;
-    }
-
-    .piDesc .sin-text {
-      font-size: 0.95em;
-      color: var(--mu);
-      margin-top: 4px;
-      display: block;
-    }
-
-    .venueKicker .sin-text {
-      font-size: 1rem;
-      margin-left: -0.24rem;
-    }
-
-    .venueAddr .sin-text {
-      font-size: 1em;
-      margin-top: 6px;
-    }
-
-    .dirList li .sin-text {
-      font-size: 1em;
-      color: var(--mu2);
-      margin-top: 4px;
-      display: block;
-    }
-
-    .mapBtnT .sin-text {
-      font-size: 1.1rem;
-      margin-left: -0.19rem;
-    }
-
-    .vcQuote .sin-text {
-      font-size: 1rem;
-      color: var(--mu2);
-      margin-top: 12px;
-      display: block;
-    }
-
+    
     .rsvpDeadline .sin-text {
-      font-size: 1em;
-      margin-top: 6px;
-      display: block;
-    }
-
-    .rsvpBtn span .sin-text {
-      font-size: 1.1rem;
-      margin-top: 4px;
-    }
-
-    .rsvpContact .sin-text {
-      font-size: 1em;
-      margin-top: 6px;
-    }
-
-    .footScript .sin-text {
-      font-size: 0.28em;
-      margin-top: -10px;
-      line-height: 1.2;
-    }
-
-    .footTagline .sin-text {
-      font-size: 1.1em;
-      margin-top: 6px;
-      display: block;
+      font-size: clamp(1rem, 2.5vw, 1.15rem) !important;
+      margin-top: 10px !important;
+      opacity: 1 !important;
+      text-shadow: 0 2px 15px rgba(0, 0, 0, 1), 0 0 20px rgba(0, 0, 0, 0.8) !important;
     }
 
     /* CURSOR */
@@ -333,23 +210,10 @@
       transition: width .55s var(--ease), height .55s var(--ease), border-color .3s, opacity .3s;
     }
 
-    .ch #curR {
-      width: 56px;
-      height: 56px;
-      border-color: var(--gb);
-      opacity: .6;
-    }
+    .ch #curR { width: 56px; height: 56px; border-color: var(--gb); opacity: .6; }
+    .ch #cur { opacity: 0; }
 
-    .ch #cur {
-      opacity: 0;
-    }
-
-    #sparkleCanvas {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9992;
-    }
+    #sparkleCanvas { position: fixed; inset: 0; pointer-events: none; z-index: 9992; }
 
     #prog {
       position: fixed;
@@ -362,18 +226,8 @@
       box-shadow: 0 0 16px rgba(200, 164, 92, .4);
     }
 
-    #petalCanvas {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 2;
-      opacity: 0;
-      transition: opacity 5s ease 2s;
-    }
-
-    #petalCanvas.on {
-      opacity: 1;
-    }
+    #petalCanvas { position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: 0; transition: opacity 5s ease 2s; }
+    #petalCanvas.on { opacity: 1; }
 
     .hrtBg {
       position: fixed;
@@ -398,43 +252,21 @@
       border-radius: 50% 50% 0 0;
     }
 
-    .hrtBg::before {
-      left: 0;
-      transform-origin: 100% 100%;
-      transform: rotate(-45deg);
-    }
-
-    .hrtBg::after {
-      right: 0;
-      transform-origin: 0 100%;
-      transform: rotate(45deg);
-    }
+    .hrtBg::before { left: 0; transform-origin: 100% 100%; transform: rotate(-45deg); }
+    .hrtBg::after { right: 0; transform-origin: 0 100%; transform: rotate(45deg); }
 
     @keyframes floatUp {
-      0% {
-        transform: rotate(45deg) translateY(0) scale(1);
-        opacity: 0;
-      }
-
-      8% {
-        opacity: .13;
-      }
-
-      92% {
-        opacity: .06;
-      }
-
-      100% {
-        transform: rotate(45deg) translateY(-110vh) scale(.7);
-        opacity: 0;
-      }
+      0% { transform: rotate(45deg) translateY(0) scale(1); opacity: 0; }
+      8% { opacity: .13; }
+      92% { opacity: .06; }
+      100% { transform: rotate(45deg) translateY(-110vh) scale(.7); opacity: 0; }
     }
 
     /* ENTRANCE & VIDEO BACKGROUND */
     #entrance {
       position: fixed;
       inset: 0;
-      background: var(--ink);
+      background: #000;
       z-index: 9990;
       display: flex;
       align-items: center;
@@ -443,11 +275,7 @@
       transition: opacity 2.8s cubic-bezier(.7, 0, .3, 1), visibility 2.8s;
     }
 
-    #entrance.gone {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
+    #entrance.gone { opacity: 0; visibility: hidden; pointer-events: none; }
 
     #introVideo {
       position: absolute;
@@ -457,122 +285,15 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
-      opacity: 0.65;
+      opacity: 0.4;
       transition: opacity 1.5s ease;
     }
 
     .vidOverlay {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(10, 8, 26, 0.2) 0%, rgba(3, 2, 10, 0.85) 100%);
+      background: rgba(0, 0, 0, 0.5);
       z-index: 1;
-    }
-
-    .eOrb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(150px);
-      pointer-events: none;
-      animation: orbF 16s ease-in-out infinite;
-      will-change: transform;
-      z-index: 2;
-    }
-
-    .eOrb1 {
-      width: 70vw;
-      height: 70vw;
-      max-width: 700px;
-      max-height: 700px;
-      background: radial-gradient(circle, rgba(180, 70, 50, .13), transparent 68%);
-      top: -22%;
-      left: -16%;
-    }
-
-    .eOrb2 {
-      width: 50vw;
-      height: 50vw;
-      max-width: 500px;
-      max-height: 500px;
-      background: radial-gradient(circle, rgba(139, 34, 82, .11), transparent 68%);
-      bottom: -16%;
-      right: -13%;
-      animation-delay: -6s;
-    }
-
-    .eOrb3 {
-      width: 33vw;
-      height: 33vw;
-      max-width: 350px;
-      max-height: 350px;
-      background: radial-gradient(circle, rgba(200, 164, 92, .08), transparent 68%);
-      top: 30%;
-      right: 15%;
-      animation-delay: -11s;
-    }
-
-    .eOrb4 {
-      width: 26vw;
-      height: 26vw;
-      max-width: 290px;
-      max-height: 290px;
-      background: radial-gradient(circle, rgba(200, 110, 70, .06), transparent 68%);
-      bottom: 18%;
-      left: 8%;
-      animation-delay: -4s;
-    }
-
-    @keyframes orbF {
-
-      0%,
-      100% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      33% {
-        transform: translate(4%, 7%) scale(1.1);
-      }
-
-      66% {
-        transform: translate(-5%, 2%) scale(.93);
-      }
-    }
-
-    .eCandleGlow {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: min(240px, 62vw);
-      height: min(240px, 62vw);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 170, 50, .16) 0%, rgba(200, 90, 30, .07) 40%, transparent 72%);
-      animation: candleF 3.4s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    @keyframes candleF {
-
-      0%,
-      100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: .7;
-      }
-
-      25% {
-        transform: translate(-50%, -50%) scale(1.09);
-        opacity: 1;
-      }
-
-      50% {
-        transform: translate(-50%, -50%) scale(.95);
-        opacity: .8;
-      }
-
-      75% {
-        transform: translate(-50%, -50%) scale(1.13);
-        opacity: .95;
-      }
     }
 
     .eMandala {
@@ -586,41 +307,14 @@
       z-index: 3;
     }
 
-    .eRing {
-      transform-box: view-box;
-    }
+    .eRing { transform-box: view-box; }
+    .eRing1 { transform-origin: 190px 190px; animation: sCW 26s linear infinite; }
+    .eRing2 { transform-origin: 190px 190px; animation: sCCW 20s linear infinite; }
+    .eRing3 { transform-origin: 190px 190px; animation: sCW 38s linear infinite; }
+    .eRing4 { transform-origin: 190px 190px; animation: sCCW 30s linear infinite; }
 
-    .eRing1 {
-      transform-origin: 190px 190px;
-      animation: sCW 26s linear infinite;
-    }
-
-    .eRing2 {
-      transform-origin: 190px 190px;
-      animation: sCCW 20s linear infinite;
-    }
-
-    .eRing3 {
-      transform-origin: 190px 190px;
-      animation: sCW 38s linear infinite;
-    }
-
-    .eRing4 {
-      transform-origin: 190px 190px;
-      animation: sCCW 30s linear infinite;
-    }
-
-    @keyframes sCW {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes sCCW {
-      to {
-        transform: rotate(-360deg);
-      }
-    }
+    @keyframes sCW { to { transform: rotate(360deg); } }
+    @keyframes sCCW { to { transform: rotate(-360deg); } }
 
     .drawOn {
       stroke-dasharray: 1200;
@@ -628,31 +322,12 @@
       animation: drawIn 2.8s cubic-bezier(.4, 0, .2, 1) forwards;
     }
 
-    @keyframes drawIn {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    .drawOn.d1 {
-      animation-delay: .1s;
-    }
-
-    .drawOn.d2 {
-      animation-delay: .45s;
-    }
-
-    .drawOn.d3 {
-      animation-delay: .9s;
-    }
-
-    .drawOn.d4 {
-      animation-delay: 1.3s;
-    }
-
-    .drawOn.d5 {
-      animation-delay: 1.7s;
-    }
+    @keyframes drawIn { to { stroke-dashoffset: 0; } }
+    .drawOn.d1 { animation-delay: .1s; }
+    .drawOn.d2 { animation-delay: .45s; }
+    .drawOn.d3 { animation-delay: .9s; }
+    .drawOn.d4 { animation-delay: 1.3s; }
+    .drawOn.d5 { animation-delay: 1.7s; }
 
     .eBtn {
       position: absolute;
@@ -687,19 +362,14 @@
       animation: monoIn 1.2s var(--ease) 1.8s forwards;
     }
 
-    @keyframes monoIn {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
+    @keyframes monoIn { to { opacity: 1; transform: scale(1); } }
 
     .eML {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(3rem, 8.5vw, 4.2rem);
       font-weight: 300;
       line-height: 1;
-      text-shadow: 0 0 40px rgba(237, 208, 122, .6);
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(237, 208, 122, .6);
     }
 
     .eMA {
@@ -708,7 +378,7 @@
       font-style: italic;
       color: var(--r);
       transform: translateY(-4px);
-      text-shadow: 0 0 22px rgba(184, 121, 106, .5);
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.9), 0 0 22px rgba(184, 121, 106, .5);
     }
 
     .eTap {
@@ -725,28 +395,15 @@
       padding-left: .7em;
       z-index: 4;
       opacity: 0;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 1);
       animation: tapIn .9s ease 2.6s forwards, breathe 3.8s ease 3.5s infinite;
     }
 
-    @keyframes tapIn {
-      to {
-        opacity: 1;
-      }
-    }
+    @keyframes tapIn { to { opacity: 1; } }
 
     @keyframes breathe {
-
-      0%,
-      100% {
-        opacity: .2;
-        letter-spacing: .7em;
-      }
-
-      50% {
-        opacity: .9;
-        letter-spacing: .85em;
-        text-shadow: 0 0 18px rgba(200, 164, 92, .5);
-      }
+      0%, 100% { opacity: .4; letter-spacing: .7em; }
+      50% { opacity: 1; letter-spacing: .85em; text-shadow: 0 2px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(200, 164, 92, .8); }
     }
 
     .eRipple {
@@ -763,12 +420,7 @@
       animation: ripple .9s ease forwards;
     }
 
-    @keyframes ripple {
-      to {
-        transform: translate(-50%, -50%) scale(5);
-        opacity: 0;
-      }
-    }
+    @keyframes ripple { to { transform: translate(-50%, -50%) scale(5); opacity: 0; } }
 
     /* AUDIO */
     #audioBtn {
@@ -796,45 +448,14 @@
       touch-action: manipulation;
     }
 
-    #audioBtn.vis {
-      opacity: 1;
-    }
+    #audioBtn.vis { opacity: 1; }
+    .aBars { display: flex; gap: 3px; align-items: flex-end; height: 15px; }
+    .aBar { width: 2.5px; background: var(--gb); border-radius: 2px; height: 3px; }
+    #audioBtn.playing .aBar { animation: aWave .75s ease-in-out infinite alternate; }
+    #audioBtn.playing .aBar:nth-child(2) { animation-delay: .2s; }
+    #audioBtn.playing .aBar:nth-child(3) { animation-delay: .4s; }
 
-    .aBars {
-      display: flex;
-      gap: 3px;
-      align-items: flex-end;
-      height: 15px;
-    }
-
-    .aBar {
-      width: 2.5px;
-      background: var(--gb);
-      border-radius: 2px;
-      height: 3px;
-    }
-
-    #audioBtn.playing .aBar {
-      animation: aWave .75s ease-in-out infinite alternate;
-    }
-
-    #audioBtn.playing .aBar:nth-child(2) {
-      animation-delay: .2s;
-    }
-
-    #audioBtn.playing .aBar:nth-child(3) {
-      animation-delay: .4s;
-    }
-
-    @keyframes aWave {
-      from {
-        height: 3px
-      }
-
-      to {
-        height: 15px
-      }
-    }
+    @keyframes aWave { from { height: 3px } to { height: 15px } }
 
     /* PAGE */
     #page {
@@ -845,10 +466,7 @@
       transition: opacity 2.4s ease;
     }
 
-    #page.vis {
-      opacity: 1;
-      visibility: visible;
-    }
+    #page.vis { opacity: 1; visibility: visible; }
 
     .rv {
       opacity: 0;
@@ -857,30 +475,12 @@
       will-change: opacity, transform;
     }
 
-    .rv.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .rv.d1 {
-      transition-delay: .12s;
-    }
-
-    .rv.d2 {
-      transition-delay: .26s;
-    }
-
-    .rv.d3 {
-      transition-delay: .42s;
-    }
-
-    .rv.d4 {
-      transition-delay: .58s;
-    }
-
-    .rv.d5 {
-      transition-delay: .75s;
-    }
+    .rv.in { opacity: 1; transform: translateY(0); }
+    .rv.d1 { transition-delay: .12s; }
+    .rv.d2 { transition-delay: .26s; }
+    .rv.d3 { transition-delay: .42s; }
+    .rv.d4 { transition-delay: .58s; }
+    .rv.d5 { transition-delay: .75s; }
 
     /* HERO */
     #hero {
@@ -897,107 +497,26 @@
       text-align: center;
     }
 
-    .hBg {
-      position: absolute;
-      inset: -18%;
-      will-change: transform;
-    }
-
-    .hA {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(160px);
-      animation: hFloat 22s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .hA1 {
-      width: 80vw;
-      height: 58vh;
-      background: radial-gradient(ellipse, rgba(139, 34, 82, .1), transparent 68%);
-      top: 0%;
-      left: -10%;
-    }
-
-    .hA2 {
-      width: 65vw;
-      height: 65vh;
-      background: radial-gradient(ellipse, rgba(184, 121, 106, .07), transparent 68%);
-      bottom: -8%;
-      right: -12%;
-      animation-delay: -8s;
-    }
-
-    .hA3 {
-      width: 45vw;
-      height: 45vh;
-      background: radial-gradient(ellipse, rgba(200, 164, 92, .06), transparent 68%);
-      top: 20%;
-      right: 6%;
-      animation-delay: -15s;
-    }
-
-    .hA4 {
-      width: 38vw;
-      height: 42vh;
-      background: radial-gradient(ellipse, rgba(160, 50, 50, .05), transparent 68%);
-      bottom: 10%;
-      left: 5%;
-      animation-delay: -4s;
-    }
+    .hBg { position: absolute; inset: -18%; will-change: transform; }
+    .hA { position: absolute; border-radius: 50%; filter: blur(160px); animation: hFloat 22s ease-in-out infinite; pointer-events: none; }
+    .hA1 { width: 80vw; height: 58vh; background: radial-gradient(ellipse, rgba(139, 34, 82, .1), transparent 68%); top: 0%; left: -10%; }
+    .hA2 { width: 65vw; height: 65vh; background: radial-gradient(ellipse, rgba(184, 121, 106, .07), transparent 68%); bottom: -8%; right: -12%; animation-delay: -8s; }
+    .hA3 { width: 45vw; height: 45vh; background: radial-gradient(ellipse, rgba(200, 164, 92, .06), transparent 68%); top: 20%; right: 6%; animation-delay: -15s; }
+    .hA4 { width: 38vw; height: 42vh; background: radial-gradient(ellipse, rgba(160, 50, 50, .05), transparent 68%); bottom: 10%; left: 5%; animation-delay: -4s; }
 
     @keyframes hFloat {
-
-      0%,
-      100% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      33% {
-        transform: translate(2%, 4%) scale(1.07);
-      }
-
-      66% {
-        transform: translate(-3%, 1%) scale(.95);
-      }
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(2%, 4%) scale(1.07); }
+      66% { transform: translate(-3%, 1%) scale(.95); }
     }
 
-    .corn {
-      position: absolute;
-      pointer-events: none;
-    }
-
-    .corn.tl {
-      top: 20px;
-      left: 20px;
-    }
-
-    .corn.tr {
-      top: 20px;
-      right: 20px;
-      transform: scaleX(-1);
-    }
-
-    .corn.bl {
-      bottom: 20px;
-      left: 20px;
-      transform: scaleY(-1);
-    }
-
-    .corn.br {
-      bottom: 20px;
-      right: 20px;
-      transform: scale(-1);
-    }
-
-    .corn svg {
-      opacity: 0;
-      transition: opacity 2.5s ease;
-    }
-
-    .corn.in svg {
-      opacity: .35;
-    }
+    .corn { position: absolute; pointer-events: none; }
+    .corn.tl { top: 20px; left: 20px; }
+    .corn.tr { top: 20px; right: 20px; transform: scaleX(-1); }
+    .corn.bl { bottom: 20px; left: 20px; transform: scaleY(-1); }
+    .corn.br { bottom: 20px; right: 20px; transform: scale(-1); }
+    .corn svg { opacity: 0; transition: opacity 2.5s ease; }
+    .corn.in svg { opacity: .35; }
 
     .hInner {
       position: relative;
@@ -1016,10 +535,7 @@
       will-change: opacity, transform;
     }
 
-    .hItem.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .hItem.in { opacity: 1; transform: translateY(0); }
 
     .hEye {
       font-family: 'Cinzel', serif;
@@ -1080,19 +596,9 @@
     }
 
     @keyframes nameSweep {
-
-      0%,
-      55% {
-        background-position: 200% 0
-      }
-
-      78% {
-        background-position: -40% 0
-      }
-
-      100% {
-        background-position: -40% 0
-      }
+      0%, 55% { background-position: 200% 0 }
+      78% { background-position: -40% 0 }
+      100% { background-position: -40% 0 }
     }
 
     .hAmp {
@@ -1109,15 +615,8 @@
     }
 
     @keyframes ampPulse {
-
-      0%,
-      100% {
-        text-shadow: 0 0 40px rgba(184, 121, 106, .5), 0 2px 12px rgba(0, 0, 0, .5);
-      }
-
-      50% {
-        text-shadow: 0 0 80px rgba(184, 121, 106, .85), 0 0 35px rgba(200, 164, 92, .3), 0 2px 12px rgba(0, 0, 0, .5);
-      }
+      0%, 100% { text-shadow: 0 0 40px rgba(184, 121, 106, .5), 0 2px 12px rgba(0, 0, 0, .5); }
+      50% { text-shadow: 0 0 80px rgba(184, 121, 106, .85), 0 0 35px rgba(200, 164, 92, .3), 0 2px 12px rgba(0, 0, 0, .5); }
     }
 
     .hTagline {
@@ -1157,27 +656,11 @@
     }
 
     @keyframes hBeat {
-
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      14% {
-        transform: scale(1.35);
-      }
-
-      28% {
-        transform: scale(1);
-      }
-
-      42% {
-        transform: scale(1.22);
-      }
-
-      70% {
-        transform: scale(1);
-      }
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.35); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.22); }
+      70% { transform: scale(1); }
     }
 
     .hDateStr {
@@ -1270,22 +753,9 @@
       will-change: transform, opacity;
     }
 
-    .cdNum.flip-out {
-      transform: translateY(-105%);
-      opacity: 0;
-    }
-
-    .cdNum.flip-in {
-      transform: translateY(105%);
-      opacity: 0;
-      transition: none;
-    }
-
-    .cdNum.flip-in.settled {
-      transform: translateY(0);
-      opacity: 1;
-      transition: transform .4s cubic-bezier(.23, 1, .32, 1), opacity .26s ease;
-    }
+    .cdNum.flip-out { transform: translateY(-105%); opacity: 0; }
+    .cdNum.flip-in { transform: translateY(105%); opacity: 0; transition: none; }
+    .cdNum.flip-in.settled { transform: translateY(0); opacity: 1; transition: transform .4s cubic-bezier(.23, 1, .32, 1), opacity .26s ease; }
 
     .cdLbl {
       font-family: 'Cinzel', serif;
@@ -1356,27 +826,10 @@
     }
 
     @keyframes sLine {
-      0% {
-        transform: scaleY(0);
-        transform-origin: top;
-        opacity: 1;
-      }
-
-      48% {
-        transform: scaleY(1);
-        transform-origin: top;
-      }
-
-      50% {
-        transform: scaleY(1);
-        transform-origin: bottom;
-      }
-
-      100% {
-        transform: scaleY(0);
-        transform-origin: bottom;
-        opacity: 0;
-      }
+      0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      48% { transform: scaleY(1); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
     }
 
     .scrollWord {
@@ -1394,10 +847,7 @@
       position: relative;
     }
 
-    .secHead {
-      text-align: center;
-      margin-bottom: clamp(48px, 8vh, 90px);
-    }
+    .secHead { text-align: center; margin-bottom: clamp(48px, 8vh, 90px); }
 
     .secEye {
       display: block;
@@ -1420,10 +870,7 @@
       text-shadow: 0 2px 20px rgba(0, 0, 0, .5);
     }
 
-    .secTitle em {
-      font-style: italic;
-      color: var(--gb);
-    }
+    .secTitle em { font-style: italic; color: var(--gb); }
 
     .secOrn {
       display: flex;
@@ -1439,13 +886,8 @@
       height: 1px;
     }
 
-    .secOrn::before {
-      background: linear-gradient(90deg, transparent, var(--bdr));
-    }
-
-    .secOrn::after {
-      background: linear-gradient(90deg, var(--bdr), transparent);
-    }
+    .secOrn::before { background: linear-gradient(90deg, transparent, var(--bdr)); }
+    .secOrn::after { background: linear-gradient(90deg, var(--bdr), transparent); }
 
     .ornHeart {
       color: var(--r);
@@ -1482,12 +924,7 @@
       padding: 0;
     }
 
-    .hbDiv svg {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-      display: block;
-    }
+    .hbDiv svg { width: 100%; height: 100%; overflow: visible; display: block; }
 
     .hbBase {
       stroke: rgba(200, 164, 92, .22);
@@ -1506,14 +943,141 @@
       vector-effect: non-scaling-stroke;
     }
 
-    .hbPulse.run {
-      stroke-dashoffset: 0;
-    }
+    .hbPulse.run { stroke-dashoffset: 0; }
 
     .hbHrt {
       fill: var(--r);
       filter: drop-shadow(0 0 5px rgba(184, 121, 106, .9)) drop-shadow(0 0 12px rgba(184, 121, 106, .5));
       animation: hBeat 1.4s ease-in-out infinite;
+    }
+
+    /* --- SCROLL-TRIGGERED TIME TRAVEL CSS (FULL IMAGE BACKGROUND) --- */
+    #story {
+      min-height: 150vh; 
+    }
+
+    .story-sticky-container {
+      position: sticky;
+      top: 15%;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .time-card {
+      width: 100%;
+      min-height: 600px;
+      background: linear-gradient(148deg, rgba(20, 14, 36, 0.6), rgba(6, 4, 15, 0.75));
+      border: 1px solid rgba(200, 164, 92, .15);
+      border-radius: 24px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      text-align: center;
+      position: relative;
+      overflow: hidden; 
+    }
+
+    .layer-past, .layer-present {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px 20px 50px 20px; 
+      will-change: opacity, transform;
+      z-index: 1;
+    }
+
+    .layer-present {
+      opacity: 0; 
+    }
+
+    .story-img-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .story-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      will-change: transform;
+    }
+
+    .story-img-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(14, 10, 24, 0) 0%, rgba(14, 10, 24, 0.2) 40%, rgba(10, 8, 26, 0.95) 75%, rgba(6, 4, 15, 1) 100%);
+      pointer-events: none;
+    }
+
+    .layer-past .story-img-wrapper img {
+      filter: sepia(0.3) contrast(1.1); 
+    }
+
+    .story-text-content {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    .story-kicker {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.4rem, 6vw, 3rem);
+      color: var(--gb);
+      margin-bottom: 12px;
+      line-height: 1.1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      font-weight: 400;
+    }
+
+    .story-text-content p {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--mu2);
+      line-height: 1.8;
+      font-weight: 300;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+    }
+
+    .story-text-content p.sin-text {
+      font-family: 'Noto Serif Sinhala', serif;
+      margin-top: 12px;
+      color: var(--tx);
+      opacity: 0.95;
+    }
+
+    .time-progress-bar {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 2px;
+      background: rgba(200, 164, 92, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+      z-index: 5;
+    }
+    
+    .time-progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: var(--gb);
+      width: 0%;
+      box-shadow: 0 0 10px rgba(237, 208, 122, 0.6);
     }
 
     /* INVITATION */
@@ -1538,12 +1102,7 @@
       pointer-events: none;
     }
 
-    .invInner {
-      width: 100%;
-      max-width: 700px;
-      position: relative;
-      z-index: 1;
-    }
+    .invInner { width: 100%; max-width: 700px; position: relative; z-index: 1; }
 
     .invFrame {
       position: relative;
@@ -1563,17 +1122,8 @@
       border-style: solid;
     }
 
-    .invFrame::before {
-      top: 12px;
-      left: 12px;
-      border-width: 1px 0 0 1px;
-    }
-
-    .invFrame::after {
-      bottom: 12px;
-      right: 12px;
-      border-width: 0 1px 1px 0;
-    }
+    .invFrame::before { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+    .invFrame::after { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
 
     .invCTR {
       position: absolute;
@@ -1611,15 +1161,8 @@
     }
 
     @keyframes sealGlow {
-
-      0%,
-      100% {
-        box-shadow: 0 8px 34px rgba(110, 18, 28, .55), inset 0 2px 0 rgba(255, 200, 180, .22);
-      }
-
-      50% {
-        box-shadow: 0 8px 50px rgba(180, 40, 40, .75), 0 0 32px rgba(200, 50, 50, .2), inset 0 2px 0 rgba(255, 200, 180, .22);
-      }
+      0%, 100% { box-shadow: 0 8px 34px rgba(110, 18, 28, .55), inset 0 2px 0 rgba(255, 200, 180, .22); }
+      50% { box-shadow: 0 8px 50px rgba(180, 40, 40, .75), 0 0 32px rgba(200, 50, 50, .2), inset 0 2px 0 rgba(255, 200, 180, .22); }
     }
 
     .waxSeal::before {
@@ -1641,15 +1184,8 @@
     }
 
     @keyframes sealW {
-
-      0%,
-      100% {
-        border-radius: 46% 54% 52% 48%/48% 44% 56% 52%;
-      }
-
-      50% {
-        border-radius: 54% 46% 48% 52%/52% 56% 44% 48%;
-      }
+      0%, 100% { border-radius: 46% 54% 52% 48%/48% 44% 56% 52%; }
+      50% { border-radius: 54% 46% 48% 52%/52% 56% 44% 48%; }
     }
 
     .invDear {
@@ -1671,10 +1207,7 @@
       text-shadow: 0 1px 8px rgba(0, 0, 0, .5);
     }
 
-    .invBody strong {
-      color: var(--tx);
-      font-weight: 400;
-    }
+    .invBody strong { color: var(--tx); font-weight: 400; }
 
     .invPQ {
       margin: 32px 0 6px;
@@ -1694,19 +1227,10 @@
       line-height: 1.9;
     }
 
-    .invSep {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 36px 0 0;
-      opacity: .3;
-    }
+    .invSep { display: flex; align-items: center; justify-content: center; margin: 36px 0 0; opacity: .3; }
 
     /* PROGRAMME */
-    #programme {
-      position: relative;
-      overflow: hidden;
-    }
+    #programme { position: relative; overflow: hidden; }
 
     #programme::before {
       content: '';
@@ -1798,9 +1322,7 @@
       transition: background-position .9s ease;
     }
 
-    .timelineWrap {
-      position: relative;
-    }
+    .timelineWrap { position: relative; }
 
     .timelineWrap::before {
       content: '';
@@ -1813,9 +1335,7 @@
       transition: height 2s cubic-bezier(.25, 1, .5, 1) .4s;
     }
 
-    .timelineWrap.drawn::before {
-      height: calc(100% - 16px);
-    }
+    .timelineWrap.drawn::before { height: calc(100% - 16px); }
 
     .pItem {
       display: flex;
@@ -1824,17 +1344,8 @@
       position: relative;
     }
 
-    .pItem:not(:last-child) {
-      border-bottom: 1px solid rgba(255, 255, 255, .04);
-    }
-
-    .piL {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-shrink: 0;
-      padding-top: 5px;
-    }
+    .pItem:not(:last-child) { border-bottom: 1px solid rgba(255, 255, 255, .04); }
+    .piL { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; padding-top: 5px; }
 
     .piDot {
       width: 8px;
@@ -1857,40 +1368,13 @@
       transition: opacity .3s;
     }
 
-    .piR {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .piTime {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--gb);
-      margin-bottom: 5px;
-      display: block;
-    }
-
-    .piName {
-      font-size: .9rem;
-      font-weight: 400;
-      letter-spacing: .02em;
-      margin-bottom: 7px;
-      color: var(--tx);
-    }
-
-    .piDesc {
-      font-size: .82rem;
-      color: var(--mu);
-      line-height: 1.85;
-      font-weight: 300;
-    }
+    .piR { flex: 1; min-width: 0; }
+    .piTime { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--gb); margin-bottom: 5px; display: block; }
+    .piName { font-size: .9rem; font-weight: 400; letter-spacing: .02em; margin-bottom: 7px; color: var(--tx); }
+    .piDesc { font-size: .82rem; color: var(--mu); line-height: 1.85; font-weight: 300; }
 
     /* VENUE */
-    #venue {
-      position: relative;
-      overflow: hidden;
-    }
+    #venue { position: relative; overflow: hidden; }
 
     #venue::before {
       content: '';
@@ -1938,12 +1422,7 @@
       line-height: 1.9;
     }
 
-    .dirList {
-      list-style: none;
-      margin-bottom: 44px;
-      border-top: 1px solid rgba(255, 255, 255, .042);
-    }
-
+    .dirList { list-style: none; margin-bottom: 44px; border-top: 1px solid rgba(255, 255, 255, .042); }
     .dirList li {
       display: flex;
       gap: 18px;
@@ -1966,10 +1445,7 @@
       line-height: 1.1;
     }
 
-    .dirList em {
-      color: var(--gb);
-      font-style: normal;
-    }
+    .dirList em { color: var(--gb); font-style: normal; }
 
     .mapBtn {
       display: inline-flex;
@@ -2006,14 +1482,8 @@
     }
 
     .mapBtnT,
-    .mapBtnA {
-      position: relative;
-      z-index: 1;
-    }
-
-    .mapBtnT {
-      padding-left: .4em;
-    }
+    .mapBtnA { position: relative; z-index: 1; }
+    .mapBtnT { padding-left: .4em; }
 
     .vCard {
       border: 1px solid var(--bdr2);
@@ -2055,19 +1525,8 @@
       display: block;
     }
 
-    .vcQuote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--mu2);
-      line-height: 2;
-    }
-
-    .vcQuote strong {
-      color: var(--gb);
-      font-weight: 400;
-      font-style: normal;
-    }
+    .vcQuote { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--mu2); line-height: 2; }
+    .vcQuote strong { color: var(--gb); font-weight: 400; font-style: normal; }
 
     /* RSVP Buttons + Layout CSS */
     .rsvpBtn {
@@ -2104,10 +1563,7 @@
       border: none;
     }
 
-    .rsvpBtn span {
-      position: relative;
-      z-index: 1;
-    }
+    .rsvpBtn span { position: relative; z-index: 1; }
 
     .rsvpBtn::before {
       content: '';
@@ -2119,37 +1575,20 @@
       transition: background-position .8s ease;
     }
 
-    .rsvpContact {
-      font-size: clamp(.82rem, 2vw, .95rem);
-      color: var(--mu);
-      font-weight: 300;
-      line-height: 2.2;
-    }
+    .rsvpContact { font-size: clamp(.82rem, 2vw, .95rem); color: var(--mu); font-weight: 300; line-height: 2.2; }
+    .rsvpContact strong { color: var(--gb); font-weight: 400; }
 
-    .rsvpContact strong {
-      color: var(--gb);
-      font-weight: 400;
-    }
-
-    .actBtn {
-      padding: 16px 24px;
-      margin-bottom: 0;
-      width: calc(50% - 8px);
-      min-width: 160px;
-    }
+    .actBtn { padding: 16px 24px; margin-bottom: 0; width: calc(50% - 8px); min-width: 160px; }
 
     .noBtn {
       background: linear-gradient(120deg, #1A1423 0%, #2D1A25 50%, #1A1423 100%);
       color: rgba(255, 255, 255, 0.6);
       box-shadow: 0 16px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
+    .noBtn::before { background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, .08) 50%, transparent 80%); }
 
-    .noBtn::before {
-      background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, .08) 50%, transparent 80%);
-    }
-
-    /* MEAL SELECTOR CSS */
-    .mealSelector {
+    /* PREFERENCE SELECTOR CSS */
+    .prefSelector {
       width: 100%;
       padding: 14px;
       background: rgba(20, 14, 36, 0.8);
@@ -2164,9 +1603,7 @@
       transition: border-color 0.3s;
     }
 
-    .mealSelector:focus {
-      border-color: var(--g);
-    }
+    .prefSelector:focus { border-color: var(--g); }
 
     /* FOOTER */
     footer {
@@ -2209,15 +1646,8 @@
       isolation: isolate;
     }
 
-    .footHeart {
-      animation: hBeat 1.3s ease-in-out infinite;
-      display: block;
-    }
-
-    .footHeart svg {
-      filter: drop-shadow(0 0 14px rgba(184, 121, 106, .7));
-    }
-
+    .footHeart { animation: hBeat 1.3s ease-in-out infinite; display: block; }
+    .footHeart svg { filter: drop-shadow(0 0 14px rgba(184, 121, 106, .7)); }
     .footNames {
       font-family: 'Cinzel', serif;
       font-size: .5rem;
@@ -2227,33 +1657,11 @@
       font-weight: 300;
       padding-left: .45em;
     }
-
-    .footTagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: .9rem;
-      font-style: italic;
-      color: rgba(160, 148, 178, .48);
-      margin-top: 2px;
-    }
+    .footTagline { font-family: 'Cormorant Garamond', serif; font-size: .9rem; font-style: italic; color: rgba(160, 148, 178, .48); margin-top: 2px; }
 
     /* ADMIN */
-    #adminPage {
-      display: none;
-      min-height: 100vh;
-      padding: 5rem 1.5rem;
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    .admTitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.3rem;
-      font-weight: 300;
-      color: var(--gb);
-      margin-bottom: 32px;
-      text-align: center;
-    }
-
+    #adminPage { display: none; min-height: 100vh; padding: 5rem 1.5rem; max-width: 560px; margin: 0 auto; }
+    .admTitle { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; font-weight: 300; color: var(--gb); margin-bottom: 32px; text-align: center; }
     .admInput {
       display: block;
       width: 100%;
@@ -2268,12 +1676,7 @@
       transition: border-color .3s, box-shadow .3s;
       border-radius: 10px;
     }
-
-    .admInput:focus {
-      border-color: var(--g);
-      box-shadow: 0 0 0 3px rgba(200, 164, 92, .08);
-    }
-
+    .admInput:focus { border-color: var(--g); box-shadow: 0 0 0 3px rgba(200, 164, 92, .08); }
     .admBtn {
       display: block;
       width: 100%;
@@ -2292,11 +1695,7 @@
       touch-action: manipulation;
       min-height: 44px;
     }
-
-    .admBtn:hover {
-      background: #fff;
-    }
-
+    .admBtn:hover { background: #fff; }
     #admResult {
       display: none;
       margin-top: 20px;
@@ -2311,387 +1710,112 @@
 
     /* TOUCH */
     @media(hover:none) {
-      .rsvpBtn:active {
-        transform: scale(.97);
-        opacity: .9;
-      }
-
-      .mapBtn:active {
-        color: var(--ink);
-      }
-
-      .mapBtn:active::before {
-        transform: scaleX(1);
-      }
-
-      .eBtn:active .eMono {
-        filter: drop-shadow(0 0 28px rgba(237, 208, 122, .6));
-      }
-
-      #audioBtn:active {
-        transform: scale(1.08);
-        border-color: var(--g);
-      }
+      .rsvpBtn:active { transform: scale(.97); opacity: .9; }
+      .mapBtn:active { color: var(--ink); }
+      .mapBtn:active::before { transform: scaleX(1); }
+      .eBtn:active .eMono { filter: drop-shadow(0 0 28px rgba(237, 208, 122, .6)); }
+      #audioBtn:active { transform: scale(1.08); border-color: var(--g); }
     }
 
     /* HOVER DESKTOP */
     @media(hover:hover) and (pointer:fine) {
-      .eBtn:hover .eMono {
-        filter: drop-shadow(0 0 28px rgba(237, 208, 122, .6));
-      }
-
-      #audioBtn:hover {
-        transform: scale(1.1);
-        border-color: var(--g);
-        box-shadow: 0 0 20px rgba(200, 164, 92, .15);
-      }
-
-      .pCard:hover {
-        transform: translateY(-10px);
-        border-color: rgba(200, 164, 92, .28);
-        box-shadow: 0 50px 100px rgba(0, 0, 0, .55);
-      }
-
-      .pCard:hover::before {
-        opacity: 1;
-      }
-
-      .pCard:hover::after {
-        background-position: -40% 0;
-      }
-
-      .pCard:hover .piDot::before {
-        opacity: 1;
-      }
-
-      .mapBtn:hover {
-        color: var(--ink);
-      }
-
-      .mapBtn:hover::before {
-        transform: scaleX(1);
-      }
-
-      .rsvpBtn:hover {
-        transform: translateY(-6px);
-        background-position: 0 0;
-      }
-
-      .rsvpBtn:hover::before {
-        background-position: -40% 0;
-      }
+      .eBtn:hover .eMono { filter: drop-shadow(0 0 28px rgba(237, 208, 122, .6)); }
+      #audioBtn:hover { transform: scale(1.1); border-color: var(--g); box-shadow: 0 0 20px rgba(200, 164, 92, .15); }
+      .pCard:hover { transform: translateY(-10px); border-color: rgba(200, 164, 92, .28); box-shadow: 0 50px 100px rgba(0, 0, 0, .55); }
+      .pCard:hover::before { opacity: 1; }
+      .pCard:hover::after { background-position: -40% 0; }
+      .pCard:hover .piDot::before { opacity: 1; }
+      .mapBtn:hover { color: var(--ink); }
+      .mapBtn:hover::before { transform: scaleX(1); }
+      .rsvpBtn:hover { transform: translateY(-6px); background-position: 0 0; }
+      .rsvpBtn:hover::before { background-position: -40% 0; }
     }
 
     /* ══ TABLET ≤880px ══ */
     @media(max-width:880px) {
-      .progLayout {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-
-      .venueLayout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .venueLayout .vCard.rv {
-        order: -1;
-      }
+      .progLayout { grid-template-columns: 1fr; gap: 28px; }
+      .venueLayout { grid-template-columns: 1fr; gap: 40px; }
+      .venueLayout .vCard.rv { order: -1; }
     }
 
     /* ══ MOBILE ≤620px ══ */
     @media(max-width:620px) {
-      body {
-        cursor: auto;
-      }
-
-      #cur,
-      #curR,
-      #sparkleCanvas {
-        display: none;
-      }
-
-      .corn {
-        display: none;
-      }
-
-      .eTap {
-        top: calc(50% + min(105px, 31vw));
-      }
-
-      .sec {
-        padding: 64px 18px;
-      }
-
-      .secHead {
-        margin-bottom: 40px;
-      }
-
-      .invFrame {
-        padding: 28px 18px;
-      }
-
-      .waxSeal {
-        width: 56px;
-        height: 56px;
-      }
-
-      .venueKicker {
-        letter-spacing: .3em;
-      }
-
-      .dirList li {
-        gap: 14px;
-        padding: 14px 0;
-      }
-
-      .mapBtn {
-        width: 100%;
-        letter-spacing: .3em;
-        font-size: .44rem;
-      }
-
-      #audioBtn {
-        bottom: 16px;
-        left: 16px;
-        width: 44px;
-        height: 44px;
-      }
-
-      footer {
-        padding: 60px 20px 50px;
-      }
-
-      .hNamesWrap {
-        gap: 8px;
-      }
-
-      .hDivider {
-        margin: 14px 0;
-      }
-
-      .secNum {
-        font-size: 24vw;
-        right: 0;
-        bottom: 0;
-      }
-
-      .pCard {
-        border-radius: 18px;
-      }
-
-      .invPQ {
-        padding: 16px;
-      }
-
-      .actBtn {
-        width: 100%;
-      }
-
-      #rsvpButtons {
-        gap: 12px;
-      }
+      body { cursor: auto; }
+      #cur, #curR, #sparkleCanvas { display: none; }
+      .corn { display: none; }
+      .eTap { top: calc(50% + min(105px, 31vw)); }
+      .sec { padding: 64px 18px; }
+      .secHead { margin-bottom: 40px; }
+      .invFrame { padding: 28px 18px; }
+      .waxSeal { width: 56px; height: 56px; }
+      .venueKicker { letter-spacing: .3em; }
+      .dirList li { gap: 14px; padding: 14px 0; }
+      .mapBtn { width: 100%; letter-spacing: .3em; font-size: .44rem; }
+      #audioBtn { bottom: 16px; left: 16px; width: 44px; height: 44px; }
+      footer { padding: 60px 20px 50px; }
+      .hNamesWrap { gap: 8px; }
+      .hDivider { margin: 14px 0; }
+      .secNum { font-size: 24vw; right: 0; bottom: 0; }
+      .pCard { border-radius: 18px; }
+      .invPQ { padding: 16px; }
+      .actBtn { width: 100%; }
+      #rsvpButtons { gap: 12px; }
     }
 
     /* ══ SMALL PHONES ≤420px ══ */
     @media(max-width:420px) {
-      #hero {
-        padding: 44px 14px 100px;
-        min-height: 580px;
-      }
-
-      .hEye {
-        letter-spacing: .4em;
-        padding-left: .4em;
-        margin-bottom: 18px;
-      }
-
-      .hGuestName {
-        font-size: clamp(1.5rem, 5vw, 2.5rem);
-        margin-bottom: 10px;
-      }
-
-      .hName {
-        font-size: clamp(3.4rem, 17vw, 4.5rem);
-      }
-
-      .hAmp {
-        font-size: clamp(1.6rem, 6vw, 2.2rem);
-      }
-
-      .hTagline {
-        letter-spacing: .05em;
-        font-size: .82rem;
-      }
-
-      .hDateStr {
-        letter-spacing: .22em;
-        padding-left: .22em;
-        font-size: .48rem;
-        margin-bottom: 24px;
-      }
-
-      .cdUnit {
-        padding: 12px clamp(8px, 2.5vw, 14px);
-        min-width: clamp(54px, 22vw, 80px);
-      }
-
-      .cdNum {
-        font-size: clamp(1.5rem, 7vw, 2rem);
-      }
-
-      .cdSlot {
-        height: clamp(36px, 8.5vw, 48px);
-      }
-
-      .cdLbl {
-        font-size: .27rem;
-        letter-spacing: .26em;
-        margin-top: 6px;
-        padding-left: .26em;
-      }
-
-      .hQuote {
-        padding: 0 14px;
-        font-size: .78rem;
-        margin-top: 20px;
-      }
-
-      .sec {
-        padding: 52px 14px;
-      }
-
-      .secTitle {
-        font-size: clamp(2rem, 8vw, 2.8rem);
-      }
-
-      .secEye {
-        letter-spacing: .35em;
-        padding-left: .35em;
-      }
-
-      .invDear {
-        font-size: clamp(2.4rem, 10vw, 3.4rem);
-      }
-
-      .invBody {
-        font-size: .88rem;
-        line-height: 2;
-      }
-
-      .invPQ {
-        padding: 14px 12px;
-      }
-
-      .invPQ p {
-        font-size: .9rem;
-      }
-
-      .dayBadge {
-        padding: 8px 12px;
-      }
-
-      .dayBadge span {
-        font-size: .36rem;
-        letter-spacing: .2em;
-      }
-
-      .piTime {
-        font-size: .88rem;
-      }
-
-      .piName {
-        font-size: .84rem;
-      }
-
-      .piDesc {
-        font-size: .78rem;
-      }
-
-      .venueName {
-        font-size: clamp(1.6rem, 7vw, 2.2rem);
-      }
-
-      .venueAddr {
-        font-size: .78rem;
-      }
-
-      .dirList li {
-        font-size: .8rem;
-      }
-
-      .vCard {
-        padding: 28px 16px;
-      }
-
-      .vcQuote {
-        font-size: .88rem;
-      }
-
-      .rsvpDeadline {
-        font-size: .92rem;
-        margin-bottom: 28px;
-      }
-
-      .rsvpContact {
-        font-size: .78rem;
-      }
-
-      .footScript {
-        font-size: clamp(2.6rem, 10vw, 4rem);
-      }
-
-      .footNames {
-        letter-spacing: .3em;
-        font-size: .45rem;
-      }
-
-      .footTagline {
-        font-size: .8rem;
-      }
-
-      #audioBtn {
-        bottom: 14px;
-        left: 14px;
-      }
-
-      .waxSeal {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 22px;
-      }
-
-      .hbDiv {
-        height: 44px;
-      }
+      #hero { padding: 44px 14px 100px; min-height: 580px; }
+      .hEye { letter-spacing: .4em; padding-left: .4em; margin-bottom: 18px; }
+      .hGuestName { font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: 10px; }
+      .hName { font-size: clamp(3.4rem, 17vw, 4.5rem); }
+      .hAmp { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      .hTagline { letter-spacing: .05em; font-size: .82rem; }
+      .hDateStr { letter-spacing: .22em; padding-left: .22em; font-size: .48rem; margin-bottom: 24px; }
+      .cdUnit { padding: 12px clamp(8px, 2.5vw, 14px); min-width: clamp(54px, 22vw, 80px); }
+      .cdNum { font-size: clamp(1.5rem, 7vw, 2rem); }
+      .cdSlot { height: clamp(36px, 8.5vw, 48px); }
+      .cdLbl { font-size: .27rem; letter-spacing: .26em; margin-top: 6px; padding-left: .26em; }
+      .hQuote { padding: 0 14px; font-size: .78rem; margin-top: 20px; }
+      .sec { padding: 52px 14px; }
+      .secTitle { font-size: clamp(2rem, 8vw, 2.8rem); }
+      .secEye { letter-spacing: .35em; padding-left: .35em; }
+      .invDear { font-size: clamp(2.4rem, 10vw, 3.4rem); }
+      .invBody { font-size: .88rem; line-height: 2; }
+      .invPQ { padding: 14px 12px; }
+      .invPQ p { font-size: .9rem; }
+      .dayBadge { padding: 8px 12px; }
+      .dayBadge span { font-size: .36rem; letter-spacing: .2em; }
+      .piTime { font-size: .88rem; }
+      .piName { font-size: .84rem; }
+      .piDesc { font-size: .78rem; }
+      .venueName { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+      .venueAddr { font-size: .78rem; }
+      .dirList li { font-size: .8rem; }
+      .vCard { padding: 28px 16px; }
+      .vcQuote { font-size: .88rem; }
+      .rsvpDeadline { font-size: .92rem; margin-bottom: 28px; }
+      .rsvpContact { font-size: .78rem; }
+      .footScript { font-size: clamp(2.6rem, 10vw, 4rem); }
+      .footNames { letter-spacing: .3em; font-size: .45rem; }
+      .footTagline { font-size: .8rem; }
+      #audioBtn { bottom: 14px; left: 14px; }
+      .waxSeal { width: 50px; height: 50px; margin-bottom: 22px; }
+      .hbDiv { height: 44px; }
     }
 
     /* ══ LANDSCAPE MOBILE ══ */
     @media(max-height:500px) and (orientation:landscape) {
-      #hero {
-        height: auto;
-        min-height: 100dvh;
-        padding: 80px 20px 100px;
-      }
-
-      .hName {
-        font-size: clamp(2.5rem, 7vw, 5rem);
-      }
-
-      .hQuote {
-        display: none;
-      }
-
-      .scrollCue {
-        display: none;
-      }
+      #hero { height: auto; min-height: 100dvh; padding: 80px 20px 100px; }
+      .hName { font-size: clamp(2.5rem, 7vw, 5rem); }
+      .hQuote { display: none; }
+      .scrollCue { display: none; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- MAIN BACKGROUND VIDEO FOR ENTIRE SITE -->
+  <!-- MAIN BACKGROUND VIDEO FOR ENTIRE SITE (Autoplay) -->
   <video id="mainBgVideo" autoplay loop muted playsinline>
     <source src="bg_video.mp4" type="video/mp4">
   </video>
@@ -2716,16 +1840,11 @@
   <div id="entrance" role="dialog" aria-modal="true" aria-label="Welcome screen">
 
     <!-- BACKGROUND VIDEO FOR ENTRANCE ONLY -->
-    <video id="introVideo" autoplay loop muted playsinline>
+    <video id="introVideo" autoplay loop muted playsinline preload="auto">
       <source src="preshoot.mp4" type="video/mp4">
     </video>
     <div class="vidOverlay"></div>
 
-    <div class="eOrb eOrb1"></div>
-    <div class="eOrb eOrb2"></div>
-    <div class="eOrb eOrb3"></div>
-    <div class="eOrb eOrb4"></div>
-    <div class="eCandleGlow"></div>
     <svg class="eMandala" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="190" cy="190" r="84" stroke="rgba(200,164,92,.05)" stroke-width="42" />
       <g class="eRing eRing1">
@@ -2849,11 +1968,70 @@
       </div>
     </section>
 
+    <div class="hbDiv" id="hbd_story" aria-hidden="true">
+      <svg viewBox="0 0 900 64" preserveAspectRatio="xMidYMid meet">
+        <path class="hbBase" d="M0,32 H900" />
+        <path class="hbPulse" id="hbp_story"
+          d="M0,32 H305 L323,32 L337,6 L351,58 L365,6 L379,58 L393,32 H507 L521,32 L535,14 L549,50 L563,32 H900" />
+        <path class="hbHrt"
+          d="M432,23 C432,18 436,15 441,15 C446,15 450,18 450,23 C450,18 454,15 459,15 C464,15 468,18 468,23 C468,29 450,43 450,43 C450,43 432,29 432,23Z" />
+      </svg>
+    </div>
+
+    <!-- OUR STORY SCROLL TIME TRAVEL SECTION -->
+    <section id="story" class="sec" aria-label="Our Story">
+      <div class="secHead">
+        <span class="secEye rv">15 Years of Love<span class="sin-text">අවුරුදු 15ක ආදරය</span></span>
+        <h2 class="secTitle rv d1">Our <em>Story</em><span class="sin-text">අපේ <em>ආදර කතාව</em></span></h2>
+        <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
+      </div>
+      
+      <!-- Stretches to allow scrolling, while content remains sticky -->
+      <div id="storyScrollArea" style="min-height: 180vh; position: relative;">
+        <div class="story-sticky-container">
+          
+          <div class="time-card">
+            
+            <!-- LAYER PAST -->
+            <div class="layer-past" id="layerPast">
+              <div class="story-img-wrapper">
+                <img id="pastImg" src="15yearsago.jpg" alt="15 Years Ago">
+              </div>
+              <div class="story-text-content">
+                <h3 class="story-kicker">How It Started...</h3>
+                <p>A simple hello fifteen years ago turned into a lifetime of beautiful memories. We were just two kids with a dream, not knowing this would be our greatest adventure.</p>
+                <p class="sin-text">මීට වසර 15කට පෙර ආරම්භ වූ අපේ කතාව, ජීවිත කාලයකම සුන්දර මතකයක් වේවි කියා එදා අප සිතුවේ නැත. කාලය කෙතරම් වේගයෙන් ගෙවී ගියත්, එදා ඉපදුණු ඒ ආදරය අදටත් එලෙසමයි...</p>
+              </div>
+            </div>
+
+            <!-- LAYER PRESENT -->
+            <div class="layer-present" id="layerPresent">
+              <div class="story-img-wrapper">
+                <img id="presImg" src="now.jpg" alt="Now">
+              </div>
+              <div class="story-text-content">
+                <h3 class="story-kicker">How It's Going...</h3>
+                <p>Through every season of life, our bond only grew stronger. Today, hand in hand, we step into our forever.</p>
+                <p class="sin-text">ජීවිතයේ පැමිණි සෑම හැලහැප්පීමකදීම අපේ බැඳීම තවත් ශක්තිමත් විය. දහසක් බලාපොරොත්තු මැද, අද අප අපගේ සදාකාලික ගමනට අත්වැල් බැඳගනිමු.</p>
+              </div>
+            </div>
+            
+            <!-- Progress Line Indicator inside the card -->
+            <div class="time-progress-bar">
+              <div class="time-progress-fill" id="timeProgressFill"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <span class="secNum" aria-hidden="true">I</span>
+    </section>
+
     <div class="hbDiv" id="hbd1" aria-hidden="true">
       <svg viewBox="0 0 900 64" preserveAspectRatio="xMidYMid meet">
         <path class="hbBase" d="M0,32 H900" />
         <path class="hbPulse" id="hbp1"
-          d="M0,32 H305 L323,32 L337,6 L351,58 L365,6 L379,58 L393,32 H507 L521,32 L535,14 L549,50 L563,32 H900" />
+          d="M0,32 H185 L200,32 L214,8 L228,56 L242,8 L256,56 L270,32 H630 L644,32 L658,12 L672,52 L686,32 H900" />
         <path class="hbHrt"
           d="M432,23 C432,18 436,15 441,15 C446,15 450,18 450,23 C450,18 454,15 459,15 C464,15 468,18 468,23 C468,29 450,43 450,43 C450,43 432,29 432,23Z" />
       </svg>
@@ -2891,7 +2069,7 @@
           </div>
         </div>
       </div>
-      <span class="secNum" aria-hidden="true">I</span>
+      <span class="secNum" aria-hidden="true">II</span>
     </section>
 
     <div class="hbDiv" id="hbd2" aria-hidden="true">
@@ -2972,7 +2150,7 @@
           </div>
         </div>
       </div>
-      <span class="secNum" aria-hidden="true">II</span>
+      <span class="secNum" aria-hidden="true">III</span>
     </section>
 
     <div class="hbDiv" id="hbd3" aria-hidden="true">
@@ -2984,45 +2162,86 @@
       </svg>
     </div>
 
+    <!-- VENUE SECTION UPDATED WITH TWO LOCATIONS -->
     <section id="venue" class="sec" aria-label="Venue information">
       <div class="secHead">
         <span class="secEye rv">Find Us<span class="sin-text">අපව සොයාගන්න</span></span>
-        <h2 class="secTitle rv d1">The <em>Venue</em><span class="sin-text">උත්සව <em>භූමිය</em></span></h2>
+        <h2 class="secTitle rv d1">The <em>Venues</em><span class="sin-text">උත්සව <em>ස්ථානයන්</em></span></h2>
         <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
       </div>
-      <div class="venueLayout">
-        <div class="rv d2">
-          <span class="venueKicker">Five-Star Landmark<span class="sin-text">තරු පහේ සුවිශේෂී ස්ථානයක්</span></span>
-          <h3 class="venueName">Hilton Colombo</h3>
-          <p class="venueAddr">2 Sir Chittampalam A Gardiner Mawatha · Colombo 00200<span class="sin-text">2 ශ්‍රීමත්
-              චිත්තම්පලම් ඒ. ගාඩිනර් මාවත · කොළඹ 00200</span></p>
-          <ul class="dirList">
-            <li><span class="dirN" aria-hidden="true">1</span><span>Located at <em>2 Sir Chittampalam A Gardiner
-                  Mawatha</em>, in the heart of the city.<span class="sin-text">කොළඹ හදවතේ පිහිටි <em>ශ්‍රීමත්
-                    චිත්තම්පලම් ඒ. ගාඩිනර් මාවතේ</em> පිහිටා ඇත.</span></span></li>
-            <li><span class="dirN" aria-hidden="true">2</span><span>Easily accessible from <em>Fort</em> and Galle Face
-                Green.<span class="sin-text"><em>කොටුව</em> සහ ගාලු මුවදොර සිට පහසුවෙන් ළඟා විය හැක.</span></span></li>
-            <li><span class="dirN" aria-hidden="true">3</span><span>Parking available at the <em>main portico
-                  entrance</em> or hotel car park.<span class="sin-text"><em>ප්‍රධාන පිවිසුම</em> අසල හෝ හෝටල් රථගාලේ
-                  වාහන නැවැත්වීමේ පහසුකම් ඇත.</span></span></li>
-            <li><span class="dirN" aria-hidden="true">4</span><span>Lobby signage will guide you directly to our
-                celebration.<span class="sin-text">උත්සව ශාලාව වෙත යාමට නාමපුවරු මඟින් මඟ පෙන්වනු ඇත.</span></span></li>
-          </ul>
-          <a href="https://maps.app.goo.gl/L8TczoQVNF9fgZgG8" target="_blank" rel="noopener" class="mapBtn"
-            aria-label="Open Hilton Colombo in Google Maps">
-            <span class="mapBtnT">Open in Google Maps<span class="sin-text">Google Maps හි විවෘත
-                කරන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
-          </a>
-        </div>
-        <div class="vCard rv d3">
-          <span class="vcMono" aria-hidden="true">H</span>
-          <p class="vcQuote">"Nestled in the heart of Colombo, our celebration awaits you at one of the city's most
-            <strong>distinguished addresses</strong> — where love stories are made."<span class="sin-text">"කොළඹ හදවතේ
-              පිහිටි, ආදර කතා ලියවෙන නගරයේ <strong>සුවිශේෂීම ස්ථානයක</strong> අපගේ සැමරුම ඔබ වෙනුවෙන් බලා සිටී."</span>
-          </p>
+
+      <!-- Morning Venue: Nelligala -->
+      <div id="morningVenue" style="margin-bottom: 70px;">
+        <div class="venueLayout">
+          <div class="rv">
+            <span class="venueKicker">Morning Ceremony<span class="sin-text">උදෑසන චාරිත්‍ර</span></span>
+            <h3 class="venueName">Nelligala Temple</h3>
+            <p class="venueAddr">Nelligala International Buddhist Center · Muruthalawa<span class="sin-text">නෙල්ලිගල ජාත්‍යන්තර බෞද්ධ මධ්‍යස්ථානය · මුරුතලාව</span></p>
+            <ul class="dirList">
+              <li><span class="dirN" aria-hidden="true">1</span><span>Located beautifully atop the <em>Nelligala mountain</em>.<span class="sin-text">සුන්දර දසුන් පිරි <em>නෙල්ලිගල කඳු මුදුනේ</em> පිහිටා ඇත.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">2</span><span>A serene environment for our sacred beginning.<span class="sin-text">අපගේ ශුද්ධ වූ ආරම්භයට ආශිර්වාද ගෙනෙන ශාන්ත පරිසරය.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">3</span><span>Ample parking is available at the premises.<span class="sin-text">පන්සල් භූමියේ ප්‍රමාණවත් <em>වාහන නැවැත්වීමේ පහසුකම්</em> ඇත.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">4</span><span>Please wear modest <em>white attire</em>.<span class="sin-text">කරුණාකර පන්සලකට ඔබින <em>සුදු පැහැති චාම් ඇඳුමින්</em> සැරසී පැමිණෙන්න.</span></span></li>
+            </ul>
+            <a href="https://www.google.com/maps/search/Nelligala+International+Buddhist+Center/" target="_blank" rel="noopener" class="mapBtn"
+              aria-label="Open Nelligala Temple in Google Maps">
+              <span class="mapBtnT">Open in Google Maps<span class="sin-text">Google Maps හි විවෘත කරන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="vCard rv d1">
+            <span class="vcMono" aria-hidden="true">N</span>
+            <p class="vcQuote">"A sacred beginning blessed by the heavens, surrounded by the <strong>breathtaking beauty</strong> of Nelligala."<span class="sin-text">"නෙල්ලිගල කඳු මුදුනේ අසිරියෙන් සහ ස්වර්ගීය ආශිර්වාදයෙන් පිරි <strong>ශුද්ධ වූ ආරම්භය.</strong>"</span>
+            </p>
+          </div>
         </div>
       </div>
-      <span class="secNum" aria-hidden="true">III</span>
+
+      <!-- Venue Separator -->
+      <div id="venueSeparator" class="invSep rv" style="margin-bottom: 70px;" aria-hidden="true">
+        <svg viewBox="0 0 340 42" width="300" height="42" fill="none">
+          <path d="M0 21 Q42 8 85 21 Q127 34 170 21 Q212 8 255 21 Q297 34 340 21" stroke="rgba(200,164,92,.55)"
+            stroke-width=".8" />
+          <circle cx="170" cy="21" r="5" stroke="rgba(200,164,92,.55)" stroke-width=".8" />
+          <circle cx="85" cy="21" r="2.5" fill="rgba(200,164,92,.4)" />
+          <circle cx="255" cy="21" r="2.5" fill="rgba(200,164,92,.4)" />
+        </svg>
+      </div>
+
+      <!-- Evening Venue: Hilton Colombo -->
+      <div id="eveningVenue">
+        <div class="venueLayout">
+          <div class="rv">
+            <span class="venueKicker">Evening Reception<span class="sin-text">රාත්‍රී භෝජන සංග්‍රහය</span></span>
+            <h3 class="venueName">Hilton Colombo</h3>
+            <p class="venueAddr">2 Sir Chittampalam A Gardiner Mawatha · Colombo 00200<span class="sin-text">2 ශ්‍රීමත්
+                චිත්තම්පලම් ඒ. ගාඩිනර් මාවත · කොළඹ 00200</span></p>
+            <ul class="dirList">
+              <li><span class="dirN" aria-hidden="true">1</span><span>Located at <em>2 Sir Chittampalam A Gardiner
+                    Mawatha</em>, in the heart of the city.<span class="sin-text">කොළඹ හදවතේ පිහිටි <em>ශ්‍රීමත්
+                      චිත්තම්පලම් ඒ. ගාඩිනර් මාවතේ</em> පිහිටා ඇත.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">2</span><span>Easily accessible from <em>Fort</em> and Galle Face
+                  Green.<span class="sin-text"><em>කොටුව</em> සහ ගාලු මුවදොර සිට පහසුවෙන් ළඟා විය හැක.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">3</span><span>Parking available at the <em>main portico
+                    entrance</em> or hotel car park.<span class="sin-text"><em>ප්‍රධාන පිවිසුම</em> අසල හෝ හෝටල් රථගාලේ
+                    වාහන නැවැත්වීමේ පහසුකම් ඇත.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">4</span><span>Lobby signage will guide you directly to our
+                  celebration.<span class="sin-text">උත්සව ශාලාව වෙත යාමට නාමපුවරු මඟින් මඟ පෙන්වනු ඇත.</span></span></li>
+            </ul>
+            <a href="https://maps.app.goo.gl/L8TczoQVNF9fgZgG8" target="_blank" rel="noopener" class="mapBtn"
+              aria-label="Open Hilton Colombo in Google Maps">
+              <span class="mapBtnT">Open in Google Maps<span class="sin-text">Google Maps හි විවෘත කරන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="vCard rv d1">
+            <span class="vcMono" aria-hidden="true">H</span>
+            <p class="vcQuote">"Nestled in the heart of Colombo, our celebration awaits you at one of the city's most
+              <strong>distinguished addresses</strong> — where love stories are made."<span class="sin-text">"කොළඹ හදවතේ
+                පිහිටි, ආදර කතා ලියවෙන නගරයේ <strong>සුවිශේෂීම ස්ථානයක</strong> අපගේ සැමරුම ඔබ වෙනුවෙන් බලා සිටී."</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <span class="secNum" aria-hidden="true">IV</span>
     </section>
 
     <div class="hbDiv" id="hbd4" aria-hidden="true">
@@ -3039,8 +2258,7 @@
       <div class="rsvpInner">
         <div class="secHead">
           <span class="secEye rv">Your Presence<span class="sin-text">ඔබගේ පැමිණීම</span></span>
-          <h2 class="secTitle rv d1">Kindly <em>RSVP</em><span class="sin-text">කරුණාකර පැමිණීම <em>තහවුරු
-                කරන්න</em></span></h2>
+          <h2 class="secTitle rv d1">Kindly <em>RSVP</em><span class="sin-text">කරුණාකර පැමිණීම <em>තහවුරු කරන්න</em></span></h2>
           <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
         </div>
         <span class="rsvpDeadline rv d3">Please confirm by <strong>15 Nov 2026</strong><span class="sin-text">කරුණාකර
@@ -3048,26 +2266,24 @@
 
         <div id="rsvpContainer" class="rv d4" style="width: 100%; max-width: 480px; margin: 0 auto 44px;">
 
-          <!-- New Meal Selection -->
-          <div id="mealSelection"
+          <!-- Alcohol Selection -->
+          <div id="alcoholSelection"
             style="margin-bottom: 24px; text-align: left; max-width: 340px; margin-left: auto; margin-right: auto;">
-            <label for="mealPref"
+            <label for="alcoholPref"
               style="font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gb); margin-bottom: 8px; display: block; text-align: center;">
-              Meal Preference
+              Which type of alcohol would you prefer?
               <span class="sin-text"
-                style="font-size: 0.9rem; margin-top: 4px; display: block; letter-spacing: normal;">ආහාර මනාපය</span>
+                style="font-size: 0.9rem; margin-top: 4px; display: block; letter-spacing: normal;">ඔබ කැමති කුමන වර්ගයේ මත්පැන් සඳහාද?</span>
             </label>
-            <select id="mealPref" class="mealSelector">
-              <option value="Non-Vegetarian">Non-Vegetarian (සාමාන්‍ය)</option>
-              <option value="Vegetarian">Vegetarian (නිර්මාංශ)</option>
+            <select id="alcoholPref" class="prefSelector">
+              <option value="Hard Liquor">Hard Liquor (සැර මත්පැන්)</option>
+              <option value="Beer">Beer (බියර්)</option>
             </select>
           </div>
 
           <div id="rsvpButtons" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-            <button class="rsvpBtn actBtn" onclick="submitRSVP('Yes')"><span>Yes, I will attend<span
-                  class="sin-text">ඔව්, මම සහභාගී වෙමි</span></span></button>
-            <button class="rsvpBtn actBtn noBtn" onclick="submitRSVP('No')"><span>No, I can't make it<span
-                  class="sin-text">නැත, මට සහභාගී වීමට නොහැක</span></span></button>
+            <button class="rsvpBtn actBtn" onclick="submitRSVP('Yes')"><span>Yes, I will attend<span class="sin-text">ඔව්, මම සහභාගී වෙමි</span></span></button>
+            <button class="rsvpBtn actBtn noBtn" onclick="submitRSVP('No')"><span>No, I can't make it<span class="sin-text">නැත, මට සහභාගී වීමට නොහැක</span></span></button>
           </div>
           <div id="rsvpMessage"
             style="display: none; color: var(--gb); font-size: 1.1rem; margin-top: 10px; font-family: 'Cormorant Garamond', serif; font-style: italic;">
@@ -3077,7 +2293,7 @@
         <p class="rsvpContact rv d5">For inquiries · <strong>+94 77 000 0000</strong><span class="sin-text">විමසීම් සඳහා
             · <strong>+94 77 000 0000</strong></span></p>
       </div>
-      <span class="secNum" aria-hidden="true">IV</span>
+      <span class="secNum" aria-hidden="true">V</span>
     </section>
 
     <footer>
@@ -3101,7 +2317,6 @@
     <h2 class="admTitle">Invitation Link Generator</h2>
     <input type="text" id="guestName" class="admInput" placeholder="Guest Name" autocomplete="off" autocorrect="off"
       spellcheck="false">
-    <!-- Updated with Website URL as default value -->
     <input type="text" id="siteUrl" class="admInput" value="https://levigamage06.github.io/wedding-invite"
       placeholder="Site URL (https://yourwedding.com)" autocomplete="off" autocorrect="off" spellcheck="false"
       inputmode="url">
@@ -3154,6 +2369,16 @@
           morningSection.style.display = 'none';
         }
 
+        // රාත්‍රී පමණක් එන අය සඳහා නෙල්ලිගල පන්සලේ Location එක සහ Separator එක සැඟවීම
+        const morningVenue = document.getElementById('morningVenue');
+        if (morningVenue) {
+          morningVenue.style.display = 'none';
+        }
+        const venueSeparator = document.getElementById('venueSeparator');
+        if (venueSeparator) {
+          venueSeparator.style.display = 'none';
+        }
+
         const progLayout = document.querySelector('.progLayout');
         if (progLayout) {
           progLayout.classList.add('night-only-layout');
@@ -3161,18 +2386,18 @@
       });
     }
 
-    // Google App Script URL - Updated
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwxdWd5YCw50NuHz6A4tVVdhZcd7C47BUyMe5Svb3M1CsPlTRVbku_gqyxTUbFZbEWqpQ/exec";
+    // UPDATE: New Google App Script URL inserted here
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx3duIj3orrg5DWwoOjnXixFQbK1M5PmtIDjkHcMRshIf0Q9UqPt8lPjMYzF4uo1HspwQ/exec";
 
     document.addEventListener("DOMContentLoaded", () => {
       if (GUEST && localStorage.getItem('rsvp_' + GUEST)) {
         const status = localStorage.getItem('rsvp_' + GUEST);
         const btnDiv = document.getElementById('rsvpButtons');
         const msgDiv = document.getElementById('rsvpMessage');
-        const mealDiv = document.getElementById('mealSelection');
+        const alcoholDiv = document.getElementById('alcoholSelection');
 
         if (btnDiv) btnDiv.style.display = 'none';
-        if (mealDiv) mealDiv.style.display = 'none';
+        if (alcoholDiv) alcoholDiv.style.display = 'none';
         if (msgDiv) {
           msgDiv.style.display = 'block';
           msgDiv.innerHTML = `Thank you, ${GUEST}. You have already RSVP'd as "${status}".`;
@@ -3188,13 +2413,13 @@
 
       const btnDiv = document.getElementById('rsvpButtons');
       const msgDiv = document.getElementById('rsvpMessage');
-      const mealDiv = document.getElementById('mealSelection');
+      const alcoholDiv = document.getElementById('alcoholSelection');
 
-      const mealSelect = document.getElementById('mealPref');
-      const mealPref = mealSelect ? mealSelect.value : '';
+      const alcoholSelect = document.getElementById('alcoholPref');
+      const alcoholPref = alcoholSelect ? alcoholSelect.value : '';
 
       if (btnDiv) btnDiv.style.display = 'none';
-      if (mealDiv) mealDiv.style.display = 'none';
+      if (alcoholDiv) alcoholDiv.style.display = 'none';
 
       msgDiv.style.display = 'block';
       msgDiv.innerHTML = "Submitting your response...";
@@ -3203,7 +2428,7 @@
       formData.append('name', GUEST);
       formData.append('status', status);
       formData.append('type', GUEST_TYPE);
-      formData.append('meal', mealPref);
+      formData.append('alcohol', alcoholPref); 
 
       fetch(SCRIPT_URL, {
         method: 'POST',
@@ -3217,7 +2442,7 @@
         .catch(error => {
           msgDiv.innerHTML = "<span style='color: #B8796A;'>Network error. Please try again.</span>";
           if (btnDiv) btnDiv.style.display = 'flex';
-          if (mealDiv) mealDiv.style.display = 'block';
+          if (alcoholDiv) alcoholDiv.style.display = 'block';
         });
     }
 
@@ -3328,7 +2553,6 @@
       if (enterBtn) {
         enterBtn.addEventListener('click', function () {
 
-          // Pause the entrance video when entering
           const introVid = document.getElementById('introVideo');
           if (introVid) introVid.pause();
 
@@ -3374,13 +2598,50 @@
     }
     tick(); setInterval(tick, 1000);
 
-    /* SCROLL REVEAL */
+    /* SCROLL REVEAL & TIME TRAVEL EFFECT */
     const revIO = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revIO.unobserve(e.target); } }); }, { threshold: .06 });
     document.querySelectorAll('.rv').forEach(el => revIO.observe(el));
     const tlIO = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('drawn'); tlIO.unobserve(e.target); } }); }, { threshold: .12 });
     document.querySelectorAll('.timelineWrap').forEach(el => tlIO.observe(el));
     const hbIO = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { const p = e.target.querySelector('.hbPulse'); if (p) p.classList.add('run'); hbIO.unobserve(e.target); } }); }, { threshold: .35 });
     document.querySelectorAll('.hbDiv').forEach(el => hbIO.observe(el));
+
+    /* Time Travel Scroll Logic */
+    document.addEventListener('scroll', () => {
+      const scrollArea = document.getElementById('storyScrollArea');
+      const layerPast = document.getElementById('layerPast');
+      const layerPresent = document.getElementById('layerPresent');
+      const fillBar = document.getElementById('timeProgressFill');
+      
+      if(scrollArea && layerPast && layerPresent) {
+        const rect = scrollArea.getBoundingClientRect();
+        const startFade = window.innerHeight * 0.5;
+        const endFade = - (rect.height - window.innerHeight * 0.5);
+
+        let progress = 0;
+        if (rect.top < startFade) {
+          progress = (startFade - rect.top) / (startFade - endFade);
+        }
+        
+        progress = Math.max(0, Math.min(1, progress));
+        
+        let pastOp = progress < 0.45 ? 1 - (progress / 0.45) : 0;
+        let presOp = progress > 0.55 ? (progress - 0.55) / 0.45 : 0;
+
+        layerPast.style.opacity = pastOp;
+        layerPresent.style.opacity = presOp;
+        
+        const pastImg = document.getElementById('pastImg');
+        const presImg = document.getElementById('presImg');
+        
+        if(pastImg) pastImg.style.transform = `scale(${1 + progress * 0.1})`;
+        if(presImg) presImg.style.transform = `scale(${0.9 + presOp * 0.1})`;
+
+        if(fillBar) {
+          fillBar.style.width = (progress * 100) + '%';
+        }
+      }
+    }, { passive: true });
 
     /* ADMIN */
     function generateLink() {
