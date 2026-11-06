@@ -7,9 +7,11 @@
   <title>Rajitha & Nelum | 04 Dec 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="intro-poster.jpg" fetchpriority="high">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&family=Great+Vibes&family=Cinzel:wght@300;400&family=Noto+Serif+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&family=Great+Vibes&family=Cinzel:wght@300;400&family=Noto+Serif+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&family=Great+Vibes&family=Cinzel:wght@300;400&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Sinhala:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --ink: #03020A;
@@ -2720,15 +2722,15 @@
 <body>
 
   <!-- MAIN BACKGROUND VIDEO FOR ENTIRE SITE (Autoplay) -->
-  <video id="mainBgVideo" loop muted playsinline preload="none">
-    <source data-src="bg-optimized.mp4" type="video/mp4">
+  <video id="mainBgVideo" autoplay loop muted playsinline>
+    <source src="bg_video.mp4" type="video/mp4">
   </video>
 
   <div id="cur"></div>
   <div id="curR"></div>
   <canvas id="sparkleCanvas"></canvas>
   <div id="prog"></div>
-  <audio id="bgMusic" loop preload="none">
+  <audio id="bgMusic" loop preload="auto">
     <source src="meraya.mp3" type="audio/mpeg">
   </audio>
   <div id="audioBtn" role="button" aria-label="Toggle music" tabindex="0">
@@ -2744,8 +2746,8 @@
   <div id="entrance" role="dialog" aria-modal="true" aria-label="Welcome screen">
 
     <!-- BACKGROUND VIDEO FOR ENTRANCE ONLY -->
-    <video id="introVideo" loop muted playsinline preload="none" poster="intro-poster.jpg">
-      <source data-src="intro-optimized.mp4" type="video/mp4">
+    <video id="introVideo" autoplay loop muted playsinline preload="auto">
+      <source src="preshoot.mp4" type="video/mp4">
     </video>
     <div class="vidOverlay"></div>
 
@@ -2899,7 +2901,7 @@
             <!-- LAYER PAST -->
             <div class="layer-past" id="layerPast">
               <div class="story-img-wrapper">
-                <img id="pastImg" data-src="15yearsago.jpg" decoding="async" alt="15 Years Ago">
+                <img id="pastImg" src="15yearsago.jpg" alt="15 Years Ago">
               </div>
               <div class="story-text-content">
                 <h3 class="story-kicker">How It Started...</h3>
@@ -2913,7 +2915,7 @@
             <!-- LAYER PRESENT -->
             <div class="layer-present" id="layerPresent">
               <div class="story-img-wrapper">
-                <img id="presImg" data-src="now.jpg" decoding="async" alt="Now">
+                <img id="presImg" src="now.jpg" alt="Now">
               </div>
               <div class="story-text-content">
                 <h3 class="story-kicker">How It's Going...</h3>
@@ -3047,8 +3049,8 @@
                 <div class="piL">
                   <div class="piDot" aria-hidden="true"></div>
                 </div>
-                <div class="piR"><span class="piTime">05:30 PM</span>
-                  <div class="piName">Grand Reception<span class="sin-text">රාත්‍රී භෝජන සංග්‍රහය</span></div>
+                <div class="piR"><span class="piTime">04:00 PM</span>
+                  <div class="piName">Grand Reception<span class="sin-text">මහා රාත්‍රී භෝජන සංග්‍රහය</span></div>
                   <div class="piDesc">Join us for an elegant evening of celebration, dinner, and music as we begin our
                     new journey together.<span class="sin-text">රාත්‍රී භෝජන සංග්‍රහය, සංගීතය සහ ආදරණීයයන් සමඟ විනෝදයෙන්
                       පිරුණු සුන්දර සැමරුම.</span></div>
@@ -3079,34 +3081,38 @@
       </div>
 
       <!-- Morning Venue: Nelligala -->
-      <div id="eveningVenue">
+      <div id="morningVenue" style="margin-bottom: 70px;">
         <div class="venueLayout">
           <div class="rv">
-            <span class="venueKicker">Morning Ceromoney<span class="sin-text">උදෑසන චාරිත්‍ර</span></span>
-            <h3 class="venueName">Hotel Elephant Bay</h3>
-            <p class="venueAddr">Pinnalanda Road (Pinnalandawatta), Pinnawala · Rambukkana 71100<span class="sin-text">පින්නලන්ද පාර (පින්නලන්දවත්ත), පින්නවල · රඹුක්කන 71100</span></p>
+            <span class="venueKicker">Morning Ceremony<span class="sin-text">උදෑසන චාරිත්‍ර</span></span>
+            <h3 class="venueName">Nelligala Temple</h3>
+            <p class="venueAddr">Nelligala International Buddhist Center · Muruthalawa<span class="sin-text">නෙල්ලිගල
+                ජාත්‍යන්තර බෞද්ධ මධ්‍යස්ථානය · මුරුතලාව</span></p>
             <ul class="dirList">
-              <li><span class="dirN" aria-hidden="true">1</span><span>With hearts united in love, our beautiful journey begins, creating precious memories to cherish for a lifetime.<span class="sin-text">හදවත් දෙකක ආදරණීය එක්වීම, <em>සදා මතකයේ රැඳෙන සුන්දර මතක සටහන්</em> සමඟින් මෙසේ ආරම්භ වන වගයි.</span></span></li>
-
-<li><span class="dirN" aria-hidden="true">2</span><span>Conveniently located in <em>Pinnalandawatta, Pinnawala</em>, and easily accessible for all our beloved guests.<span class="sin-text"><em>පින්නලන්දවත්ත, පින්නවල</em> ප්‍රදේශයේ පිහිටි මෙම ස්ථානයට අපගේ ආදරණීය අමුත්තන්ට පහසුවෙන් ළඟා විය හැක.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">3</span><span>Parking available at the <em>main portico
-                    entrance</em> or hotel car park.<span class="sin-text"><em>ප්‍රධාන පිවිසුම</em> අසල හෝ හෝටල් රථගාලේ
-                    වාහන නැවැත්වීමේ පහසුකම් ඇත.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">4</span><span>Lobby signage will guide you directly to our
-                  celebration.<span class="sin-text">උත්සව ශාලාව වෙත යාමට නාමපුවරු මඟින් මඟ පෙන්වනු ඇත.</span></span>
-              </li>
+              <li><span class="dirN" aria-hidden="true">1</span><span>Located beautifully atop the <em>Nelligala
+                    mountain</em>.<span class="sin-text">සුන්දර දසුන් පිරි <em>නෙල්ලිගල කඳු මුදුනේ</em> පිහිටා
+                    ඇත.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">2</span><span>A serene environment for our sacred
+                  beginning.<span class="sin-text">අපගේ ශුද්ධ වූ ආරම්භයට ආශිර්වාද ගෙනෙන ශාන්ත පරිසරය.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">3</span><span>Ample parking is available at the premises.<span
+                    class="sin-text">පන්සල් භූමියේ ප්‍රමාණවත් <em>වාහන නැවැත්වීමේ පහසුකම්</em> ඇත.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">4</span><span>Please wear modest <em>white attire</em>.<span
+                    class="sin-text">කරුණාකර පන්සලකට ඔබින <em>සුදු පැහැති චාම් ඇඳුමින්</em> සැරසී
+                    පැමිණෙන්න.</span></span></li>
             </ul>
-            <a href="https://maps.app.goo.gl/W3xkN5f9Espq6s2s8" target="_blank" rel="noopener" class="mapBtn"
-              aria-label="Get Directions to Elephant Bay Hotel via Google Maps">
+            <a href="https://www.google.com/maps/search/Nelligala+International+Buddhist+Center/" target="_blank"
+              rel="noopener" class="mapBtn" aria-label="Open Nelligala Temple in Google Maps">
               <span class="mapBtnT">Open in Google Maps<span class="sin-text">Google Maps හි විවෘත
                   කරන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
             </a>
           </div>
           <div class="vCard rv d1">
-  <span class="vcMono" aria-hidden="true">E</span>
-  
-<p class="vcQuote">"Amidst the enchanting beauty of Pinnawala, at <strong>Elephant Bay Hotel</strong>, two hearts become one, two dreams turn into a lifetime of togetherness, and a beautiful love story begins its forever — a precious moment made even more meaningful by your presence."<span class="sin-text">"පින්නවල සොඳුරු සොබා සෞන්දර්යය මැද පිහිටි <strong>එලිෆන්ට් බේ හෝටලයේදී</strong>, හදවත් දෙකක් එකම ආදරයකින් බැඳී, සිහින දෙකක් එකම ජීවිතයකට එක්වී, අපගේ ආදර කතාව සදාකාලික බැඳීමක් බවට පත්වන මේ සොඳුරු මොහොත, ඔබගේ ආදරණීය පැමිණීමෙන් තවත් අර්ථවත් වනු ඇත."</span></p>
-</div>
+            <span class="vcMono" aria-hidden="true">N</span>
+            <p class="vcQuote">"A sacred beginning blessed by the heavens, surrounded by the <strong>breathtaking
+                beauty</strong> of Nelligala."<span class="sin-text">"නෙල්ලිගල කඳු මුදුනේ අසිරියෙන් සහ ස්වර්ගීය
+                ආශිර්වාදයෙන් පිරි <strong>ශුද්ධ වූ ආරම්භය.</strong>"</span>
+            </p>
+          </div>
         </div>
       </div>
 
@@ -3121,17 +3127,22 @@
         </svg>
       </div>
 
-      <!-- Evening Venue: Hotel Elephant Bay -->
+      <!-- Evening Venue: Hilton Colombo -->
       <div id="eveningVenue">
         <div class="venueLayout">
           <div class="rv">
             <span class="venueKicker">Evening Reception<span class="sin-text">රාත්‍රී භෝජන සංග්‍රහය</span></span>
-            <h3 class="venueName">Hotel Elephant Bay</h3>
-            <p class="venueAddr">Pinnalanda Road (Pinnalandawatta), Pinnawala · Rambukkana 71100<span class="sin-text">පින්නලන්ද පාර (පින්නලන්දවත්ත), පින්නවල · රඹුක්කන 71100</span></p>
+            <h3 class="venueName">Hilton Colombo</h3>
+            <p class="venueAddr">2 Sir Chittampalam A Gardiner Mawatha · Colombo 00200<span class="sin-text">2 ශ්‍රීමත්
+                චිත්තම්පලම් ඒ. ගාඩිනර් මාවත · කොළඹ 00200</span></p>
             <ul class="dirList">
-              <li><span class="dirN" aria-hidden="true">1</span><span>Nestled amidst the picturesque landscapes of <em>Pinnawala, Elephant Bay Hotel</em> adds a touch of elegance and charm to our celebration of love.<span class="sin-text">පින්නවල මනරම් දර්ශනපතයක පිහිටි <em>එලිෆන්ට් බේ හෝටලය</em> අපගේ ආදරණීය සැමරුමට සුන්දරත්වය එක් කරයි.</span></span></li>
-
-<li><span class="dirN" aria-hidden="true">2</span><span>Conveniently located in <em>Pinnalandawatta, Pinnawala</em>, and easily accessible for all our beloved guests.<span class="sin-text"><em>පින්නලන්දවත්ත, පින්නවල</em> ප්‍රදේශයේ පිහිටි මෙම ස්ථානයට අපගේ ආදරණීය අමුත්තන්ට පහසුවෙන් ළඟා විය හැක.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">1</span><span>Located at <em>2 Sir Chittampalam A Gardiner
+                    Mawatha</em>, in the heart of the city.<span class="sin-text">කොළඹ හදවතේ පිහිටි <em>ශ්‍රීමත්
+                      චිත්තම්පලම් ඒ. ගාඩිනර් මාවතේ</em> පිහිටා ඇත.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">2</span><span>Easily accessible from <em>Fort</em> and Galle
+                  Face
+                  Green.<span class="sin-text"><em>කොටුව</em> සහ ගාලු මුවදොර සිට පහසුවෙන් ළඟා විය හැක.</span></span>
+              </li>
               <li><span class="dirN" aria-hidden="true">3</span><span>Parking available at the <em>main portico
                     entrance</em> or hotel car park.<span class="sin-text"><em>ප්‍රධාන පිවිසුම</em> අසල හෝ හෝටල් රථගාලේ
                     වාහන නැවැත්වීමේ පහසුකම් ඇත.</span></span></li>
@@ -3139,16 +3150,18 @@
                   celebration.<span class="sin-text">උත්සව ශාලාව වෙත යාමට නාමපුවරු මඟින් මඟ පෙන්වනු ඇත.</span></span>
               </li>
             </ul>
-            <a href="https://maps.app.goo.gl/W3xkN5f9Espq6s2s8" target="_blank" rel="noopener" class="mapBtn"
-              aria-label="Get Directions to Elephant Bay Hotel via Google Maps">
+            <a href="https://maps.app.goo.gl/L8TczoQVNF9fgZgG8" target="_blank" rel="noopener" class="mapBtn"
+              aria-label="Open Hilton Colombo in Google Maps">
               <span class="mapBtnT">Open in Google Maps<span class="sin-text">Google Maps හි විවෘත
                   කරන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
             </a>
           </div>
           <div class="vCard rv d1">
-  <span class="vcMono" aria-hidden="true">E</span>
-  <p class="vcQuote">"Surrounded by the breathtaking beauty of Pinnawala, our celebration awaits you at <strong>Elephant Bay Hotel</strong> — where nature's serenity meets the magic of everlasting love."<span class="sin-text">"පින්නවල මනරම් සොබා සෞන්දර්යයෙන් වට වූ <strong>එලිෆන්ට් බේ හෝටලයේ</strong>, සොබාදහමේ නිසංසල බවත් සදාකාලික ආදරයේ චමත්කාරයත් එක්වන සුන්දර සැමරුමකට අපි ඔබට ආදරයෙන් ආරාධනා කරමු."</span></p>
-</div>
+            <span class="vcMono" aria-hidden="true">H</span>
+            <p class="vcQuote">"Nestled in the heart of Colombo, our celebration awaits you at one of the city's most
+              <strong>distinguished addresses</strong> — where love stories are made."<span class="sin-text">"කොළඹ හදවතේ
+                පිහිටි, ආදර කතා ලියවෙන නගරයේ <strong>සුවිශේෂීම ස්ථානයක</strong> අපගේ සැමරුම ඔබ වෙනුවෙන් බලා
+                සිටී."</span>
             </p>
           </div>
         </div>
@@ -3174,8 +3187,8 @@
                 කරන්න</em></span></h2>
           <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
         </div>
-        <span class="rsvpDeadline rv d3">Please confirm by <strong>20 Nov 2026</strong><span class="sin-text">කරුණාකර
-            <strong>2026 නොවැම්බර් 20</strong> දිනට පෙර තහවුරු කරන්න</span></span>
+        <span class="rsvpDeadline rv d3">Please confirm by <strong>15 Nov 2026</strong><span class="sin-text">කරුණාකර
+            <strong>2026 නොවැම්බර් 15</strong> දිනට පෙර තහවුරු කරන්න</span></span>
 
         <div id="rsvpContainer" class="rv d4" style="width: 100%; max-width: 480px; margin: 0 auto 44px;">
 
@@ -3207,8 +3220,8 @@
           </div>
         </div>
 
-        <p class="rsvpContact rv d5">For inquiries · <strong>+94 76 341 7896</strong><span class="sin-text">විමසීම් සඳහා
-            · <strong>+94 71 528 2691</strong></span></p>
+        <p class="rsvpContact rv d5">For inquiries · <strong>+94 77 000 0000</strong><span class="sin-text">විමසීම් සඳහා
+            · <strong>+94 77 000 0000</strong></span></p>
       </div>
       <span class="secNum" aria-hidden="true">V</span>
     </section>
@@ -3365,47 +3378,6 @@
     const isMouse = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
     const isMobile = !isMouse || ('ontouchstart' in window);
 
-    // Keep hidden media off the initial network path. The intro starts after
-    // the first paint; background video and story photos wait for the invitation.
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const saveData = !!navigator.connection?.saveData;
-    let invitationOpened = false;
-    function startVideo(video) {
-      if (!video || ADMIN || reducedMotion || saveData) return;
-      const source = video.querySelector('source[data-src]');
-      if (source) {
-        source.src = source.dataset.src;
-        delete source.dataset.src;
-        video.load();
-      }
-      video.play().catch(() => {});
-    }
-    if (!ADMIN) requestAnimationFrame(() => requestAnimationFrame(() => {
-      if (!invitationOpened && !document.hidden) startVideo(document.getElementById('introVideo'));
-    }));
-    function loadStoryPhotos() {
-      const photos = document.querySelectorAll('img[data-src]');
-      if (!('IntersectionObserver' in window)) {
-        photos.forEach(img => { img.src = img.dataset.src; delete img.dataset.src; });
-        return;
-      }
-      const photoObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const img = entry.target;
-          img.src = img.dataset.src;
-          delete img.dataset.src;
-          photoObserver.unobserve(img);
-        });
-      }, { rootMargin: '600px 0px' });
-      photos.forEach(img => photoObserver.observe(img));
-    }
-    document.addEventListener('visibilitychange', () => {
-      const activeVideo = document.getElementById(invitationOpened ? 'mainBgVideo' : 'introVideo');
-      document.querySelectorAll('video').forEach(video => video.pause());
-      if (!document.hidden) startVideo(activeVideo);
-    });
-
     /* CURSOR */
     const curEl = document.getElementById('cur');
     const ringEl = document.getElementById('curR');
@@ -3416,8 +3388,7 @@
     } else {
       document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
       (function curLoop() {
-        if (!curEl || !ringEl || ADMIN) return;
-        if (document.hidden) { requestAnimationFrame(curLoop); return; }
+        if (!curEl || !ringEl) return;
         curEl.style.left = mx + 'px'; curEl.style.top = my + 'px';
         const dx = mx - rx, dy = my - ry; rx += dx * .13; ry += dy * .13;
         const spd = Math.sqrt(dx * dx + dy * dy);
@@ -3436,7 +3407,7 @@
     /* SPARKLE */
     const sc = document.getElementById('sparkleCanvas');
     const sctx = sc ? sc.getContext('2d') : null;
-    if (sctx && isMouse && !ADMIN && !reducedMotion) {
+    if (sctx && isMouse) {
       const resize = () => { sc.width = innerWidth; sc.height = innerHeight; }; resize();
       window.addEventListener('resize', resize, { passive: true });
       const sparks = []; let lsx = 0, lsy = 0;
@@ -3455,7 +3426,7 @@
         const dx = e.clientX - lsx, dy = e.clientY - lsy, dist = Math.sqrt(dx * dx + dy * dy);
         if (dist > 9) { lsx = e.clientX; lsy = e.clientY; const n = Math.min(3, Math.floor(dist / 12) + 1); for (let i = 0; i < n; i++)sparks.push(new Spark(e.clientX + (Math.random() - .5) * 6, e.clientY + (Math.random() - .5) * 6, false)); if (Math.random() < .09) sparks.push(new Spark(e.clientX, e.clientY, true)); if (sparks.length > 220) sparks.splice(0, sparks.length - 220); }
       }, { passive: true });
-      (function sl() { if (document.hidden) { requestAnimationFrame(sl); return; } sctx.clearRect(0, 0, sc.width, sc.height); for (let i = sparks.length - 1; i >= 0; i--) { sparks[i].tick(); sparks[i].draw(); if (sparks[i].life <= 0) sparks.splice(i, 1); } requestAnimationFrame(sl); })();
+      (function sl() { sctx.clearRect(0, 0, sc.width, sc.height); for (let i = sparks.length - 1; i >= 0; i--) { sparks[i].tick(); sparks[i].draw(); if (sparks[i].life <= 0) sparks.splice(i, 1); } requestAnimationFrame(sl); })();
     }
 
     /* SCROLL PROGRESS */
@@ -3471,7 +3442,7 @@
     const pctx = pc.getContext('2d');
     const pcR = () => { pc.width = innerWidth; pc.height = innerHeight; }; pcR();
     window.addEventListener('resize', pcR, { passive: true });
-    const PETAL_COUNT = reducedMotion || ADMIN ? 0 : isMobile ? 28 : 60, FLY_COUNT = reducedMotion || ADMIN ? 0 : isMobile ? 22 : 52;
+    const PETAL_COUNT = isMobile ? 28 : 60, FLY_COUNT = isMobile ? 22 : 52;
     class RosePetal {
       constructor(init) { this.reset(init); }
       reset(init) { this.x = Math.random() * pc.width; this.y = init ? Math.random() * pc.height : -30; this.w = Math.random() * 13 + 5; this.vy = Math.random() * .65 + .18; this.vx = (Math.random() - .5) * .35; this.angle = Math.random() * Math.PI * 2; this.rotS = (Math.random() - .5) * .022; this.sw = Math.random() * 1.8 + .5; this.swS = Math.random() * .008 + .003; this.swP = Math.random() * Math.PI * 2; this.wb = Math.random() * Math.PI * 2; this.wbS = Math.random() * .038 + .018; this.alpha = Math.random() * .3 + .08; const c = Math.random(); this.col = c < .32 ? 'rgba(155,35,55,' : c < .58 ? 'rgba(195,95,105,' : c < .78 ? 'rgba(175,115,95,' : 'rgba(198,160,88,'; }
@@ -3487,30 +3458,19 @@
     const petals = [], flies = [];
     for (let i = 0; i < PETAL_COUNT; i++)petals.push(new RosePetal(true));
     for (let i = 0; i < FLY_COUNT; i++)flies.push(new Firefly(true));
-    function pl() {
-      if (!document.hidden) {
-        pctx.clearRect(0, 0, pc.width, pc.height);
-        flies.forEach(f => { f.tick(); f.draw(); });
-        petals.forEach(p => { p.tick(); p.draw(); });
-      }
-      requestAnimationFrame(pl);
-    }
+    (function pl() { pctx.clearRect(0, 0, pc.width, pc.height); flies.forEach(f => { f.tick(); f.draw(); }); petals.forEach(p => { p.tick(); p.draw(); }); requestAnimationFrame(pl); })();
 
     /* FLOATING HEARTS */
     const MAX_HEARTS = isMobile ? 8 : 16, HEART_INTERVAL = isMobile ? 3800 : 2600;
     function spawnHrt() {
-      const hb = document.getElementById('heartsBg'); if (!hb || document.hidden) return;
+      const hb = document.getElementById('heartsBg'); if (!hb) return;
       while (hb.children.length >= MAX_HEARTS) hb.removeChild(hb.firstChild);
       const h = document.createElement('div'); h.className = 'hrtBg';
       const s = Math.random() * 13 + 5;
       h.style.cssText = `left:${Math.random() * 100}%;width:${s}px;height:${s * .85}px;animation-duration:${Math.random() * 13 + 10}s;animation-delay:${Math.random() * 2}s;`;
       hb.appendChild(h); setTimeout(() => { if (h.parentNode) h.remove(); }, 17000);
     }
-    function startDecorations() {
-      if (ADMIN || reducedMotion) return;
-      requestAnimationFrame(pl);
-      spawnHrt(); setInterval(spawnHrt, HEART_INTERVAL);
-    }
+    spawnHrt(); setInterval(spawnHrt, HEART_INTERVAL);
 
     /* ENTRANCE */
     const entrance = document.getElementById('entrance');
@@ -3521,11 +3481,6 @@
       const enterBtn = document.getElementById('enterBtn');
       if (enterBtn) {
         enterBtn.addEventListener('click', function () {
-          if (invitationOpened) return;
-          invitationOpened = true;
-          startVideo(document.getElementById('mainBgVideo'));
-          loadStoryPhotos();
-          startDecorations();
 
           const introVid = document.getElementById('introVideo');
           if (introVid) introVid.pause();
