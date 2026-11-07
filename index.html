@@ -2339,6 +2339,129 @@
       border-radius: 10px;
     }
 
+    /* WEDDING DAY — additional celebration layer (existing design unchanged) */
+    #weddingDayCelebration {
+      display: none;
+      position: relative;
+      isolation: isolate;
+      width: min(100%, 580px);
+      min-height: 150px;
+      margin: 0 auto 20px;
+      padding: 23px 26px 21px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(237, 208, 122, .48);
+      border-radius: 20px;
+      background: radial-gradient(ellipse at 50% 5%, rgba(200,164,92,.21), transparent 70%),
+                  linear-gradient(145deg, rgba(36,18,42,.94), rgba(8,6,21,.97));
+      box-shadow: 0 0 46px rgba(237,208,122,.14), 0 18px 68px rgba(0,0,0,.55),
+                  inset 0 0 45px rgba(200,164,92,.06);
+      text-align: center;
+    }
+    #weddingDayCelebration.is-active {
+      display: flex;
+      animation: wedDayReveal 1.25s cubic-bezier(.16,1,.3,1) both;
+    }
+    #weddingDayCelebration::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      inset: -110%;
+      background: conic-gradient(from 0deg, transparent 0deg, rgba(237,208,122,.08) 16deg,
+        transparent 39deg, transparent 76deg, rgba(184,121,106,.075) 91deg, transparent 112deg);
+      animation: wedHalo 25s linear infinite;
+    }
+    #weddingDayCelebration::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(112deg, transparent 32%, rgba(255,250,210,.11) 48%, transparent 63%);
+      transform: translateX(-160%);
+      animation: wedShine 6s ease-in-out infinite;
+    }
+    .wdOrnaments {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      color: var(--gb);
+    }
+    .wdOrnaments span {
+      position: absolute;
+      font-size: 1.15rem;
+      text-shadow: 0 0 16px rgba(237,208,122,.8);
+      animation: wedTwinkle 2.9s ease-in-out infinite alternate;
+    }
+    .wdOrnaments span:nth-child(1) { left: 7%; top: 19%; }
+    .wdOrnaments span:nth-child(2) { right: 9%; top: 22%; animation-delay: -.9s; }
+    .wdOrnaments span:nth-child(3) { left: 12%; bottom: 18%; animation-delay: -1.8s; font-size: .8rem; }
+    .wdOrnaments span:nth-child(4) { right: 13%; bottom: 13%; animation-delay: -2.4s; font-size: .85rem; }
+    .wdKicker {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(.47rem, 1.9vw, .65rem);
+      text-transform: uppercase;
+      letter-spacing: .32em;
+      color: var(--gb);
+      text-shadow: 0 0 14px rgba(237,208,122,.65);
+      margin: 0 0 6px;
+    }
+    .wdTitle {
+      font-family: 'Great Vibes', cursive;
+      font-weight: 400;
+      font-size: clamp(2.45rem, 8vw, 4.4rem);
+      line-height: 1.18;
+      color: #ffedb0;
+      filter: drop-shadow(0 0 19px rgba(237,208,122,.47));
+      padding: .05em .15em;
+    }
+    .wdSinhala {
+      font-family: 'Noto Serif Sinhala', serif;
+      font-size: clamp(.83rem, 2.5vw, 1.07rem);
+      font-weight: 500;
+      color: #F4E3BE;
+      line-height: 1.7;
+      margin: 6px 0 0;
+    }
+    .wdSub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(.82rem, 2.5vw, 1.02rem);
+      font-style: italic;
+      color: var(--mu2);
+      margin-top: 3px;
+    }
+    #weddingDayCanvas {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9000;
+      pointer-events: none;
+    }
+    body.wedding-day #weddingDayCanvas { display: block; }
+    body.wedding-day #hero { height: auto; min-height: 100dvh; padding-bottom: 126px; }
+    body.wedding-started #hi4 { display: none; }
+    @keyframes wedDayReveal {
+      from { opacity: 0; transform: translateY(25px) scale(.91); filter: blur(9px); }
+      to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+    @keyframes wedHalo { to { transform: rotate(360deg); } }
+    @keyframes wedShine { 0%, 26%, 100% { transform: translateX(-160%); } 65% { transform: translateX(160%); } }
+    @keyframes wedTwinkle {
+      from { opacity: .32; transform: scale(.75) rotate(-15deg); }
+      to { opacity: 1; transform: scale(1.24) rotate(15deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #weddingDayCelebration, #weddingDayCelebration::before,
+      #weddingDayCelebration::after, .wdOrnaments span { animation: none !important; }
+    }
+    @media (max-width: 440px) {
+      #weddingDayCelebration { padding: 19px 13px 16px; min-height: 136px; }
+      .wdOrnaments span:nth-child(1), .wdOrnaments span:nth-child(2) { top: 9%; }
+    }
+
     /* TOUCH */
     @media(hover:none) {
       .rsvpBtn:active {
@@ -2729,6 +2852,7 @@
   <div id="cur"></div>
   <div id="curR"></div>
   <canvas id="sparkleCanvas"></canvas>
+  <canvas id="weddingDayCanvas" aria-hidden="true"></canvas>
   <div id="prog"></div>
   <audio id="bgMusic" loop preload="auto">
     <source src="meraya.mp3" type="audio/mpeg">
@@ -2799,7 +2923,7 @@
     <button class="eBtn" id="enterBtn" tabindex="0" aria-label="Enter the invitation">
       <div class="eMono"><span class="eML">R</span><span class="eMA">&</span><span class="eML">N</span></div>
     </button>
-    <p class="eTap" aria-hidden="true">Touch to Enter</p>
+    <p class="eTap" aria-hidden="true">Touch to Open Our Invitation</p>
   </div>
 
   <div id="page">
@@ -2835,18 +2959,25 @@
           <circle cx="2" cy="2" r="2.2" fill="rgba(200,164,92,.45)" />
         </svg></div>
       <div class="hInner">
-        <p class="hEye hItem" id="hi0">You Are Cordially Invited<span class="sin-text">ආදරයෙන් ආරාධනා කරමු</span></p>
+        <p class="hEye hItem" id="hi0">An Invitation From Our Hearts<span class="sin-text">හදපිරි සෙනෙහසින් ඔබට ඇරයුම්</span></p>
         <h3 class="hGuestName hItem" id="heroGuestName"></h3>
         <div class="hNamesWrap hItem" id="hi1">
           <span class="hName" style="--sd:0.4s">Rajitha</span>
           <span class="hAmp">&</span>
           <span class="hName" style="--sd:1.1s">Nelum</span>
         </div>
-        <p class="hTagline hItem" id="hiTL">Two hearts. One beautiful journey.<span class="sin-text">හදවත් දෙකක්. එක්
-            සුන්දර ගමනක්.</span></p>
+        <p class="hTagline hItem" id="hiTL">Two hearts, one promise, a lifetime of love.<span class="sin-text">හදවත් දෙකක්, එක් පොරොන්දුවක්, සෙනෙහසින් බැඳුණු දිවි ගමනක්.</span></p>
         <div class="hDivider hItem" id="hi2"><span class="hDivHeart" aria-hidden="true">♥</span></div>
         <p class="hDateStr hItem" id="hi3">Friday · 04 Dec 2026 · Kegalle<span class="sin-text">2026 දෙසැම්බර් 04
             සිකුරාදා · කෑගල්ල</span></p>
+        <!-- Visible for the entire wedding date in Sri Lanka, starting at local midnight. -->
+        <div id="weddingDayCelebration" role="status" aria-live="polite" aria-label="It is our wedding day">
+          <div class="wdOrnaments" aria-hidden="true"><span>✦</span><span>✧</span><span>✧</span><span>✦</span></div>
+          <span class="wdKicker">✦ Our Wedding Day Has Arrived ✦</span>
+          <h2 class="wdTitle">Today, Our Forever Begins</h2>
+          <span class="wdSinhala">අදයි අපේ සොඳුරු විවාහ මංගල දිනය!</span>
+          <span class="wdSub">Two hearts, one beautiful forever</span>
+        </div>
         <div class="cdCard hItem" id="hi4" role="timer" aria-live="polite" aria-label="Countdown to the wedding">
           <div class="cdUnit">
             <div class="cdSlot"><span class="cdNum" id="cdD">--</span></div><span class="cdLbl">Days<span
@@ -2865,12 +2996,10 @@
                 class="sin-text">තත්පර</span></span>
           </div>
         </div>
-        <p class="hQuote hItem" id="hi5">In all the world, there is no heart for me like yours. In all the world, there
-          is no love for you like mine.<span class="sin-text">මුළු ලෝකයේම මට ඔබේ තරම් වටිනා වෙනත් හදවතක් නැත. මුළු
-            ලෝකයේම ඔබට මගේ තරම් වටිනා වෙනත් ආදරයක් නොමැත.</span></p>
+        <p class="hQuote hItem" id="hi5">Among all the hearts in the world, yours became home to mine. Among all the stories life could write, ours is the one I would choose again.<span class="sin-text">ලොව ඇති දහසක් හදවත් අතර, මගේ හදවතට නිවහනක් වූයේ ඔබේ හදවතයි. ජීවිතය ලියන දහසක් කතා අතර, යළි යළිත් තෝරාගන්නේ අපේ ආදර කතාවමයි.</span></p>
       </div>
       <div class="scrollCue hItem" id="hi6" aria-hidden="true">
-        <div class="scrollLine"></div><span class="scrollWord">Scroll<span class="sin-text"></span></span>
+        <div class="scrollLine"></div><span class="scrollWord">Explore<span class="sin-text">පහළට පිවිසෙන්න</span></span>
       </div>
     </section>
 
@@ -2887,8 +3016,8 @@
     <!-- OUR STORY SCROLL TIME TRAVEL SECTION -->
     <section id="story" class="sec" aria-label="Our Story">
       <div class="secHead">
-        <span class="secEye rv">15 Years of Love<span class="sin-text">අවුරුදු 15ක ආදරය</span></span>
-        <h2 class="secTitle rv d1">Our <em>Story</em><span class="sin-text">අපේ <em>ආදර කතාව</em></span></h2>
+        <span class="secEye rv">Fifteen Years, One Love<span class="sin-text">පහළොස් වසරක් පුරා නොමැකුණු සෙනෙහස</span></span>
+        <h2 class="secTitle rv d1">Our <em>Love Story</em><span class="sin-text">අපේ <em>සෙනෙහසේ කතාව</em></span></h2>
         <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
       </div>
 
@@ -2904,11 +3033,9 @@
                 <img id="pastImg" src="15yearsago.jpg" alt="15 Years Ago">
               </div>
               <div class="story-text-content">
-                <h3 class="story-kicker">How It Started...</h3>
-                <p>A simple hello fifteen years ago turned into a lifetime of beautiful memories. We were just two kids
-                  with a dream, not knowing this would be our greatest adventure.</p>
-                <p class="sin-text">මීට වසර 15කට පෙර ආරම්භ වූ අපේ කතාව, ජීවිත කාලයකම සුන්දර මතකයක් වේවි කියා එදා අප
-                  සිතුවේ නැත. කාලය කෙතරම් වේගයෙන් ගෙවී ගියත්, එදා ඉපදුණු ඒ ආදරය අදටත් එලෙසමයි...</p>
+                <h3 class="story-kicker">Where It All Began...</h3>
+                <p>Fifteen years ago, a simple hello became the first line of an extraordinary love story. We could never have imagined that one fleeting moment would blossom into a lifetime of cherished memories.</p>
+                <p class="sin-text">වසර පහළොවකට පෙර හුවමාරු වූ සරල ආචාරයකින් අපේ සෙනෙහසේ කතාවේ මුල් පදය ලියැවුණි. ඒ අහඹු හමුවීම දිවිය පුරා සුරැකෙන මතක සමුදායක ඇරඹුම වනු ඇතැයි එදා අපි සිහිනෙන්වත් නොසිතුවෙමු...</p>
               </div>
             </div>
 
@@ -2918,11 +3045,9 @@
                 <img id="presImg" src="now.jpg" alt="Now">
               </div>
               <div class="story-text-content">
-                <h3 class="story-kicker">How It's Going...</h3>
-                <p>Through every season of life, our bond only grew stronger. Today, hand in hand, we step into our
-                  forever.</p>
-                <p class="sin-text">ජීවිතයේ පැමිණි සෑම හැලහැප්පීමකදීම අපේ බැඳීම තවත් ශක්තිමත් විය. දහසක් බලාපොරොත්තු
-                  මැද, අද අප අපගේ සදාකාලික ගමනට අත්වැල් බැඳගනිමු.</p>
+                <h3 class="story-kicker">Where Love Has Led Us...</h3>
+                <p>Through days of sunshine and seasons of rain, our love has only grown deeper. Now, with grateful hearts and hands entwined, we begin the next chapter of our forever.</p>
+                <p class="sin-text">සිනාසුණු වසන්තයන් මෙන්ම කඳුළු වැටුණු වස්සානයන් ද පසුකරමින්, අපේ බැඳීම තව තවත් ගැඹුරු විය. අද, කෘතවේදී හදවත් හා එකිනෙක බැඳුණු දෑත් සමඟින්, අපි සදාකාලික සෙනෙහසේ අලුත් පරිච්ඡේදයක් අරඹන්නෙමු.</p>
               </div>
             </div>
 
@@ -2954,16 +3079,9 @@
           <div class="invCBL" aria-hidden="true"></div>
           <div class="waxSeal rv d1" aria-hidden="true"></div>
           <span class="invDear rv d2" id="greetingText">Dear Guest,</span>
-          <p class="invBody rv d3">In the company of our beloved families, we joyfully invite you to witness and
-            celebrate the beginning of our story together. Your presence is not just a gift — it is the <strong>greatest
-              blessing</strong> we could receive on this cherished day.<span class="sin-text">අපගේ ආදරණීය පවුල්වල
-              ආශිර්වාදය සමඟින්, අපගේ ජීවිතයේ නව පරිච්ඡේදයේ ආරම්භය දැකබලා ගැනීමටත් එය සැමරීමටත් අපි ඔබට ඉතා සතුටින්
-              ආරාධනා කරමු. ඔබගේ පැමිණීම හුදෙක් තෑග්ගක් පමණක් නොව, මෙම උතුම් දිනයේ අපට ලැබිය හැකි ඉහළම
-              ආශිර්වාදයයි.</span></p>
+          <p class="invBody rv d3">Surrounded by the love and blessings of our families, we warmly invite you to share in the joy of our marriage as two lives become one. Your presence on this cherished day will be more than a celebration shared; it will be a <strong>precious blessing</strong> we carry in our hearts forever.<span class="sin-text">අප දෙපාර්ශ්වයේ ආදරණීය පවුල්වල සෙනෙහස හා ආශීර්වාද මධ්‍යයේ, අපගේ දිවිමං දෙක එක් මාවතක් වන මේ මංගල මොහොතේ සතුට බෙදාගැනීමට ඔබට හදපිරි ආදරයෙන් ඇරයුම් කරමු. එදින ඔබගේ සෙනෙහෙබර පැමිණීම අපට හුදු සහභාගීත්වයකට එහා ගිය, දිවිපුරා හදවත් තුළ සුරැකෙන <strong>අමිල ආශීර්වාදයකි.</strong></span></p>
           <div class="invPQ rv d4">
-            <p>"Love is not about how many days, months, or years you have been together. It is about how much you love
-              each other every single day."<span class="sin-text">"ආදරය යනු ඔබ කොපමණ දින, මාස හෝ වසර ගණනක් එකට සිටියාද
-                යන්න නොවේ. එයින් අදහස් වන්නේ ඔබ සෑම දිනකම එකිනෙකාට කොතරම් ආදරය කරනවාද යන්නයි."</span></p>
+            <p>“Love is not measured by the years two hearts have spent together, but by the kindness they share, the promises they keep, and the love they choose every day.”<span class="sin-text">“ප්‍රේමයේ ගැඹුර මැනෙන්නේ එක්ව ගෙවූ වසර ගණනින් නොව; දවසින් දවස බෙදාගන්නා සෙනෙහසින්, සුරකින පොරොන්දුවලින් හා එකිනෙකා වෙනුවෙන් යළි යළිත් තෝරාගන්නා ආදරයෙනි.”</span></p>
           </div>
           <div class="invSep rv d5" aria-hidden="true">
             <svg viewBox="0 0 340 42" width="300" height="42" fill="none">
@@ -2994,55 +3112,40 @@
 
     <section id="programme" class="sec" aria-label="Wedding programme">
       <div class="secHead">
-        <span class="secEye rv">The Celebration<span class="sin-text">සැමරුම</span></span>
-        <h2 class="secTitle rv d1">Our Wedding <em>Programme</em><span class="sin-text">අපගේ විවාහ මංගල්‍යයේ
-            <em>වැඩසටහන</em></span></h2>
+        <span class="secEye rv">A Celebration of Love<span class="sin-text">සෙනෙහසේ මංගල සැමරුම</span></span>
+        <h2 class="secTitle rv d1">Our Wedding <em>Celebrations</em><span class="sin-text">අපේ මංගල්‍යයේ <em>සොඳුරු අංග</em></span></h2>
         <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
       </div>
       <div class="progLayout">
         <div class="rv d2" id="morningProgramme">
-          <div class="dayBadge"><span class="dayBadgeDot" aria-hidden="true"></span><span>Morning Session<span
-                class="sin-text">උදෑසන වැඩසටහන</span></span></div>
+          <div class="dayBadge"><span class="dayBadgeDot" aria-hidden="true"></span><span>Morning Ceremony<span class="sin-text">උදෑසන මංගල චාරිත්‍ර</span></span></div>
           <div class="pCard">
             <div class="timelineWrap" id="tl1">
               <div class="pItem">
                 <div class="piL">
                   <div class="piDot" aria-hidden="true"></div>
                 </div>
-                <div class="piR"><span class="piTime">09:30 AM</span>
-                  <div class="piName">Poruwa Ceremony<span class="sin-text">පෝරුව චාරිත්‍රය</span></div>
-                  <div class="piDesc">A beautiful beginning with traditional Sri Lankan customs, blessings, and the
-                    sacred joining of two families under one sky.<span class="sin-text">සම්ප්‍රදායික පෝරුව චාරිත්‍ර
-                      සමඟින් ජීවිතයේ නව ආරම්භය.</span></div>
+                <div class="piR"><span class="piTime" id="ceremonyStartTime">09:30 AM</span>
+                  <div class="piName">Poruwa Ceremony<span class="sin-text">මංගල පෝරුවේ චාරිත්‍ර</span></div>
+                  <div class="piDesc">In the grace of our treasured Sri Lankan traditions and the blessings of our families, we take our first steps into married life upon the Poruwa.<span class="sin-text">පරපුරෙන් පරපුරට උරුම වූ හෙළ මංගල සිරිත් හා පවුල්වල ආශීර්වාද මධ්‍යයේ, පෝරුව මත අපේ එක් දිවි ගමනේ මංගල පියවර තබන්නෙමු.</span></div>
                 </div>
               </div>
-              <div class="pItem">
-                <div class="piL">
-                  <div class="piDot" aria-hidden="true"></div>
-                </div>
-                <!--<div class="piR"><span class="piTime">10:45 AM</span>
-                  <div class="piName">Marriage Registration<span class="sin-text">විවාහය ලියාපදිංචි කිරීම</span></div>
-                  <div class="piDesc">The cherished moment where we sign our lives together before those we love
-                    most.<span class="sin-text">ආදරණීයයන් ඉදිරියේ අපගේ බැඳීම නීතිගත කරන මොහොත.</span></div>
-                </div>-->
-              </div>
+              <!-- Marriage registration entry intentionally hidden; its empty timeline
+                   row and decorative dot are removed to preserve visual continuity. -->
               <div class="pItem">
                 <div class="piL">
                   <div class="piDot" aria-hidden="true"></div>
                 </div>
                 <div class="piR"><span class="piTime">12:30 PM</span>
-                  <div class="piName">Wedding Feast<span class="sin-text">මංගල භෝජන සංග්‍රහය</span></div>
-                  <div class="piDesc">Join us for a celebratory luncheon, heartfelt toasts, and the warmth of your
-                    wonderful company.<span class="sin-text">සතුට පිරි මංගල දිවා භෝජන සංග්‍රහය සඳහා අප සමඟ
-                      එක්වන්න.</span></div>
+                  <div class="piName">Wedding Luncheon<span class="sin-text">මංගල දිවා භෝජන සංග්‍රහය</span></div>
+                  <div class="piDesc">Share a delightful wedding luncheon with us, where warm wishes, joyful conversations and treasured company make the occasion even sweeter.<span class="sin-text">සුබපැතුම්, සෙනෙහෙබර කතාබහ හා ඔබගේ මිහිරි ඇසුරින් තවත් සුන්දර වන මංගල දිවා භෝජන සංග්‍රහයට අප සමඟ එක්වන්න.</span></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="rv d3">
-          <div class="dayBadge"><span class="dayBadgeDot" aria-hidden="true"></span><span>Evening Session<span
-                class="sin-text">සන්ධ්‍යා වැඩසටහන</span></span></div>
+          <div class="dayBadge"><span class="dayBadgeDot" aria-hidden="true"></span><span>Evening Celebration<span class="sin-text">සන්ධ්‍යා මංගල සැමරුම</span></span></div>
           <div class="pCard">
             <div class="timelineWrap" id="tl2">
               <div class="pItem">
@@ -3050,10 +3153,8 @@
                   <div class="piDot" aria-hidden="true"></div>
                 </div>
                 <div class="piR"><span class="piTime">05:30 PM</span>
-                  <div class="piName">Grand Reception<span class="sin-text">රාත්‍රී භෝජන සංග්‍රහය</span></div>
-                  <div class="piDesc">Join us for an elegant evening of celebration, dinner, and music as we begin our
-                    new journey together.<span class="sin-text">රාත්‍රී භෝජන සංග්‍රහය, සංගීතය සහ ආදරණීයයන් සමඟ විනෝදයෙන්
-                      පිරුණු සුන්දර සැමරුම.</span></div>
+                  <div class="piName">Grand Reception<span class="sin-text">මංගල සන්ධ්‍යා භෝජන සංග්‍රහය</span></div>
+                  <div class="piDesc">As the evening unfolds, join us for a graceful celebration filled with music, a festive dinner and moments of joy to remember.<span class="sin-text">සංගීත රාවයෙන්, රසවත් රාත්‍රී භෝජනයෙන් හා ආදරණීය හමුවීම්වලින් හැඩවන මේ සොඳුරු සන්ධ්‍යාව අප සමඟ සමරන්න.</span></div>
                 </div>
               </div>
             </div>
@@ -3075,8 +3176,8 @@
     <!-- MORNING CEREMONY AND EVENING RECEPTION AT ELEPHANT BAY HOTEL -->
     <section id="venue" class="sec" aria-label="Venue information">
       <div class="secHead">
-        <span class="secEye rv">Find Us<span class="sin-text">අපව සොයාගන්න</span></span>
-        <h2 class="secTitle rv d1">The <em>Venues</em><span class="sin-text">උත්සව <em>ස්ථානයන්</em></span></h2>
+        <span class="secEye rv">Where We Celebrate<span class="sin-text">අප හමුවන සොඳුරු නවාතැන</span></span>
+        <h2 class="secTitle rv d1">The <em>Celebration Venue</em><span class="sin-text">මංගල <em>උත්සව ස්ථානය</em></span></h2>
         <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
       </div>
 
@@ -3084,23 +3185,23 @@
       <div id="morningVenue" style="margin-bottom: 70px;">
         <div class="venueLayout">
           <div class="rv">
-            <span class="venueKicker">Morning Ceremony<span class="sin-text">උදෑසන චාරිත්‍ර</span></span>
+            <span class="venueKicker">Morning Ceremony<span class="sin-text">උදෑසන මංගල චාරිත්‍ර</span></span>
             <h3 class="venueName">Elephant Bay Hotel</h3>
             <p class="venueAddr">Pinnalanda Road (Pinnalandawatta) · Pinnawala · Rambukkana 71100<span class="sin-text">පින්නලන්ද පාර (පින්නලන්දවත්ත) · පින්නවල · රඹුක්කන 71100</span></p>
             <ul class="dirList">
-              <li><span class="dirN" aria-hidden="true">1</span><span>With hearts united in love, our beautiful journey begins, creating precious memories to cherish for a lifetime.<span class="sin-text">හදවත් දෙකක ආදරණීය එක්වීම, <em>සදා මතකයේ රැඳෙන සුන්දර මතක සටහන්</em> සමඟින් මෙසේ ආරම්භ වන වගයි.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">2</span><span>In the picturesque surroundings of <em>Pinnawala</em>, our <em>Poruwa Ceremony</em> begins at 9:30 AM.<span class="sin-text">පින්නවල සොඳුරු පරිසරයේදී අපගේ <em>පෝරුව චාරිත්‍රය</em> පෙ.ව. 9:30ට ආරම්භ වේ.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">3</span><span>Find us at <em>Elephant Bay Hotel</em>, along Pinnalanda Road in Pinnawala.<span class="sin-text">පින්නවල පින්නලන්ද පාරේ පිහිටි <em>එලිෆන්ට් බේ හෝටලය</em> වෙත පැමිණෙන්න.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">4</span><span>Our <em>Marriage Registration</em> follows at 10:45 AM.<span class="sin-text">අපගේ <em>විවාහ ලියාපදිංචිය</em> පෙ.ව. 10:45ට සිදු කෙරේ.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">1</span><span>Two hearts, bound by love, begin a shared journey and gather memories to treasure for a lifetime.<span class="sin-text">සෙනෙහසින් බැඳුණු හදවත් දෙකක්, <em>දිවිපුරා සුරැකෙන මතකයන්</em> සමඟින් එක් මාවතක ගමන් අරඹන මොහොතයි මේ.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">2</span><span>Amid the serene beauty of <em>Pinnawala</em>, our <em>Poruwa Ceremony</em> begins at <span id="ceremonyStartEnglish">9:30 AM</span>.<span class="sin-text">පින්නවල නිසංසල සොබා සිරිය මධ්‍යයේ, අපගේ <em>මංගල පෝරුවේ චාරිත්‍ර</em> <span id="ceremonyStartSinhala">පෙ.ව. 9:30ට</span> ආරම්භ වේ.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">3</span><span>We look forward to welcoming you to <em>Elephant Bay Hotel</em> on Pinnalanda Road, Pinnawala.<span class="sin-text">පින්නවල පින්නලන්ද පාරේ පිහිටි <em>එලිෆන්ට් බේ හෝටලයට</em> ඔබව සෙනෙහසින් පිළිගැනීමට අපි බලා සිටිමු.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">4</span><span>Our <em>Marriage Registration</em> will take place at 10:45 AM.<span class="sin-text">අපගේ <em>විවාහය ලියාපදිංචි කිරීම</em> පෙ.ව. 10:45ට සිදු කෙරේ.</span></span></li>
             </ul>
             <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Elephant%20Bay%2C%20Pinnawala%2C%20Rambukkana%2C%20Sri%20Lanka" target="_blank"
               rel="noopener noreferrer" class="mapBtn" aria-label="Get directions to Elephant Bay Hotel on Google Maps">
-              <span class="mapBtnT">Get Directions on Google Maps<span class="sin-text">Google Maps මඟින් මාර්ගය සොයාගන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
+              <span class="mapBtnT">Find Us on Google Maps<span class="sin-text">Google Maps ඔස්සේ මඟ සොයාගන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
             </a>
           </div>
           <div class="vCard rv d1">
             <span class="vcMono" aria-hidden="true">E</span>
-            <p class="vcQuote">"As the morning light embraces the beauty of Pinnawala, at <strong>Elephant Bay Hotel</strong>, two hearts unite in love, and a lifetime of beautiful memories begins."<span class="sin-text">"පින්නවල සොඳුරු උදෑසනක, <strong>එලිෆන්ට් බේ හෝටලයේදී</strong>, හදවත් දෙකක් ආදරයෙන් එක්වී සදා මතකයේ රැඳෙන සුන්දර ජීවන ගමනක් අරඹයි."</span></p>
+            <p class="vcQuote">“As morning light gently falls upon Pinnawala, two hearts will meet in love at <strong>Elephant Bay Hotel</strong>, and a new chapter of beautiful memories will begin.”<span class="sin-text">“පින්නවල උදෑසන හිරුකිරණ සොබා සිරිය සිපගන්නා මොහොතේ, <strong>එලිෆන්ට් බේ හෝටලයේදී</strong> හදවත් දෙකක් සෙනෙහසින් එක්වී, මතකයන්ගෙන් සුවඳවත් දිවි ගමනක අලුත් පරිච්ඡේදයක් අරඹනු ඇත.”</span></p>
           </div>
         </div>
       </div>
@@ -3120,23 +3221,23 @@
       <div id="eveningVenue">
         <div class="venueLayout">
           <div class="rv">
-            <span class="venueKicker">Evening Reception<span class="sin-text">සන්ධ්‍යා උත්සවය</span></span>
+            <span class="venueKicker">Evening Reception<span class="sin-text">මංගල සන්ධ්‍යා සැමරුම</span></span>
             <h3 class="venueName">Elephant Bay Hotel</h3>
             <p class="venueAddr">Pinnalanda Road (Pinnalandawatta) · Pinnawala · Rambukkana 71100<span class="sin-text">පින්නලන්ද පාර (පින්නලන්දවත්ත) · පින්නවල · රඹුක්කන 71100</span></p>
             <ul class="dirList">
-              <li><span class="dirN" aria-hidden="true">1</span><span>Nestled amidst the picturesque landscapes of <em>Pinnawala, Elephant Bay Hotel</em> adds a touch of elegance and charm to our celebration of love.<span class="sin-text">පින්නවල මනරම් සොබා සෞන්දර්යය මධ්‍යයේ පිහිටි <em>එලිෆන්ට් බේ හෝටලය</em> අපගේ ආදරණීය සැමරුමට සුන්දරත්වය එක් කරයි.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">2</span><span>Conveniently located in <em>Pinnalandawatta, Pinnawala</em>, and easily accessible for all our beloved guests.<span class="sin-text"><em>පින්නලන්දවත්ත, පින්නවල</em> ප්‍රදේශයේ පිහිටි මෙම ස්ථානයට අපගේ ආදරණීය අමුත්තන්ට පහසුවෙන් ළඟා විය හැක.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">3</span><span>Join us from <em>4:00 PM</em> for a beautiful evening of celebration, dinner, and music.<span class="sin-text"><em>ප.ව. 4:00 සිට</em> ආදරය, සංගීතය සහ සොඳුරු මතකයන් පිරුණු සන්ධ්‍යා සැමරුමට අප සමඟ එක්වන්න.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">4</span><span>Use <em>Google Maps</em> to find your way to our celebration with ease.<span class="sin-text">අපගේ සැමරුම පැවැත්වෙන ස්ථානයට පහසුවෙන් පැමිණීමට <em>Google Maps</em> භාවිත කරන්න.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">1</span><span>Surrounded by the natural beauty of <em>Pinnawala, Elephant Bay Hotel</em> lends a gentle charm to our evening celebration of love.<span class="sin-text">පින්නවල මනරම් සොබා සිරියෙන් වට වූ <em>එලිෆන්ට් බේ හෝටලය</em>, අපගේ සන්ධ්‍යා මංගල සැමරුමට නිහඬ චමත්කාරයක් එක් කරනු ඇත.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">2</span><span>Located in <em>Pinnalandawatta, Pinnawala</em>, the venue is easy for our cherished guests to find.<span class="sin-text"><em>පින්නවල, පින්නලන්දවත්තේ</em> පිහිටි උත්සව ස්ථානය වෙත ඔබට පහසුවෙන් පැමිණිය හැකිය.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">3</span><span>We warmly welcome you from <em>4:00 PM</em> to an evening of music, celebration and heartfelt togetherness, followed by our wedding dinner.<span class="sin-text"><em>ප.ව. 4:00 සිට</em> සංගීතය, සෙනෙහස හා සුහද හමුවීම් පිරුණු සන්ධ්‍යා සැමරුමට ඔබව ආදරයෙන් පිළිගනිමු. අනතුරුව මංගල රාත්‍රී භෝජන සංග්‍රහය පැවැත්වේ.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">4</span><span>For a smooth journey to the celebration, follow the directions on <em>Google Maps</em>.<span class="sin-text">උත්සව භූමිය වෙත පහසුවෙන් ළඟා වීමට <em>Google Maps</em> ඔස්සේ මාර්ගෝපදේශ ලබාගන්න.</span></span></li>
             </ul>
             <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Elephant%20Bay%2C%20Pinnawala%2C%20Rambukkana%2C%20Sri%20Lanka" target="_blank"
               rel="noopener noreferrer" class="mapBtn" aria-label="Get directions to Elephant Bay Hotel on Google Maps">
-              <span class="mapBtnT">Get Directions on Google Maps<span class="sin-text">Google Maps මඟින් මාර්ගය සොයාගන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
+              <span class="mapBtnT">Find Us on Google Maps<span class="sin-text">Google Maps ඔස්සේ මඟ සොයාගන්න</span></span><span class="mapBtnA" aria-hidden="true">→</span>
             </a>
           </div>
           <div class="vCard rv d1">
             <span class="vcMono" aria-hidden="true">E</span>
-            <p class="vcQuote">"Amidst the enchanting beauty of Pinnawala, at <strong>Elephant Bay Hotel</strong>, two hearts become one, two dreams turn into a lifetime of togetherness, and a beautiful love story begins its forever — a precious moment made even more meaningful by your presence."<span class="sin-text">"පින්නවල සොඳුරු සොබා සෞන්දර්යය මැද පිහිටි <strong>එලිෆන්ට් බේ හෝටලයේදී</strong>, හදවත් දෙකක් එකම ආදරයකින් බැඳී, සිහින දෙකක් එකම ජීවිතයකට එක්වී, අපගේ ආදර කතාව සදාකාලික බැඳීමක් බවට පත්වන මේ සොඳුරු මොහොත, ඔබගේ ආදරණීය පැමිණීමෙන් තවත් අර්ථවත් වනු ඇත."</span></p>
+            <p class="vcQuote">“Amid the enchanting beauty of Pinnawala, at <strong>Elephant Bay Hotel</strong>, two hearts will become one, and two dreams will find a shared horizon. Your presence will make this precious chapter of our love story all the more meaningful.”<span class="sin-text">“පින්නවල සොඳුරු සොබා සිරිය මැද පිහිටි <strong>එලිෆන්ට් බේ හෝටලයේදී</strong>, හදවත් දෙකක් එක් සෙනෙහසකින් බැඳී, සිහින දෙකක් එකම අහසක් යට එක්වනු ඇත. අපේ ආදර කතාවේ මේ අමිල පරිච්ඡේදය ඔබගේ සෙනෙහෙබර පැමිණීමෙන් තව තවත් අරුත් ගැන්වෙනු ඇත.”</span></p>
           </div>
         </div>
       </div>
@@ -3156,13 +3257,11 @@
     <section id="rsvp" class="sec" aria-label="RSVP">
       <div class="rsvpInner">
         <div class="secHead">
-          <span class="secEye rv">Your Presence<span class="sin-text">ඔබගේ පැමිණීම</span></span>
-          <h2 class="secTitle rv d1">Kindly <em>RSVP</em><span class="sin-text">කරුණාකර පැමිණීම <em>තහවුරු
-                කරන්න</em></span></h2>
+          <span class="secEye rv">The Joy of Your Presence<span class="sin-text">ඔබගේ පැමිණීමේ අගය</span></span>
+          <h2 class="secTitle rv d1">Kindly <em>Reply</em><span class="sin-text">ඔබගේ පැමිණීම <em>කාරුණිකව තහවුරු කරන්න</em></span></h2>
           <div class="secOrn rv d2" aria-hidden="true"><span class="ornHeart">♥</span></div>
         </div>
-        <span class="rsvpDeadline rv d3">Please confirm by <strong>20 Nov 2026</strong><span class="sin-text">කරුණාකර
-            <strong>2026 නොවැම්බර් 20</strong> දිනට පෙර තහවුරු කරන්න</span></span>
+        <span class="rsvpDeadline rv d3">We would be grateful for your reply by <strong>20 Nov 2026</strong><span class="sin-text">ඔබගේ පැමිණීම <strong>2026 නොවැම්බර් 20</strong> දිනට පෙර කාරුණිකව තහවුරු කරන්නේ නම් අපි ඉතා කෘතඥ වෙමු.</span></span>
 
         <div id="rsvpContainer" class="rv d4" style="width: 100%; max-width: 480px; margin: 0 auto 44px;">
 
@@ -3171,37 +3270,35 @@
             style="margin-bottom: 24px; text-align: left; max-width: 340px; margin-left: auto; margin-right: auto;">
             <label for="alcoholPref"
               style="font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gb); margin-bottom: 8px; display: block; text-align: center;">
-              Which type of alcohol would you prefer?
+              Please select your preferred beverage option
               <span class="sin-text"
-                style="font-size: 0.9rem; margin-top: 4px; display: block; letter-spacing: normal;">ඔබ කැමති කුමන වර්ගයේ
-                මත්පැන් සඳහාද?</span>
+                style="font-size: 0.9rem; margin-top: 4px; display: block; letter-spacing: normal;">පාන වර්ගය පිළිබඳ ඔබගේ කැමැත්ත කාරුණිකව සඳහන් කරන්න.</span>
             </label>
             <select id="alcoholPref" class="prefSelector">
               <option value="Hard Liquor">Hard Liquor (සැර මත්පැන්)</option>
               <option value="Beer">Beer (බියර්)</option>
-              <option value="Not Required">Not Required (අවශ්‍ය නොවේ)</option>
+              <option value="Not Required">Not Required (අවශ්‍ය නැත)</option>
             </select>
           </div>
 
           <div id="rsvpButtons" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-            <button class="rsvpBtn actBtn" onclick="submitRSVP('Yes')"><span>Yes, I will attend<span
-                  class="sin-text">ඔව්, මම සහභාගී වෙමි</span></span></button>
-            <button class="rsvpBtn actBtn noBtn" onclick="submitRSVP('No')"><span>No, I can't make it<span
-                  class="sin-text">නැත, මට සහභාගී වීමට නොහැක</span></span></button>
+            <button class="rsvpBtn actBtn" onclick="submitRSVP('Yes')"><span>Yes, I’ll Be There<span class="sin-text">ඔව්, මම සතුටින් සහභාගී වෙමි</span></span></button>
+            <button class="rsvpBtn actBtn noBtn" onclick="submitRSVP('No')"><span>Sorry, I Cannot Attend<span
+                  class="sin-text">කනගාටුයි, මට සහභාගී විය නොහැක</span></span></button>
           </div>
           <div id="rsvpMessage"
             style="display: none; color: var(--gb); font-size: 1.1rem; margin-top: 10px; font-family: 'Cormorant Garamond', serif; font-style: italic;">
           </div>
         </div>
 
-        <p class="rsvpContact rv d5">For inquiries · <strong>+94 77 000 0000</strong><span class="sin-text">විමසීම් සඳහා
-            · <strong>+94 77 000 0000</strong></span></p>
+        <p class="rsvpContact rv d5">For more information · <strong>+94 76 341 7896 | +94 71 528 2691</strong><span class="sin-text">වැඩිදුර විමසීම් සඳහා
+            · <strong>+94 76 341 7896 | +94 71 528 2691</strong></span></p>
       </div>
       <span class="secNum" aria-hidden="true">V</span>
     </section>
 
     <footer>
-      <span class="footScript rv">Forever Begins Today<span class="sin-text">සදාකාලික ආදරයේ ඇරඹුම අදයි</span></span>
+      <span class="footScript rv">Forever Begins With Love<span class="sin-text">සදාකාලික සෙනෙහසේ ඇරඹුම මෙතැනයි</span></span>
       <span class="footHeart rv d1" aria-hidden="true">
         <svg width="40" height="36" viewBox="0 0 40 36">
           <path
@@ -3212,8 +3309,7 @@
         </svg>
       </span>
       <span class="footNames rv d2">Rajitha & Nelum · 04 Dec 2026</span>
-      <span class="footTagline rv d3">With all our love, we can't wait to celebrate with you.<span class="sin-text">අපගේ
-          මුළු හදවතින්ම, ඔබ සමඟ මෙම දිනය සැමරීමට අපි ආසාවෙන් බලා සිටිමු.</span></span>
+      <span class="footTagline rv d3">With hearts full of love, we look forward to sharing our most cherished day with you.<span class="sin-text">සෙනෙහසින් පිරුණු හදවතින්, අපේ දිවියේ මේ අමිල දිනයේ සතුට ඔබ සමඟ බෙදාගැනීමට අපි ආදරයෙන් බලා සිටිමු.</span></span>
     </footer>
   </div>
 
@@ -3228,6 +3324,25 @@
       <option value="both">Morning + Night</option>
       <option value="night">Night Only</option>
     </select>
+    <label for="weddingStartInput" style="display:block;color:var(--gb);font-size:.85rem;margin:22px 0 9px;">
+      Morning Ceremony Start · Sri Lanka (UTC+05:30)
+      <span class="sin-text" style="font-size:.8rem;">උදෑසන හා සන්ධ්‍යා උත්සව දෙකටම ඇරයුම් ලැබූ අමුත්තන් සඳහා උදෑසන ආරම්භක වේලාව</span>
+    </label>
+    <input type="time" id="weddingStartInput" class="admInput" value="09:30" step="60"
+      aria-describedby="weddingTimeNotice">
+    <label for="nightStartInput" style="display:block;color:var(--gb);font-size:.85rem;margin:18px 0 9px;">
+      Evening Reception Start · Sri Lanka (UTC+05:30)
+      <span class="sin-text" style="font-size:.8rem;">සන්ධ්‍යා උත්සවයට පමණක් ඇරයුම් ලැබූ අමුත්තන් සඳහා ආරම්භක වේලාව</span>
+    </label>
+    <input type="time" id="nightStartInput" class="admInput" value="16:00" step="60"
+      aria-describedby="weddingTimeNotice">
+    <p id="weddingTimeNotice" style="font-size:.77rem;color:var(--mu2);line-height:1.8;margin:0 0 18px;">
+      Morning + Night guests count down to the <strong>morning time</strong>. Night Only guests count down to the
+      <strong>evening time</strong>. Times are Sri Lanka time (UTC+05:30). Each new invitation link uses only the
+      time for its selected guest type. Previously generated links with a custom time keep that custom time.
+      To change the published defaults for all standard links, edit WEDDING_START_TIME_SL and
+      WEDDING_NIGHT_START_TIME_SL in this HTML file and republish it.
+    </p>
     <button class="admBtn" onclick="generateLink()">Generate Link</button>
     <div id="admResult"></div>
   </div>
@@ -3250,6 +3365,65 @@
     const ADMIN = P.get('admin') === '1';
     const GUEST = (P.get('to') || '').replace(/<[^>]*>/g, '').trim().slice(0, 120);
     const GUEST_TYPE = P.get('type') || 'both';
+
+    /* WEDDING CONFIG — set separate session start times in 24-hour Sri Lanka clock time (HH:MM).
+       "both" guests ALWAYS count down to the morning ceremony. "night" guests ONLY count down
+       to the evening reception. Personalised links may override the selected session via &start=HH:MM. */
+    const WEDDING_DATE_SL = '2026-12-04';
+    const WEDDING_START_TIME_SL = '09:30'; // Morning ceremony for Morning + Night guests
+    const WEDDING_NIGHT_START_TIME_SL = '16:00'; // Evening guest arrival (4:00 PM); reception programme is 5:30 PM
+    const SRI_LANKA_UTC_OFFSET = '+05:30'; // Sri Lanka does not observe daylight saving time.
+    function validWeddingTimeSL(t) { return /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(t); }
+    const urlTimeSL = P.get('start');
+    const ACTIVE_MORNING_TIME_SL = (GUEST_TYPE !== 'night' && validWeddingTimeSL(urlTimeSL || '')) ? urlTimeSL : WEDDING_START_TIME_SL;
+    const ACTIVE_NIGHT_TIME_SL = (GUEST_TYPE === 'night' && validWeddingTimeSL(urlTimeSL || '')) ? urlTimeSL : WEDDING_NIGHT_START_TIME_SL;
+    const ACTIVE_WEDDING_TIME_SL = GUEST_TYPE === 'night' ? ACTIVE_NIGHT_TIME_SL : ACTIVE_MORNING_TIME_SL;
+    const weddingStartTimestampSL = Date.parse(`${WEDDING_DATE_SL}T${ACTIVE_WEDDING_TIME_SL}:00${SRI_LANKA_UTC_OFFSET}`);
+    const weddingDayStartSL = Date.parse(`${WEDDING_DATE_SL}T00:00:00${SRI_LANKA_UTC_OFFSET}`);
+    const weddingDayEndSL = weddingDayStartSL + 86400000;
+
+    /* A visit from any browser timezone displays the time in Sri Lankan clock format. */
+    function displayWeddingTimeSL(time) {
+      const [h, m] = time.split(':').map(Number);
+      const twelve = h % 12 || 12;
+      return { english: `${String(twelve).padStart(2, '0')}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`,
+        englishShort: `${twelve}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`,
+        sinhala: `${h < 12 ? 'පෙ.ව.' : 'ප.ව.'} ${twelve}:${String(m).padStart(2, '0')}ට` };
+    }
+    // The morning programme and venue describe the morning ceremony, not the night-only countdown.
+    const ceremonyTimeLabels = displayWeddingTimeSL(ACTIVE_MORNING_TIME_SL);
+    const countdownCard = document.getElementById('hi4');
+    if (countdownCard) countdownCard.setAttribute('aria-label', GUEST_TYPE === 'night'
+      ? 'Countdown to the evening reception (Sri Lanka time)'
+      : 'Countdown to the morning ceremony (Sri Lanka time)');
+    const ceremonyTimeEl = document.getElementById('ceremonyStartTime');
+    if (ceremonyTimeEl) ceremonyTimeEl.textContent = ceremonyTimeLabels.english;
+    const ceremonyEnglishEl = document.getElementById('ceremonyStartEnglish');
+    if (ceremonyEnglishEl) ceremonyEnglishEl.textContent = ceremonyTimeLabels.englishShort;
+    const ceremonySinhalaEl = document.getElementById('ceremonyStartSinhala');
+    if (ceremonySinhalaEl) ceremonySinhalaEl.textContent = ceremonyTimeLabels.sinhala;
+
+    const adminWeddingTime = document.getElementById('weddingStartInput');
+    const adminNightTime = document.getElementById('nightStartInput');
+    if (ADMIN && adminWeddingTime && adminNightTime) {
+      // Each input has its own local default. No setting from one session leaks into the other.
+      const timeFields = [
+        [adminWeddingTime, 'weddingStartAdminTimeSL', WEDDING_START_TIME_SL],
+        [adminNightTime, 'weddingNightAdminTimeSL', WEDDING_NIGHT_START_TIME_SL]
+      ];
+      timeFields.forEach(([input, storageKey, fallback]) => {
+        try {
+          const saved = localStorage.getItem(storageKey);
+          input.value = validWeddingTimeSL(saved || '') ? saved : fallback;
+        } catch (_) { input.value = fallback; }
+        input.addEventListener('change', () => {
+          if (validWeddingTimeSL(input.value)) {
+            try { localStorage.setItem(storageKey, input.value); } catch (_) { /* optional */ }
+          }
+        });
+      });
+    }
+
 
     if (ADMIN) {
       document.getElementById('entrance').style.display = 'none';
@@ -3487,27 +3661,147 @@
     audioBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); audioBtn.click(); } });
     audioBtn.addEventListener('click', () => { if (bgMusic.paused) { bgMusic.play().catch(() => { }); audioBtn.classList.add('playing'); } else { bgMusic.pause(); audioBtn.classList.remove('playing'); } });
 
-    /* COUNTDOWN */
-    const WT = new Date('2026-12-04T09:30:00').getTime();
+    /* COUNTDOWN — absolute SL timestamp. Works in every device timezone. */
+    const WT = weddingStartTimestampSL;
     const cdD = document.getElementById('cdD'), cdH = document.getElementById('cdH'), cdM = document.getElementById('cdM'), cdS = document.getElementById('cdS');
     const prev = { d: null, h: null, m: null, s: null }; let firstTick = true;
+    const countdownFlipTimers = new Map();
     function pad(n) { return String(Math.max(0, n)).padStart(2, '0'); }
     function flipNum(el, val, key) {
-      if (!el) return; if (prev[key] === val) return; prev[key] = val;
+      if (!el) return;
+      if (prev[key] === val) return;
+      prev[key] = val;
       if (firstTick) { el.textContent = val; return; }
+      // Cancel an unfinished flip, preventing outdated numbers after tab suspension.
+      if (countdownFlipTimers.has(key)) clearTimeout(countdownFlipTimers.get(key));
+      el.classList.remove('flip-out', 'flip-in', 'settled');
       el.classList.add('flip-out');
-      setTimeout(() => { el.textContent = val; el.classList.remove('flip-out'); el.classList.add('flip-in'); requestAnimationFrame(() => requestAnimationFrame(() => { el.classList.add('settled'); setTimeout(() => el.classList.remove('flip-in', 'settled'), 500); })); }, 260);
+      const handle = setTimeout(() => {
+        el.textContent = val;
+        el.classList.remove('flip-out');
+        el.classList.add('flip-in');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          el.classList.add('settled');
+          setTimeout(() => el.classList.remove('flip-in', 'settled'), 500);
+        }));
+        countdownFlipTimers.delete(key);
+      }, 260);
+      countdownFlipTimers.set(key, handle);
+    }
+    function resetCountdownToZero() {
+      for (const timer of countdownFlipTimers.values()) clearTimeout(timer);
+      countdownFlipTimers.clear();
+      [['d', cdD], ['h', cdH], ['m', cdM], ['s', cdS]].forEach(([key, el]) => {
+        prev[key] = '00';
+        if (el) { el.textContent = '00'; el.classList.remove('flip-out', 'flip-in', 'settled'); }
+      });
+    }
+
+    /* The celebration appears all day on the configured wedding date (SL midnight to midnight).
+       Each guest's countdown continues until THEIR selected session starts. */
+    const wdayPanel = document.getElementById('weddingDayCelebration');
+    const wdCanvas = document.getElementById('weddingDayCanvas');
+    const wdCtx = wdCanvas ? wdCanvas.getContext('2d') : null;
+    const wdReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let wdParticles = [], wdRunning = false, wdLastBurst = 0, wdFrame = 0;
+    function wdResize() {
+      if (!wdCanvas || !wdCtx) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      wdCanvas.width = Math.round(innerWidth * dpr);
+      wdCanvas.height = Math.round(innerHeight * dpr);
+      wdCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function wdBurst(x, y, count) {
+      if (!wdCtx || wdReducedMotion) return;
+      for (let i = 0; i < count; i++) {
+        const angle = (i / count) * Math.PI * 2 + Math.random() * .25;
+        const speed = 1.1 + Math.random() * 3.5;
+        wdParticles.push({ x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed - .65,
+          life: 1, fade: .011 + Math.random() * .017, size: 1.5 + Math.random() * 3.5,
+          spin: Math.random() * 6.28, spinSpeed: (Math.random() - .5) * .12,
+          color: ['#EDD07A', '#FFF0BC', '#B8796A', '#FFDAE3', '#C8A45C'][i % 5],
+          heart: i % 10 === 0 });
+      }
+      if (wdParticles.length > 210) wdParticles.splice(0, wdParticles.length - 210);
+    }
+    function wdDraw() {
+      if (!wdRunning || !wdCtx || !wdCanvas) return;
+      if (document.hidden || !document.body.classList.contains('wedding-day')) {
+        wdRunning = false;
+        wdCtx.clearRect(0, 0, innerWidth, innerHeight);
+        return;
+      }
+      wdCtx.clearRect(0, 0, innerWidth, innerHeight);
+      for (let i = wdParticles.length - 1; i >= 0; i--) {
+        const p = wdParticles[i];
+        p.x += p.vx; p.y += p.vy; p.vy += .032; p.vx *= .995;
+        p.spin += p.spinSpeed; p.life -= p.fade;
+        if (p.life <= 0) { wdParticles.splice(i, 1); continue; }
+        wdCtx.save(); wdCtx.globalAlpha = Math.max(0, p.life);
+        wdCtx.translate(p.x, p.y); wdCtx.rotate(p.spin);
+        wdCtx.fillStyle = p.color;
+        if (p.heart) {
+          wdCtx.beginPath(); wdCtx.moveTo(0, 1.5 * p.size);
+          wdCtx.bezierCurveTo(-1.8 * p.size, .25 * p.size, -p.size, -p.size, 0, -.15 * p.size);
+          wdCtx.bezierCurveTo(p.size, -p.size, 1.8 * p.size, .25 * p.size, 0, 1.5 * p.size);
+          wdCtx.fill();
+        } else { wdCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * .55); }
+        wdCtx.restore();
+      }
+      const now = performance.now();
+      if (now - wdLastBurst > (isMobile ? 6500 : 4100)) {
+        wdBurst(innerWidth * (.25 + Math.random() * .5), innerHeight * (.17 + Math.random() * .28), isMobile ? 32 : 48);
+        wdLastBurst = now;
+      }
+      wdFrame = requestAnimationFrame(wdDraw);
+    }
+    function wdStart() {
+      if (wdRunning || !wdCtx || wdReducedMotion || ADMIN || document.hidden || !page.classList.contains('vis')) return;
+      wdResize(); wdRunning = true; wdLastBurst = performance.now();
+      wdBurst(innerWidth * .25, innerHeight * .30, isMobile ? 35 : 60);
+      wdBurst(innerWidth * .75, innerHeight * .28, isMobile ? 35 : 60);
+      wdFrame = requestAnimationFrame(wdDraw);
+    }
+    function wdStop() {
+      wdRunning = false;
+      cancelAnimationFrame(wdFrame);
+      wdParticles.length = 0;
+      if (wdCtx) wdCtx.clearRect(0, 0, innerWidth, innerHeight);
+    }
+    function updateWeddingDayState(now) {
+      const todaySL = now >= weddingDayStartSL && now < weddingDayEndSL;
+      document.body.classList.toggle('wedding-day', todaySL && !ADMIN);
+      document.body.classList.toggle('wedding-started', todaySL && now >= WT && !ADMIN);
+      if (wdayPanel) wdayPanel.classList.toggle('is-active', todaySL && !ADMIN);
+      if (todaySL && !ADMIN) wdStart(); else wdStop();
     }
     function tick() {
-      const diff = WT - Date.now();
-      if (diff <= 0) { [cdD, cdH, cdM, cdS].forEach(el => { if (el) el.textContent = '00'; }); firstTick = false; return; }
-      flipNum(cdD, pad(Math.floor(diff / 86400000)), 'd');
-      flipNum(cdH, pad(Math.floor((diff % 86400000) / 3600000)), 'h');
-      flipNum(cdM, pad(Math.floor((diff % 3600000) / 60000)), 'm');
-      flipNum(cdS, pad(Math.floor((diff % 60000) / 1000)), 's');
+      const now = Date.now();
+      updateWeddingDayState(now);
+      // ceil() prevents displaying zero before the true start instant.
+      const remainingSeconds = Math.max(0, Math.ceil((WT - now) / 1000));
+      if (remainingSeconds === 0) { resetCountdownToZero(); firstTick = false; return; }
+      flipNum(cdD, pad(Math.floor(remainingSeconds / 86400)), 'd');
+      flipNum(cdH, pad(Math.floor((remainingSeconds % 86400) / 3600)), 'h');
+      flipNum(cdM, pad(Math.floor((remainingSeconds % 3600) / 60)), 'm');
+      flipNum(cdS, pad(remainingSeconds % 60), 's');
       firstTick = false;
     }
-    tick(); setInterval(tick, 1000);
+    let weddingTickTimeout;
+    function scheduleWeddingTick() {
+      clearTimeout(weddingTickTimeout);
+      tick();
+      // Re-align to the actual next second boundary, not elapsed timer ticks.
+      weddingTickTimeout = setTimeout(scheduleWeddingTick, 1000 - (Date.now() % 1000) + 12);
+    }
+    scheduleWeddingTick();
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) scheduleWeddingTick(); else wdStop(); });
+    window.addEventListener('pageshow', scheduleWeddingTick);
+    window.addEventListener('focus', scheduleWeddingTick);
+    window.addEventListener('resize', () => { if (wdRunning) wdResize(); }, { passive: true });
+    // After the existing opening animation completes, reveal the celebratory sparkle burst.
+    const weddingEnterButton = document.getElementById('enterBtn');
+    if (weddingEnterButton) weddingEnterButton.addEventListener('click', () => setTimeout(wdStart, 1700));
 
     /* SCROLL REVEAL & TIME TRAVEL EFFECT */
     const revIO = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revIO.unobserve(e.target); } }); }, { threshold: .06 });
@@ -3565,6 +3859,19 @@
       if (type === 'night') {
         link += '&type=night';
       }
+      // Use only the chosen guest type's start time. The other time never changes its countdown.
+      // "start" remains compatible with links generated by older versions of this website.
+      const selectedInput = type === 'night' ? adminNightTime : adminWeddingTime;
+      const defaultTime = type === 'night' ? WEDDING_NIGHT_START_TIME_SL : WEDDING_START_TIME_SL;
+      const newWeddingTime = selectedInput ? selectedInput.value : defaultTime;
+      if (!validWeddingTimeSL(newWeddingTime)) {
+        alert('Enter a valid Sri Lanka start time (00:00–23:59).'); return;
+      }
+      // If customized, persist the specific time in this URL so it is accurate on other devices.
+      if (newWeddingTime !== defaultTime) link += '&start=' + encodeURIComponent(newWeddingTime);
+      try {
+        if (selectedInput) localStorage.setItem(type === 'night' ? 'weddingNightAdminTimeSL' : 'weddingStartAdminTimeSL', newWeddingTime);
+      } catch (_) { /* optional */ }
       const r = document.getElementById('admResult'); r.style.display = 'block';
       r.innerHTML = '<strong style="color:var(--gb);display:block;margin-bottom:10px;"></strong><span id="genLink" style="word-break:break-all;color:var(--mu2);display:block;margin-bottom:16px;"></span><button id="copyBtn" style="padding:9px 22px;background:var(--gb);border:none;cursor:pointer;font-family:Jost;font-weight:600;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);border-radius:6px;touch-action:manipulation;">Copy Link</button>';
       r.querySelector('strong').textContent = 'Link for ' + name + ':';
