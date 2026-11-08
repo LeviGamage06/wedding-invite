@@ -3950,9 +3950,27 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
       else if (/^00[1-9]\d{7,14}$/.test(phone)) phone = '+' + phone.slice(2);
       return /^\+[1-9]\d{7,14}$/.test(phone) ? phone : '';
     }
+    let namedRsvpLocked = false;
+    const namedRsvpStorageKey = 'named_rsvp_' + WEDDING_DATE_SL + '_' + GUEST.toLowerCase();
+    function lockNamedRSVP(status) {
+      if (SHARED) return;
+      namedRsvpLocked = true;
+      document.getElementById('rsvpButtons').style.display = 'none';
+      document.getElementById('alcoholSelection').style.display = 'none';
+      const message = document.getElementById('rsvpMessage');
+      message.style.display = 'block';
+      message.textContent = 'Your response has been saved. This personalised invitation accepts one reply only. Please contact Rajitha or Nelum if you need a change. ඔබගේ පිළිතුර සුරකින ලදී. මෙම පෞද්ගලික ඇරයුම සඳහා පිළිතුරු දිය හැක්කේ එක් වරක් පමණි. වෙනස් කිරීමක් සඳහා රාජිත හෝ නෙළුම් අමතන්න.';
+      try { localStorage.setItem(namedRsvpStorageKey, status); } catch (_) { /* Server still enforces the lock. */ }
+    }
+    if (!SHARED && !ADMIN) {
+      try {
+        const saved = localStorage.getItem(namedRsvpStorageKey);
+        if (saved === 'Yes' || saved === 'No') lockNamedRSVP(saved);
+      } catch (_) { /* Storage is optional. */ }
+    }
     let rsvpSubmitting = false;
     async function submitRSVP(status) {
-      if (rsvpSubmitting || !['Yes', 'No'].includes(status)) return;
+      if (rsvpSubmitting || namedRsvpLocked || !['Yes', 'No'].includes(status)) return;
       const msg = document.getElementById('rsvpMessage');
       const buttons = [...document.querySelectorAll('#rsvpButtons button')];
       const select = document.getElementById('alcoholPref');
@@ -3987,13 +4005,17 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
         const response = await fetch(SCRIPT_URL, {method:'POST', body, signal:controller.signal, redirect:'follow'});
         if (!response.ok) throw new Error('Delivery failed');
         const result = await response.json();
+        if (!SHARED && result.code === 'already_submitted') {
+          lockNamedRSVP(result.status); return;
+        }
         if (result.ok !== true) throw new Error(result.message || 'Your reply could not be saved.');
+        if (!SHARED) { lockNamedRSVP(status); return; }
         announce(`Thank you, ${name}. Your "${status}" response is saved. You can reply again to update it. ඔබගේ පිළිතුර සුරකින ලදී. නැවත පිළිතුරු දීමෙන් එය යාවත්කාලීන කළ හැකියි.`);
       } catch (error) {
         announce('We could not confirm that your response was saved. Please retry with the same details, or call us below. පිළිතුර සුරැකුණු බව තහවුරු කළ නොහැක. එම විස්තර සමඟ නැවත උත්සාහ කරන්න. ' + (error.name === 'AbortError' ? '' : error.message));
       } finally {
         clearTimeout(timeout); rsvpSubmitting = false;
-        buttons.forEach(button => button.disabled = false);
+        buttons.forEach(button => button.disabled = namedRsvpLocked);
         document.getElementById('rsvpContainer').removeAttribute('aria-busy');
       }
     }
