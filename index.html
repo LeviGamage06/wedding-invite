@@ -1,3 +1,17 @@
+        buttons.forEach(button => button.disabled = false);
+      const nameInput = document.getElementById('replyName');
+      const phoneInput = document.getElementById('replyPhone');
+      const name = SHARED ? nameInput.value.trim() : GUEST;
+      const phone = SHARED ? normalizePhone(phoneInput.value) : '';
+    const SHARED = !GUEST;
+    <p style="color:var(--mu2);line-height:1.8">Leave the name blank to create a shared Dear Guest invitation. Each guest enters their name and mobile number when replying. One response per mobile number; replying again updates it.</p>
+          <div id="sharedIdentity" hidden style="margin:0 auto 24px;max-width:340px;text-align:left">
+            <label class="adminLabel" for="replyName">Your full name · ඔබගේ සම්පූර්ණ නම</label>
+            <input id="replyName" class="admInput" type="text" maxlength="120" autocomplete="name" aria-describedby="sharedHelp">
+            <label class="adminLabel" for="replyPhone">Mobile number · ජංගම දුරකථන අංකය</label>
+            <input id="replyPhone" class="admInput" type="tel" maxlength="24" autocomplete="tel" inputmode="tel" placeholder="07XXXXXXXX or +94…" aria-describedby="sharedHelp">
+            <p id="sharedHelp" style="color:var(--mu2);font-size:.85rem;line-height:1.8">One reply per mobile number. Use the same number to update your response, even on another device. Each person should use their own number.<span class="sin-text" lang="si">එක් අංකයකට එක් පිළිතුරක් පමණි. නැවත එම අංකයෙන් පිළිතුරු දුන් විට කලින් පිළිතුර යාවත්කාලීන වේ. එක් එක් පුද්ගලයා තමන්ගේම අංකය භාවිත කරන්න.</span></p>
+          </div>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -3765,8 +3779,8 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
 
   <div id="adminPage">
     <h2 class="admTitle">Invitation Link Generator</h2>
-    <label class="adminLabel" for="guestName">Guest name</label>
-    <input type="text" id="guestName" maxlength="120" class="admInput" placeholder="Guest Name" autocomplete="off" autocorrect="off"
+    <label class="adminLabel" for="guestName">Guest name (optional)</label>
+    <input type="text" id="guestName" maxlength="120" class="admInput" placeholder="Leave blank for Dear Guest" autocomplete="off" autocorrect="off"
       spellcheck="false">
     <label class="adminLabel" for="siteUrl">Invitation website URL</label>
     <input type="url" id="siteUrl" class="admInput" value="https://rajitha-and-nelum-wedding-invitation.pages.dev"
@@ -3774,8 +3788,8 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
       inputmode="url">
     <label class="adminLabel" for="guestType">Invitation type</label>
     <select id="guestType" class="admInput">
-      <option value="both">Morning + Evening</option>
-      <option value="night">Evening Only</option>
+      <option value="both">Poruwa + Night</option>
+      <option value="night">Night Only</option>
     </select>
     <label for="weddingStartInput" style="display:block;color:var(--gb);font-size:.85rem;margin:22px 0 9px;">
       Morning Ceremony Start · Sri Lanka (UTC+05:30)
@@ -3885,7 +3899,12 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
       target.replaceChildren(dear, document.createTextNode(' '), guest, ornaments);
     }
 
-    if (!GUEST) renderGuestSalutation(document.getElementById('greetingText'), 'Guest');
+    if (!GUEST) {
+      renderGuestSalutation(document.getElementById('greetingText'), 'Guest');
+      renderGuestSalutation(document.getElementById('heroGuestName'), 'Guest');
+      document.getElementById('heroGuestName').style.display = 'block';
+      document.getElementById('sharedIdentity').hidden = false;
+    }
 
     if (ADMIN) {
       document.getElementById('entrance').style.display = 'none';
@@ -3928,30 +3947,14 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
 
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3N2zTfR3IYjn1OmFlWDn5mdcbaEJyP6PmY-YAjcUAIaLKyHEUC49trW_6N8ob3jteKw/exec";
 
-    // Optional local RSVP memory: do not break the invitation if storage is blocked.
-    function getStoredRSVP(guest) {
-      try { return localStorage.getItem('rsvp_' + WEDDING_DATE_SL + '_' + GUEST_TYPE + '_' + guest); } catch (e) { return null; }
+    // Phone identity is resolved on the server, independently of browser storage and invite type.
+    function normalizePhone(value) {
+      let phone = String(value || '').trim().replace(/[\s().-]/g, '');
+      if (/^0[1-9]\d{8}$/.test(phone)) phone = '+94' + phone.slice(1);
+      else if (/^94[1-9]\d{8}$/.test(phone)) phone = '+' + phone;
+      else if (/^00[1-9]\d{7,14}$/.test(phone)) phone = '+' + phone.slice(2);
+      return /^\+[1-9]\d{7,14}$/.test(phone) ? phone : '';
     }
-    function saveStoredRSVP(guest, status) {
-      try { localStorage.setItem('rsvp_' + WEDDING_DATE_SL + '_' + GUEST_TYPE + '_' + guest, status); } catch (e) { /* Storage may be disabled. */ }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      if (GUEST && getStoredRSVP(GUEST)) {
-        const status = getStoredRSVP(GUEST);
-        const btnDiv = document.getElementById('rsvpButtons');
-        const msgDiv = document.getElementById('rsvpMessage');
-        const alcoholDiv = document.getElementById('alcoholSelection');
-
-        if (btnDiv) btnDiv.style.display = 'none';
-        if (alcoholDiv) alcoholDiv.style.display = 'none';
-        if (msgDiv) {
-          msgDiv.style.display = 'block';
-          msgDiv.textContent = `Thank you, ${GUEST}. Your "${status}" response was sent from this browser. Please contact us if you need confirmation or wish to change it.`;
-        }
-      }
-    });
-
     let rsvpSubmitting = false;
     async function submitRSVP(status) {
       if (rsvpSubmitting || !['Yes', 'No'].includes(status)) return;
@@ -3959,9 +3962,13 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
       const buttons = [...document.querySelectorAll('#rsvpButtons button')];
       const select = document.getElementById('alcoholPref');
       const announce = text => { msg.style.display = 'block'; msg.textContent = text; };
-      if (!GUEST) {
-        announce('Please open your personalised invitation link to reply, or call us using the numbers below. ඔබට එවූ පෞද්ගලික ඇරයුම් සබැඳියෙන් පිවිසෙන්න, නැතිනම් පහත දුරකථන අංකයක් අමතන්න.');
-        msg.focus(); return;
+      if (!name) {
+        announce('Please enter your full name. කරුණාකර ඔබගේ සම්පූර්ණ නම ඇතුළත් කරන්න.');
+        nameInput.focus(); return;
+      }
+      if (SHARED && !phone) {
+        announce('Enter a valid mobile number: 07XXXXXXXX or +country code. නිවැරදි ජංගම දුරකථන අංකය ඇතුළත් කරන්න.');
+        phoneInput.focus(); return;
       }
       if (status === 'Yes' && !select.value) {
         announce('Please select your beverage preference. කරුණාකර පාන වර්ගය පිළිබඳ ඔබගේ කැමැත්ත තෝරන්න.');
@@ -3971,25 +3978,20 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
       rsvpSubmitting = true;
       buttons.forEach(button => button.disabled = true);
       document.getElementById('rsvpContainer').setAttribute('aria-busy', 'true');
-      announce('Sending your response… ඔබගේ පිළිතුර යවමින් පවතී…');
-      const formData = new FormData();
-      formData.append('name', GUEST);
-      formData.append('status', status);
-      formData.append('type', GUEST_TYPE);
-      formData.append('alcohol', status === 'Yes' ? select.value : 'Not Required');
+      announce('Saving your response… ඔබගේ පිළිතුර සුරකිමින් පවතී…');
+      const body = new URLSearchParams({name, status, type:GUEST_TYPE,
+        alcohol:status === 'Yes' ? select.value : 'Not Required', mode:SHARED ? 'common' : 'named'});
+      if (SHARED) body.set('phone', phone);
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 20000);
+      const timeout = setTimeout(() => controller.abort(), 45000);
       try {
-        const response = await fetch(SCRIPT_URL, {method: 'POST', body: formData, mode: 'no-cors', signal: controller.signal});
-        if (response.type !== 'opaque' && !response.ok) throw new Error('Request failed');
-        // An opaque response does not prove that the spreadsheet saved this request.
-        saveStoredRSVP(GUEST, status);
-        document.getElementById('rsvpButtons').style.display = 'none';
-        document.getElementById('alcoholSelection').style.display = 'none';
-        announce(`Thank you, ${GUEST}. Your "${status}" response has been sent. Please contact us if you need confirmation or wish to change it. ඔබගේ පිළිතුර යවා ඇත. තහවුරු කරගැනීමට හෝ වෙනස් කිරීමට කරුණාකර අප අමතන්න.`);
+        const response = await fetch(SCRIPT_URL, {method:'POST', body, signal:controller.signal, redirect:'follow'});
+        if (!response.ok) throw new Error('Delivery failed');
+        const result = await response.json();
+        if (result.ok !== true) throw new Error(result.message || 'Your reply could not be saved.');
+        announce(`Thank you, ${name}. Your "${status}" response is saved. You can reply again to update it. ඔබගේ පිළිතුර සුරකින ලදී. නැවත පිළිතුරු දීමෙන් එය යාවත්කාලීන කළ හැකියි.`);
       } catch (error) {
-        announce('We could not confirm delivery. Please try again or call us below. පිළිතුර ලැබුණු බව තහවුරු කළ නොහැක. නැවත උත්සාහ කරන්න හෝ පහත අංකයක් අමතන්න.');
-        buttons.forEach(button => button.disabled = false);
+        announce('We could not confirm that your response was saved. Please retry with the same details, or call us below. පිළිතුර සුරැකුණු බව තහවුරු කළ නොහැක. එම විස්තර සමඟ නැවත උත්සාහ කරන්න. ' + (error.name === 'AbortError' ? '' : error.message));
       } finally {
         clearTimeout(timeout); rsvpSubmitting = false;
         document.getElementById('rsvpContainer').removeAttribute('aria-busy');
@@ -4337,12 +4339,12 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
       const name = (document.getElementById('guestName').value || '').trim();
       const url = (document.getElementById('siteUrl').value || '').trim().replace(/\/+$/, '');
       const type = document.getElementById('guestType').value;
-      if (!name || !url) { alert('Please fill in both fields.'); return; }
+      if (!url) { alert('Please enter the website URL.'); return; }
       if (!/^https?:\/\//i.test(url)) { alert('URL must start with https:// or http://'); return; }
       let parsedUrl;
       try { parsedUrl = new URL(url); if (!['https:', 'http:'].includes(parsedUrl.protocol) || parsedUrl.username || parsedUrl.password) throw new Error(); } catch (_) { alert('Enter a valid website URL.'); return; }
       parsedUrl.search = ''; parsedUrl.hash = '';
-      let link = parsedUrl.href + '?to=' + encodeURIComponent(name);
+      let link = parsedUrl.href + (name ? '?to=' + encodeURIComponent(name) : '?shared=1');
       if (type === 'night') {
         link += '&type=night';
       }
@@ -4361,7 +4363,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
       } catch (_) { /* optional */ }
       const r = document.getElementById('admResult'); r.style.display = 'block';
       r.innerHTML = '<strong style="color:var(--gb);display:block;margin-bottom:10px;"></strong><span id="genLink" style="word-break:break-all;color:var(--mu2);display:block;margin-bottom:16px;"></span><button id="copyBtn" style="padding:9px 22px;background:var(--gb);border:none;cursor:pointer;font-family:Jost;font-weight:600;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);border-radius:6px;touch-action:manipulation;">Copy Link</button>';
-      r.querySelector('strong').textContent = 'Link for ' + name + ':';
+      r.querySelector('strong').textContent = 'Link for ' + (name || 'Dear Guest (shared)') + ':';
       document.getElementById('genLink').textContent = link;
       document.getElementById('copyBtn').addEventListener('click', function () {
         const text = document.getElementById('genLink').textContent;
