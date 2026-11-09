@@ -1933,7 +1933,7 @@
       display: block;
     }
 
-    #morningProgramme .piTime {
+    :is(#morningProgramme, #eveningProgramme) .piTime {
       position: relative;
       display: inline-block;
       isolation: isolate;
@@ -1955,7 +1955,7 @@
     }
 
     @media (prefers-reduced-motion: no-preference) {
-      #morningProgramme .piTime::after {
+      :is(#morningProgramme, #eveningProgramme) .piTime::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -1965,7 +1965,7 @@
         transform: translateX(-100%);
       }
 
-      #morningProgramme .drawn .piTime::after {
+      :is(#morningProgramme, #eveningProgramme) .drawn .piTime::after {
         animation: poruwa-time-sheen 1.45s .25s ease-out both;
       }
 
@@ -1973,7 +1973,7 @@
         animation-delay: .65s;
       }
 
-      #morningProgramme .drawn .piDot {
+      :is(#morningProgramme, #eveningProgramme) .drawn .piDot {
         animation: poruwa-time-halo 1.6s .25s ease-out both;
       }
 
