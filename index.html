@@ -3639,7 +3639,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
                 <div class="piL">
                   <div class="piDot" aria-hidden="true"></div>
                 </div>
-                <div class="piR"><span class="piTime" id="ceremonyStartTime">08:45 AM</span>
+                <div class="piR"><span class="piTime" id="ceremonyStartTime">08:20 AM – 03:00 PM</span>
                   <div class="piName">Poruwa Ceremony<span class="sin-text" lang="si">මංගල පෝරුවේ චාරිත්‍ර</span></div>
                   <div class="piDesc">In the grace of our treasured Sri Lankan traditions and the blessings of our families, we take our first steps into married life upon the Poruwa.<span class="sin-text" lang="si">පරපුරෙන් පරපුරට උරුම වූ හෙළ මංගල සිරිත් හා පවුල්වල ආශීර්වාද මධ්‍යයේ, පෝරුව මත අපේ එක් දිවි ගමනේ මංගල පියවර තබන්නෙමු.</span></div>
                 </div>
@@ -3704,7 +3704,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
             <p class="venueAddr">Pinnalanda Road (Pinnalandawatta) · Pinnawala · Rambukkana 71100<span class="sin-text" lang="si">පින්නලන්ද පාර (පින්නලන්දවත්ත) · පින්නවල · රඹුක්කන 71100</span></p>
             <ul class="dirList">
               <li><span class="dirN" aria-hidden="true">1</span><span>Two hearts, bound by love, begin a shared journey and gather memories to treasure for a lifetime.<span class="sin-text" lang="si">සෙනෙහසින් බැඳුණු හදවත් දෙකක්, <em>දිවිපුරා සුරැකෙන මතකයන්</em> සමඟින් එක් මාවතක ගමන් අරඹන මොහොතයි මේ.</span></span></li>
-              <li><span class="dirN" aria-hidden="true">2</span><span>Amid the serene beauty of <em>Pinnawala</em>, our <em>Poruwa Ceremony</em> begins at <span id="ceremonyStartEnglish">8:45 AM</span>.<span class="sin-text" lang="si">පින්නවල නිසංසල සොබා සිරිය මධ්‍යයේ, අපගේ <em>මංගල පෝරුවේ චාරිත්‍ර</em> <span id="ceremonyStartSinhala">පෙ.ව. 8:45ට</span> ආරම්භ වේ.</span></span></li>
+              <li><span class="dirN" aria-hidden="true">2</span><span>Amid the serene beauty of <em>Pinnawala</em>, our <em>Poruwa Function</em> takes place from <span id="ceremonyStartEnglish">8:20 AM to 3:00 PM</span>.<span class="sin-text" lang="si">පින්නවල නිසංසල සොබා සිරිය මධ්‍යයේ, අපගේ <em>මංගල පෝරුවේ සැමරුම</em> <span id="ceremonyStartSinhala">පෙ.ව. 8:20 සිට ප.ව. 3:00 දක්වා</span> පැවැත්වේ.</span></span></li>
               <li><span class="dirN" aria-hidden="true">3</span><span>We look forward to welcoming you to <em>Elephant Bay Hotel</em> on Pinnalanda Road, Pinnawala.<span class="sin-text" lang="si">පින්නවල පින්නලන්ද පාරේ පිහිටි <em>එලිෆන්ට් බේ හෝටලයට</em> ඔබව සෙනෙහසින් පිළිගැනීමට අපි බලා සිටිමු.</span></span></li>
         
             </ul>
@@ -3853,7 +3853,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
       Morning Ceremony Start · Sri Lanka (UTC+05:30)
       <span class="sin-text" lang="si" style="font-size:.8rem;">උදෑසන හා සන්ධ්‍යා උත්සව දෙකටම ඇරයුම් ලැබූ අමුත්තන් සඳහා උදෑසන ආරම්භක වේලාව</span>
     </label>
-    <input type="time" id="weddingStartInput" class="admInput" value="08:45" step="60"
+    <input type="time" id="weddingStartInput" class="admInput" value="08:20" step="60"
       aria-describedby="weddingTimeNotice">
     <label for="nightStartInput" style="display:block;color:var(--gb);font-size:.85rem;margin:18px 0 9px;">
       Evening Reception Start · Sri Lanka (UTC+05:30)
@@ -3884,7 +3884,8 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
        "both" guests ALWAYS count down to the morning ceremony. "night" guests ONLY count down
        to the evening reception. Personalised links may override the selected session via &start=HH:MM. */
     const WEDDING_DATE_SL = '2026-12-04';
-    const WEDDING_START_TIME_SL = '08:45'; // Poruwa ceremony start
+    const WEDDING_START_TIME_SL = '08:20';
+    const WEDDING_MORNING_END_TIME_SL = '15:00';
     const WEDDING_NIGHT_START_TIME_SL = '17:30';
     const WEDDING_NIGHT_END_TIME_SL = '23:00';
     const SRI_LANKA_UTC_OFFSET = '+05:30'; // Sri Lanka does not observe daylight saving time.
@@ -3907,16 +3908,17 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
     }
     // The morning programme and venue describe the morning ceremony, not the night-only countdown.
     const ceremonyTimeLabels = displayWeddingTimeSL(ACTIVE_MORNING_TIME_SL);
+    const ceremonyEndLabels = displayWeddingTimeSL(WEDDING_MORNING_END_TIME_SL);
     const countdownCard = document.getElementById('hi4');
     if (countdownCard) countdownCard.setAttribute('aria-label', GUEST_TYPE === 'night'
       ? 'Countdown to the evening reception (Sri Lanka time)'
       : 'Countdown to the morning ceremony (Sri Lanka time)');
     const ceremonyTimeEl = document.getElementById('ceremonyStartTime');
-    if (ceremonyTimeEl) ceremonyTimeEl.textContent = ceremonyTimeLabels.english;
+    if (ceremonyTimeEl) ceremonyTimeEl.textContent = `${ceremonyTimeLabels.english} – ${ceremonyEndLabels.english}`;
     const ceremonyEnglishEl = document.getElementById('ceremonyStartEnglish');
-    if (ceremonyEnglishEl) ceremonyEnglishEl.textContent = ceremonyTimeLabels.englishShort;
+    if (ceremonyEnglishEl) ceremonyEnglishEl.textContent = `${ceremonyTimeLabels.englishShort} to ${ceremonyEndLabels.englishShort}`;
     const ceremonySinhalaEl = document.getElementById('ceremonyStartSinhala');
-    if (ceremonySinhalaEl) ceremonySinhalaEl.textContent = ceremonyTimeLabels.sinhala;
+    if (ceremonySinhalaEl) ceremonySinhalaEl.textContent = `${ceremonyTimeLabels.sinhala.replace(/ට$/, '')} සිට ${ceremonyEndLabels.sinhala.replace(/ට$/, '')} දක්වා`;
 
     const eveningLabels = displayWeddingTimeSL(ACTIVE_NIGHT_TIME_SL);
     const eveningEndLabels = displayWeddingTimeSL(WEDDING_NIGHT_END_TIME_SL);
