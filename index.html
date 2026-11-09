@@ -3609,7 +3609,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
                 <div class="piL">
                   <div class="piDot" aria-hidden="true"></div>
                 </div>
-                <div class="piR"><span class="piTime">05:30 PM</span>
+                <div class="piR"><span class="piTime" id="eveningProgrammeTime">05:30 PM</span>
                   <div class="piName">Grand Reception<span class="sin-text" lang="si">මංගල සන්ධ්‍යා භෝජන සංග්‍රහය</span></div>
                   <div class="piDesc">As the evening unfolds, join us for a graceful celebration filled with music, a festive dinner and moments of joy to remember.<span class="sin-text" lang="si">සංගීත රාවයෙන්, රසවත් රාත්‍රී භෝජනයෙන් හා ආදරණීය හමුවීම්වලින් හැඩවන මේ සොඳුරු සන්ධ්‍යාව අප සමඟ සමරන්න.</span></div>
                 </div>
@@ -3805,7 +3805,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
     <input type="time" id="nightStartInput" class="admInput" value="17:30" step="60"
       aria-describedby="weddingTimeNotice">
     <p id="weddingTimeNotice" style="font-size:.77rem;color:var(--mu2);line-height:1.8;margin:0 0 18px;">
-      Morning + Evening guests count down to the <strong>morning time</strong>. Evening Only guests count down to the
+      Poruwa + Night links display the Poruwa ceremony and count down to the <strong>morning time</strong>. Night Only guests count down to the
       <strong>evening time</strong>. Times are Sri Lanka time (UTC+05:30). Each new invitation link uses only the
       time for its selected guest type. Previously generated links with a custom time keep that custom time.
       To change the published defaults for all standard links, edit WEDDING_START_TIME_SL and
@@ -3827,7 +3827,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
        "both" guests ALWAYS count down to the morning ceremony. "night" guests ONLY count down
        to the evening reception. Personalised links may override the selected session via &start=HH:MM. */
     const WEDDING_DATE_SL = '2026-12-04';
-    const WEDDING_START_TIME_SL = '08:45'; // Morning ceremony for Morning + Evening guests
+    const WEDDING_START_TIME_SL = '08:45'; // Poruwa ceremony start
     const WEDDING_NIGHT_START_TIME_SL = '17:30'; // Evening guest arrival (5:30 PM); reception programme is 5:30 PM
     const SRI_LANKA_UTC_OFFSET = '+05:30'; // Sri Lanka does not observe daylight saving time.
     function validWeddingTimeSL(t) { return /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(t); }
@@ -3861,6 +3861,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
     if (ceremonySinhalaEl) ceremonySinhalaEl.textContent = ceremonyTimeLabels.sinhala;
 
     const eveningLabels = displayWeddingTimeSL(ACTIVE_NIGHT_TIME_SL);
+    document.getElementById('eveningProgrammeTime').textContent = eveningLabels.english;
     document.getElementById('eveningArrivalEnglish').textContent = eveningLabels.englishShort;
     document.getElementById('eveningArrivalSinhala').textContent = eveningLabels.sinhala.replace(/ට$/, '');
 
