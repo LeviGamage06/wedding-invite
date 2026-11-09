@@ -1946,7 +1946,7 @@
       background: linear-gradient(135deg, #35251b, #211827);
       color: #fff2c6;
       font-family: system-ui, sans-serif;
-      font-size: clamp(1.5rem, 5.6vw, 2.25rem);
+      font-size: clamp(1.125rem, 4vw, 1.4rem);
       font-style: normal;
       font-weight: 750;
       font-variant-numeric: tabular-nums;
@@ -1990,12 +1990,8 @@
       }
     }
 
-    #morningProgramme .piTime {
-      font-size: clamp(1.125rem, 4vw, 1.4rem);
-    }
-
-    .poruwa-finale .piName { color: #fff2c6; }
-    .poruwa-finale-ornament {
+    .programme-finale .piName { color: #fff2c6; }
+    .programme-finale-ornament {
       display: flex;
       align-items: center;
       gap: 9px;
@@ -2004,8 +2000,8 @@
       color: #efcc81;
     }
 
-    .poruwa-finale-ornament::before,
-    .poruwa-finale-ornament::after {
+    .programme-finale-ornament::before,
+    .programme-finale-ornament::after {
       content: '';
       flex: 1;
       height: 1px;
@@ -2013,23 +2009,23 @@
       transform-origin: right;
     }
 
-    .poruwa-finale-ornament::after {
+    .programme-finale-ornament::after {
       background: linear-gradient(90deg, currentColor, transparent);
       transform-origin: left;
     }
 
     @media (prefers-reduced-motion: no-preference) {
-      #morningProgramme .drawn .poruwa-finale .piTime::after { animation: none; }
-      #morningProgramme .drawn .poruwa-finale.cinema-section-seen .piTime::after {
+      :is(#morningProgramme, #eveningProgramme) .drawn .programme-finale .piTime::after { animation: none; }
+      :is(#morningProgramme, #eveningProgramme) .drawn .programme-finale.cinema-section-seen .piTime::after {
         animation: poruwa-time-sheen 1.45s .25s ease-out both;
       }
 
-      .poruwa-finale.cinema-section-seen .poruwa-finale-ornament::before,
-      .poruwa-finale.cinema-section-seen .poruwa-finale-ornament::after {
-        animation: poruwa-finale-line 1.1s .15s ease-out both;
+      .programme-finale.cinema-section-seen .programme-finale-ornament::before,
+      .programme-finale.cinema-section-seen .programme-finale-ornament::after {
+        animation: programme-finale-line 1.1s .15s ease-out both;
       }
 
-      @keyframes poruwa-finale-line {
+      @keyframes programme-finale-line {
         from { transform: scaleX(0); opacity: .3; }
         to { transform: scaleX(1); opacity: 1; }
       }
@@ -3700,13 +3696,13 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
                   <div class="piDesc">Share a delightful wedding luncheon with us, where warm wishes, joyful conversations and treasured company make the occasion even sweeter.<span class="sin-text" lang="si">සුබපැතුම්, සෙනෙහෙබර කතාබහ හා ඔබගේ මිහිරි ඇසුරින් තවත් සුන්දර වන මංගල දිවා භෝජන සංග්‍රහයට අප සමඟ එක්වන්න.</span></div>
                 </div>
               </div>
-              <div class="pItem poruwa-finale">
+              <div class="pItem programme-finale">
                 <div class="piL"><div class="piDot" aria-hidden="true"></div></div>
                 <div class="piR">
                   <span class="piTime" id="ceremonyEndTime">03:00 PM</span>
                   <div class="piName">Wedding Farewell<span class="sin-text" lang="si">මංගල කටයුතුවල සමාප්තිය</span></div>
                   <div class="piDesc">We close the day’s celebrations with grateful hearts, thankful to have shared these moments with you.<span class="sin-text" lang="si">මේ සොඳුරු මොහොත අප සමඟ බෙදාගත් ඔබ සැමට හදපිරි ස්තුතිය පුද කරමින් මංගල කටයුතු නිමා කරමු.</span></div>
-                  <div class="poruwa-finale-ornament" aria-hidden="true">✦</div>
+                  <div class="programme-finale-ornament" aria-hidden="true">✦</div>
                 </div>
               </div>
             </div>
@@ -3720,9 +3716,18 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
                 <div class="piL">
                   <div class="piDot" aria-hidden="true"></div>
                 </div>
-                <div class="piR"><span class="piTime" id="eveningProgrammeTime">05:30 PM – 11:00 PM</span>
+                <div class="piR"><span class="piTime" id="eveningProgrammeTime">05:30 PM</span>
                   <div class="piName">Grand Reception<span class="sin-text" lang="si">මංගල සන්ධ්‍යා භෝජන සංග්‍රහය</span></div>
                   <div class="piDesc">As the evening unfolds, join us for a graceful celebration filled with music, a festive dinner and moments of joy to remember.<span class="sin-text" lang="si">සංගීත රාවයෙන්, රසවත් රාත්‍රී භෝජනයෙන් හා ආදරණීය හමුවීම්වලින් හැඩවන මේ සොඳුරු සන්ධ්‍යාව අප සමඟ සමරන්න.</span></div>
+                </div>
+              </div>
+              <div class="pItem programme-finale">
+                <div class="piL"><div class="piDot" aria-hidden="true"></div></div>
+                <div class="piR">
+                  <span class="piTime" id="eveningEndTime">11:00 PM</span>
+                  <div class="piName">Reception Farewell<span class="sin-text" lang="si">සන්ධ්‍යා සැමරුමේ සමාප්තිය</span></div>
+                  <div class="piDesc">We end the evening with warm wishes and heartfelt thanks for celebrating with us.<span class="sin-text" lang="si">අප සමඟ මේ සොඳුරු සන්ධ්‍යාව සැමරූ ඔබ සැමට හදපිරි ස්තුතිය පුද කරමින් සැමරුම නිමා කරමු.</span></div>
+                  <div class="programme-finale-ornament" aria-hidden="true">✦</div>
                 </div>
               </div>
             </div>
@@ -3977,7 +3982,8 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
 
     const eveningLabels = displayWeddingTimeSL(ACTIVE_NIGHT_TIME_SL);
     const eveningEndLabels = displayWeddingTimeSL(WEDDING_NIGHT_END_TIME_SL);
-    document.getElementById('eveningProgrammeTime').textContent = `${eveningLabels.english} – ${eveningEndLabels.english}`;
+    document.getElementById('eveningProgrammeTime').textContent = eveningLabels.english;
+    document.getElementById('eveningEndTime').textContent = eveningEndLabels.english;
     document.getElementById('eveningArrivalEnglish').textContent = `${eveningLabels.englishShort} to ${eveningEndLabels.englishShort}`;
     document.getElementById('eveningArrivalSinhala').textContent = `${eveningLabels.sinhala.replace(/ට$/, '')} සිට ${eveningEndLabels.sinhala.replace(/ට$/, '')} දක්වා`;
 
@@ -4634,7 +4640,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
     if(opened)return; opened=true; entry?.classList.add('cinema-opening');
     setTimeout(()=>burst(innerWidth/2,innerHeight*.42,true),1650);
   },{once:true});
-  const targets=document.querySelectorAll('.secHead,.cinema-surface,.poruwa-finale');
+  const targets=document.querySelectorAll('.secHead,.cinema-surface,.programme-finale');
   if('IntersectionObserver' in window){
     const observer=new IntersectionObserver(entries=>entries.forEach(e=>{
       if(e.isIntersecting){ e.target.classList.add('cinema-section-seen'); observer.unobserve(e.target); }
