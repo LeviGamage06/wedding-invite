@@ -3205,7 +3205,14 @@
   #audioBtn { bottom: max(16px, env(safe-area-inset-bottom)); left: max(16px, env(safe-area-inset-left)); }
   .story-text-content { max-width: 100%; }
   .story-img-wrapper::after { background: linear-gradient(to bottom,rgba(6,4,15,.1),rgba(6,4,15,.85) 45%,#06040f); }
-  @media (max-width:620px), (max-height:740px), (prefers-reduced-motion:reduce) {
+  @media (max-width:620px), (max-height:740px) {
+    body { overflow-x: clip; }
+    #storyScrollArea { min-height: max(180vh, 1050px) !important; }
+    .story-sticky-container { top: clamp(12px, calc(100svh - 620px), 15vh); }
+    .layer-past, .layer-present { padding: 24px 22px 30px; }
+    .story-kicker { font-size: 2.4rem; line-height: 1.3; }
+  }
+  @media (prefers-reduced-motion:reduce) {
     #story { min-height: 0; }
     #storyScrollArea { min-height: 0 !important; }
     .story-sticky-container { position: static; }
@@ -4371,7 +4378,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
 
         let presOp = Math.max(0, Math.min(1, (progress - .35) / .3));
         let pastOp = 1 - presOp;
-        const readingMode = matchMedia('(max-width: 620px), (max-height: 740px), (prefers-reduced-motion: reduce)').matches;
+        const readingMode = matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (readingMode) { pastOp = 1; presOp = 1; }
         layerPast.setAttribute('aria-hidden', String(!readingMode && presOp >= .5));
         layerPresent.setAttribute('aria-hidden', String(!readingMode && presOp < .5));
