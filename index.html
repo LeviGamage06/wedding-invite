@@ -3959,18 +3959,24 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
       document.getElementById('alcoholSelection').style.display = 'none';
       const message = document.getElementById('rsvpMessage');
       message.style.display = 'block';
-      message.textContent = 'Your response has been saved. This personalised invitation accepts one reply only. Please contact Rajitha or Nelum if you need a change. ඔබගේ පිළිතුර සුරකින ලදී. මෙම පෞද්ගලික ඇරයුම සඳහා පිළිතුරු දිය හැක්කේ එක් වරක් පමණි. වෙනස් කිරීමක් සඳහා රාජිත හෝ නෙළුම් අමතන්න.';
+      message.textContent = 'RSVP already recorded. This personalised invitation accepts one reply only. Please contact Rajitha or Nelum if you need a change. ඔබගේ පිළිතුර සුරකින ලදී. මෙම පෞද්ගලික ඇරයුම සඳහා පිළිතුරු දිය හැක්කේ එක් වරක් පමණි. වෙනස් කිරීමක් සඳහා රාජිත හෝ නෙළුම් අමතන්න.';
       try { localStorage.setItem(namedRsvpStorageKey, status); } catch (_) { /* Server still enforces the lock. */ }
     }
     async function recheckNamedRSVP() {
+      namedRsvpLocked = true;
+      document.getElementById('rsvpButtons').style.display = 'none';
+      document.getElementById('alcoholSelection').style.display = 'none';
+      const message = document.getElementById('rsvpMessage');
+      message.style.display = 'block';
+      message.textContent = 'Checking RSVP… ඔබගේ පිළිතුර පරීක්ෂා කරමින් පවතී…';
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 20000);
       try {
         const response = await fetch(SCRIPT_URL, {method:'POST',
           body:new URLSearchParams({action:'named_state',name:GUEST}), signal:controller.signal});
-        if (!response.ok) return;
+        if (!response.ok) throw new Error('Status check failed');
         const result = await response.json();
-        if (result.ok !== true) return;
+        if (result.ok !== true) throw new Error('Status check failed');
         if (result.exists && (result.status === 'Yes' || result.status === 'No')) {
           lockNamedRSVP(result.status);
         } else if (result.exists) {
@@ -3983,14 +3989,21 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
         } else {
           document.getElementById('rsvpMessage').textContent = 'This invitation is no longer active. Please contact Rajitha or Nelum. මෙම ඇරයුම දැනට ක්‍රියාත්මක නැත. රාජිත හෝ නෙළුම් අමතන්න.';
         }
-      } catch (_) { /* Keep the saved lock until the server can be reached. */ }
+      } catch (_) {
+        message.textContent = 'Could not check your RSVP. Please try again. ';
+        const retry = document.createElement('button');
+        retry.type = 'button';
+        retry.textContent = 'Retry';
+        retry.addEventListener('click', recheckNamedRSVP, {once:true});
+        message.appendChild(retry);
+      }
       finally { clearTimeout(timeout); }
     }
     if (!SHARED && !ADMIN) {
-      try {
-        const saved = localStorage.getItem(namedRsvpStorageKey);
-        if (saved === 'Yes' || saved === 'No') { lockNamedRSVP(saved); recheckNamedRSVP(); }
-      } catch (_) { /* Storage is optional. */ }
+      recheckNamedRSVP();
+      window.addEventListener('pageshow', event => {
+        if (event.persisted) recheckNamedRSVP();
+      });
     }
     let rsvpSubmitting = false;
     async function submitRSVP(status) {
