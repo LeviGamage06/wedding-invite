@@ -1933,6 +1933,63 @@
       display: block;
     }
 
+    #morningProgramme .piTime {
+      position: relative;
+      display: inline-block;
+      isolation: isolate;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 0 0 10px;
+      padding: .32em .55em;
+      border: 1px solid #bd9858;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #35251b, #211827);
+      color: #fff2c6;
+      font-family: system-ui, sans-serif;
+      font-size: clamp(1.5rem, 5.6vw, 2.25rem);
+      font-style: normal;
+      font-weight: 750;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.15;
+      box-shadow: inset 0 0 0 2px #ffffff0d, 0 4px 16px #08050c66;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      #morningProgramme .piTime::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: linear-gradient(110deg, transparent 20%, #ffd88e26 50%, transparent 80%);
+        transform: translateX(-100%);
+      }
+
+      #morningProgramme .drawn .piTime::after {
+        animation: poruwa-time-sheen 1.45s .25s ease-out both;
+      }
+
+      #morningProgramme .drawn .pItem:nth-child(2) .piTime::after {
+        animation-delay: .65s;
+      }
+
+      #morningProgramme .drawn .piDot {
+        animation: poruwa-time-halo 1.6s .25s ease-out both;
+      }
+
+      #morningProgramme .drawn .pItem:nth-child(2) .piDot {
+        animation-delay: .65s;
+      }
+
+      @keyframes poruwa-time-sheen {
+        to { transform: translateX(100%); }
+      }
+
+      @keyframes poruwa-time-halo {
+        45% { box-shadow: 0 0 0 6px #edc27440, 0 0 20px #edc274; }
+      }
+    }
+
     .piName {
       font-size: .9rem;
       font-weight: 400;
