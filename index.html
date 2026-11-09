@@ -3962,10 +3962,34 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
       message.textContent = 'Your response has been saved. This personalised invitation accepts one reply only. Please contact Rajitha or Nelum if you need a change. ඔබගේ පිළිතුර සුරකින ලදී. මෙම පෞද්ගලික ඇරයුම සඳහා පිළිතුරු දිය හැක්කේ එක් වරක් පමණි. වෙනස් කිරීමක් සඳහා රාජිත හෝ නෙළුම් අමතන්න.';
       try { localStorage.setItem(namedRsvpStorageKey, status); } catch (_) { /* Server still enforces the lock. */ }
     }
+    async function recheckNamedRSVP() {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 20000);
+      try {
+        const response = await fetch(SCRIPT_URL, {method:'POST',
+          body:new URLSearchParams({action:'named_state',name:GUEST}), signal:controller.signal});
+        if (!response.ok) return;
+        const result = await response.json();
+        if (result.ok !== true) return;
+        if (result.exists && (result.status === 'Yes' || result.status === 'No')) {
+          lockNamedRSVP(result.status);
+        } else if (result.exists) {
+          namedRsvpLocked = false;
+          try { localStorage.removeItem(namedRsvpStorageKey); } catch (_) { /* optional */ }
+          document.getElementById('rsvpButtons').style.display = 'flex';
+          document.getElementById('alcoholSelection').style.display = 'block';
+          document.getElementById('rsvpMessage').style.display = 'none';
+          document.querySelectorAll('#rsvpButtons button').forEach(button => button.disabled = false);
+        } else {
+          document.getElementById('rsvpMessage').textContent = 'This invitation is no longer active. Please contact Rajitha or Nelum. මෙම ඇරයුම දැනට ක්‍රියාත්මක නැත. රාජිත හෝ නෙළුම් අමතන්න.';
+        }
+      } catch (_) { /* Keep the saved lock until the server can be reached. */ }
+      finally { clearTimeout(timeout); }
+    }
     if (!SHARED && !ADMIN) {
       try {
         const saved = localStorage.getItem(namedRsvpStorageKey);
-        if (saved === 'Yes' || saved === 'No') lockNamedRSVP(saved);
+        if (saved === 'Yes' || saved === 'No') { lockNamedRSVP(saved); recheckNamedRSVP(); }
       } catch (_) { /* Storage is optional. */ }
     }
     let rsvpSubmitting = false;
