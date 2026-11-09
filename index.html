@@ -1787,8 +1787,9 @@
       gap: 36px;
     }
 
-    /* Evening Only Layout Adjustment */
-    .progLayout.night-only-layout {
+    /* Center a single programme card. */
+    .progLayout.night-only-layout,
+    .progLayout.poruwa-only-layout {
       grid-template-columns: 1fr !important;
       max-width: 600px !important;
       margin-left: auto;
@@ -3600,7 +3601,7 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
             </div>
           </div>
         </div>
-        <div class="rv d3">
+        <div class="rv d3" id="eveningProgramme">
           <div class="dayBadge"><span class="dayBadgeDot" aria-hidden="true"></span><span>Evening Celebration<span class="sin-text" lang="si">සන්ධ්‍යා මංගල සැමරුම</span></span></div>
           <div class="pCard">
             <div class="timelineWrap" id="tl2">
@@ -3945,6 +3946,12 @@ body.cinema-paused *,body.cinema-paused *::before,body.cinema-paused *::after { 
           progLayout.classList.add('night-only-layout');
         }
       });
+    } else if (!ADMIN) {
+      document.getElementById('eveningProgramme').style.display = 'none';
+      document.getElementById('eveningVenue').style.display = 'none';
+      document.getElementById('venueSeparator').style.display = 'none';
+      document.getElementById('morningVenue').style.marginBottom = '0';
+      document.querySelector('.progLayout').classList.add('poruwa-only-layout');
     }
 
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3N2zTfR3IYjn1OmFlWDn5mdcbaEJyP6PmY-YAjcUAIaLKyHEUC49trW_6N8ob3jteKw/exec";
